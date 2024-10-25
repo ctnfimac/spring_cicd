@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  # Base de datos a la cual me conectaré desde mi proyecto java
+  db:
+    image: postgres
+    container_name: springcontactos.db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: spring123
+      POSTGRES_DB: contactos_db
+      POSTGRES_USER: christian
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+
+
+  # cliente de base de datos si es que no quiero usar la linea de comandos
+  db_client:
+    image: dpage/pgadmin4
+    container_name: springcontactos.db.cliente
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - ./pgadmin_data:/var/lib/pgadmin
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_data:

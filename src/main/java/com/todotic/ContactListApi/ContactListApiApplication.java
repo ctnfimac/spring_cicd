@@ -18,7 +18,7 @@ public class ContactListApiApplication {
 		SpringApplication.run(ContactListApiApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	CommandLineRunner runner(ContactRepository contactRepository){
 		return args -> {
 			// inserto registros de prueba
@@ -31,7 +31,7 @@ public class ContactListApiApplication {
 			);
 			contactRepository.saveAll(contacts);
 		};
-	}
+	}*/
 
 	@Bean
 	ModelMapper modelMapper(){

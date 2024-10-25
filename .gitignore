@@ -236,3 +236,5 @@ README.html
 .exercism
 
 notas.txt
+/postgres_data
+pgadmin_data/

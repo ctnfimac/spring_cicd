@@ -31,7 +31,7 @@ public class ContactController {
     }
 
     @GetMapping("{id}")
-    public Contact get(@PathVariable Integer id){
+    public Contact get(@PathVariable Long id){
         return contactService.findById(id);
     }
 
@@ -42,14 +42,14 @@ public class ContactController {
     }
 
     @PutMapping("{id}")
-    public Contact update(@PathVariable Integer id,
+    public Contact update(@PathVariable Long id,
                           @Validated @RequestBody ContactDTO formDTO){
         return contactService.update(id, formDTO);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id){
         contactService.delete(id);
     }
 }
