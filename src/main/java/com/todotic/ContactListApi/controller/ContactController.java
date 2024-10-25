@@ -5,6 +5,7 @@ import com.todotic.ContactListApi.entity.Contact;
 import com.todotic.ContactListApi.service.ContactService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -36,12 +37,13 @@ public class ContactController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    public Contact create(@RequestBody ContactDTO contactDTO){
+    public Contact create(@Validated @RequestBody ContactDTO contactDTO){
         return contactService.create(contactDTO);
     }
 
     @PutMapping("{id}")
-    public Contact update(@PathVariable Integer id, @RequestBody ContactDTO formDTO){
+    public Contact update(@PathVariable Integer id,
+                          @Validated @RequestBody ContactDTO formDTO){
         return contactService.update(id, formDTO);
     }
 
