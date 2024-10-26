@@ -30,3 +30,9 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
+
+    - name: Construyo el proyecto con maven
+      run: mvn clean compile
+
+    - name: Ejecuto pruebas Unitarias
+      run: mvn test
