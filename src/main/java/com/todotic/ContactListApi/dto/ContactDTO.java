@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -16,4 +17,5 @@ public class ContactDTO {
     @Email(message = "El email es inválido")
     @NotBlank(message = "El email es obligatorio")
     private String email;
+    private MultipartFile file;
 }

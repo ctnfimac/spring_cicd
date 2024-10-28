@@ -24,4 +24,6 @@ public class Contact {
 
     @NonNull
     private LocalDateTime createdAt;
+
+    private String pathUrl;
 }

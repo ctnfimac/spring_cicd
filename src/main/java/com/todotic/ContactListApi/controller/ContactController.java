@@ -5,8 +5,12 @@ import com.todotic.ContactListApi.entity.Contact;
 import com.todotic.ContactListApi.service.ContactService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 
 @AllArgsConstructor
@@ -36,14 +40,15 @@ public class ContactController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("")
-    public Contact create(@Validated @RequestBody ContactDTO contactDTO){
+    @RequestMapping(value = "", method = RequestMethod.POST ,consumes = {"multipart/form-data"})
+    public Contact create(@Validated @ModelAttribute ContactDTO contactDTO) throws IOException {
         return contactService.create(contactDTO);
     }
 
     @PutMapping("{id}")
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT, consumes = {"multipart/form-data"})
     public Contact update(@PathVariable Long id,
-                          @Validated @RequestBody ContactDTO formDTO){
+                          @Validated @ModelAttribute ContactDTO formDTO) throws IOException{
         return contactService.update(id, formDTO);
     }
 

@@ -6,8 +6,13 @@ import com.todotic.ContactListApi.respository.ContactRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
@@ -17,6 +22,7 @@ public class ContactService {
     //@Autowired
     private final ContactRepository contactRepository;
     private final ModelMapper mapper;
+    private final String uploadDirectory = "uploads";
 
     public Iterable<Contact> findAll(){
         return contactRepository.findAll();
@@ -29,13 +35,23 @@ public class ContactService {
                // .orElseThrow(ResourceNotFoundException::new);// ::new representa al constructor
     }
 
-    public Contact create(ContactDTO contactDTO){
+    @Transactional
+    public Contact create(ContactDTO contactDTO) throws IOException {
+        /*String fileName = System.currentTimeMillis() + "_" + contactDTO.getFile().getOriginalFilename();
+        Path filePath = Path.of(uploadDirectory, fileName);
+
+        Files.createDirectories(filePath.getParent());
+        Files.write(filePath, contactDTO.getFile().getBytes());
+
         Contact contact = mapper.map(contactDTO, Contact.class);
-        contact.setCreatedAt(LocalDateTime.now());
+        contact.setCreatedAt(LocalDateTime.now());*/
+
+        //contact.setPathUrl("uploads/" + fileName);
+        Contact contact = this.cargoImagen(contactDTO);
         return contactRepository.save(contact);
     }
 
-    public Contact update(Long id, ContactDTO contactDTO){
+    public Contact update(Long id, ContactDTO contactDTO) throws IOException {
         Contact contactoFromDb = this.findById(id);
 
        // ModelMapper mapper = new ModelMapper();
@@ -43,12 +59,28 @@ public class ContactService {
 
         contactoFromDb.setName(contactDTO.getName());
         contactoFromDb.setEmail(contactDTO.getEmail());
+
+        Contact contact = this.cargoImagen(contactDTO);
+        contactoFromDb.setPathUrl(contact.getPathUrl());
         return contactRepository.save(contactoFromDb);
     }
 
     public void delete(Long id){
         Contact contactoFromDb = this.findById(id);
         contactRepository.delete(contactoFromDb);
+    }
+
+    Contact cargoImagen(ContactDTO contactDTO) throws IOException{
+        String fileName = System.currentTimeMillis() + "_" + contactDTO.getFile().getOriginalFilename();
+        Path filePath = Path.of(uploadDirectory, fileName);
+
+        Files.createDirectories(filePath.getParent());
+        Files.write(filePath, contactDTO.getFile().getBytes());
+
+        Contact contact = mapper.map(contactDTO, Contact.class);
+        contact.setCreatedAt(LocalDateTime.now());
+        contact.setPathUrl("uploads/" + fileName);
+        return contact;
     }
 }
 
