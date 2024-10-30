@@ -15,7 +15,9 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ContactController.class)
@@ -34,26 +36,26 @@ class ContactControllerTest {
     @BeforeEach
     void setUp() {
         LocalDateTime fechaEspecifica = LocalDateTime.of(2023, 12, 25, 10, 30, 0);
-        contact = Contact.builder()
+        this.contact = Contact.builder()
                 .id(1)
                 .name("Christian")
                 .email("chris@hotmail.com")
                 .createdAt(fechaEspecifica)
                 .build();
 
-        contact2 = Contact.builder()
+        this.contact2 = Contact.builder()
                 .id(2)
                 .name("Ricardo")
                 .email("ricky@hotmail.com")
                 .createdAt(fechaEspecifica)
                 .build();
 
-        contacts = Arrays.asList(contact, contact2);
+        this.contacts = Arrays.asList(this.contact, this.contact2);
     }
 
     @Test
     public void findContactById() throws Exception{
-        Mockito.when(contactService.findById(1L)).thenReturn(contact);
+        Mockito.when(contactService.findById(1L)).thenReturn(this.contact);
         mockMvc.perform(get("/api/contacts/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -62,9 +64,9 @@ class ContactControllerTest {
     }
 
 
-    /*@Test
+    @Test
     public void contactList() throws Exception{
-        Mockito.when(contactService.findAll()).thenReturn(contacts);
+        Mockito.when(contactService.findAll()).thenReturn(this.contacts);
 
         mockMvc.perform(get("/api/contacts")
                 .contentType(MediaType.APPLICATION_JSON))
@@ -74,5 +76,5 @@ class ContactControllerTest {
                 .andExpect(jsonPath("$[0].email", is("chris@hotmail.com")))
                 .andExpect(jsonPath("$[1].email", is("ricky@hotmail.com")))
                 .andExpect(jsonPath("$[1].name", is("Ricardo")));
-    }*/
+    }
 }
