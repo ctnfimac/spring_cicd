@@ -40,7 +40,8 @@ class ContactServiceTest {
     @DisplayName("Prueba de obtencion de un contacto enviando un nombre válido")
     public void findByNameFound(){
         String contactName = "Kamisama";
-        Contact contact = contactService.findByName(contactName).get();
+        Contact contact = contactService.findByName(contactName).orElse(null);
+        assert contact != null;
         assertEquals(contactName, contact.getName());
     }
 
@@ -48,7 +49,7 @@ class ContactServiceTest {
     @DisplayName("Prueba de obtencion de un contacto enviando un nombre no válido")
     public void findByNameNotFound(){
         String contactName = "Incorrecto";
-        Optional contact = contactService.findByName(contactName);
+        Optional<Contact> contact = contactService.findByName(contactName);
         assertEquals(contact, Optional.empty());
     }
 }

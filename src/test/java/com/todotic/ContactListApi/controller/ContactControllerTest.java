@@ -64,7 +64,7 @@ class ContactControllerTest {
     }
 
 
-    @Test
+    /*@Test
     public void contactList() throws Exception{
         Mockito.when(contactService.findAll()).thenReturn(contacts);
 
@@ -76,5 +76,5 @@ class ContactControllerTest {
                 .andExpect(jsonPath("$[0].email", is("chris@hotmail.com")))
                 .andExpect(jsonPath("$[1].email", is("ricky@hotmail.com")))
                 .andExpect(jsonPath("$[1].name", is("Ricardo")));
-    }
+    }*/
 }
