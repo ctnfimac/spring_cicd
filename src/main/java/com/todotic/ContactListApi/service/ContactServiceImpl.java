@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -23,7 +24,7 @@ public class ContactServiceImpl implements ContactService {
     private final ModelMapper mapper;
     private final String uploadDirectory = "uploads";
 
-    public Iterable<Contact> findAll(){
+    public List<Contact> findAll(){
         return contactRepository.findAll();
     }
 

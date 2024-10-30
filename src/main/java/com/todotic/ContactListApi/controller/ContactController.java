@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -31,7 +32,7 @@ public class ContactController {
     }*/
 
     @GetMapping("")
-    public Iterable<Contact> list(){
+    public List<Contact> list(){
         return contactService.findAll();
     }
 
