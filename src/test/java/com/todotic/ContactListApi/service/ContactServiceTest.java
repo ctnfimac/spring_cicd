@@ -5,7 +5,11 @@ import com.todotic.ContactListApi.respository.ContactRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -15,12 +19,12 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class ContactServiceTest {
 
-    @Autowired
-    private ContactService contactService;
-    @MockBean
+    @InjectMocks
+    private ContactServiceImpl contactService;
+    @Mock
     private ContactRepository contactRepository;
 
     @BeforeEach
@@ -33,7 +37,7 @@ class ContactServiceTest {
         Mockito.when(contactRepository.findByName("Kamisama")).thenReturn(Optional.of(contact));
 
         // retorno vacio si ingreso un nombre que no existe
-        Mockito.when(contactRepository.findByName("Incorrecto")).thenReturn(Optional.empty());
+        //Mockito.when(contactRepository.findByName("Incorrecto")).thenReturn(Optional.empty());
     }
 
     @Test
