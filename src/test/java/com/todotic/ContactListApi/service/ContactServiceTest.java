@@ -35,16 +35,17 @@ class ContactServiceTest {
         // retorno vacio si ingreso un nombre que no existe
         Mockito.when(contactRepository.findByName("Incorrecto")).thenReturn(Optional.empty());
     }
-    /*
+
     @Test
     @DisplayName("Prueba de obtencion de un contacto enviando un nombre válido")
     public void findByNameFound(){
         String contactName = "Kamisama";
-        Contact contact = contactService.findByName(contactName).orElse(null);
-        assert contact != null;
+        Contact contact = contactService.findByName(contactName).orElseThrow(
+                () -> new AssertionError("El contacto no fue encontrado")
+        );
         assertEquals(contactName, contact.getName());
     }
-
+    /*
     @Test
     @DisplayName("Prueba de obtencion de un contacto enviando un nombre no válido")
     public void findByNameNotFound(){
