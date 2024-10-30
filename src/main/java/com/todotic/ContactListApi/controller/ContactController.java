@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Optional;
 
 
 @AllArgsConstructor
@@ -56,5 +57,15 @@ public class ContactController {
     @DeleteMapping("{id}")
     public void delete(@PathVariable Long id){
         contactService.delete(id);
+    }
+
+    @GetMapping("/findContactByNameWithJPQL/{name}")
+    public Optional<Contact> findContactByNameWithJPQL(@PathVariable String name){
+        return contactService.findContactByNameWithJPQL(name);
+    }
+
+    @GetMapping("/findByName/{name}")
+    public Optional<Contact> findByName(@PathVariable String name){
+        return contactService.findByName(name);
     }
 }

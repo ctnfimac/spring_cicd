@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @Entity
 @RequiredArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -68,6 +69,14 @@ public class ContactService {
     public void delete(Long id){
         Contact contactoFromDb = this.findById(id);
         contactRepository.delete(contactoFromDb);
+    }
+
+    public Optional<Contact> findContactByNameWithJPQL(String name){
+        return contactRepository.findContactByNameWithJPQL(name);
+    }
+
+    public Optional<Contact> findByName(String name){
+        return contactRepository.findByName(name);
     }
 
     Contact cargoImagen(ContactDTO contactDTO) throws IOException{
