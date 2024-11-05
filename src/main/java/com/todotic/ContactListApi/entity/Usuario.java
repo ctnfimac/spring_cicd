@@ -4,6 +4,8 @@ package com.todotic.ContactListApi.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -13,8 +15,12 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class Usuario {
-    @NonNull
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @NonNull
     @Column(nullable = false, length = 20)
     private String username;
 
@@ -31,4 +37,7 @@ public class Usuario {
 
     @Column(nullable = false, columnDefinition = "INTEGER")
     private Boolean disabled;
+
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER) // fetch: forma de recuperacion de los roles, para que se consulten automaticamente
+    private List<UserRoleEntity> roles;
 }

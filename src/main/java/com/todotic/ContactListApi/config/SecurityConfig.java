@@ -41,7 +41,9 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
+   /* ya lo hice por base de datos en UserSecurityService
+
+   @Bean
     public UserDetailsService memoryUsers(){
         UserDetails admin = User.builder()
                 .username("admin")
@@ -55,7 +57,7 @@ public class SecurityConfig {
                 .roles("CUSTOMER")
                 .build();
         return new InMemoryUserDetailsManager(admin, customer);
-    }
+    }*/
 
     @Bean
     public PasswordEncoder passwordEncoder() {
