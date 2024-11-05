@@ -32,6 +32,7 @@ public class ContactController {
     }*/
 
     @GetMapping("")
+    //@CrossOrigin(origins = "http://localhost:4200")
     public List<Contact> list(){
         return contactService.findAll();
     }
