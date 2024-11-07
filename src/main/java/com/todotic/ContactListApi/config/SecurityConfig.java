@@ -29,8 +29,10 @@ public class SecurityConfig {
                             //.requestMatchers(HttpMethod.GET, "/api/*").permitAll() // todo lo que llega por get /api/ lo permite
                             //.requestMatchers(HttpMethod.PUT).denyAll()
                             .requestMatchers(HttpMethod.POST, "/api/*").hasRole("ADMIN")
-                            .requestMatchers(HttpMethod.GET, "/api/*").hasAnyRole("ADMIN", "CUSTOMER")
-                            .requestMatchers(HttpMethod.PUT, "/api/*").hasRole("ADMIN")
+                            //.requestMatchers(HttpMethod.GET, "/api/*").hasAnyRole("ADMIN", "CUSTOMER")
+                            .requestMatchers(HttpMethod.GET,"/api/contacts/pedidos").hasAuthority("random_pedido") //crear endpoint para testear este permiso
+                            .requestMatchers(HttpMethod.GET, "/api/contacts").hasRole("ADMIN")
+                            .requestMatchers(HttpMethod.PUT, "/api/contacts").hasRole("ADMIN")
                             .anyRequest()
                             .authenticated(); //.permitAll()
 

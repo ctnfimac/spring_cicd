@@ -1,9 +1,11 @@
 package com.todotic.ContactListApi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,4 +30,7 @@ public class Contact {
     private LocalDateTime createdAt;
 
     private String pathUrl;
+
+    @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
+    private List<Pedido> pedido;
 }
