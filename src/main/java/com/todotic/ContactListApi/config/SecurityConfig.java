@@ -3,7 +3,9 @@ package com.todotic.ContactListApi.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
@@ -28,6 +30,7 @@ public class SecurityConfig {
                     customizeRequests
                             //.requestMatchers(HttpMethod.GET, "/api/*").permitAll() // todo lo que llega por get /api/ lo permite
                             //.requestMatchers(HttpMethod.PUT).denyAll()
+                            .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/*").hasRole("ADMIN")
                             //.requestMatchers(HttpMethod.GET, "/api/*").hasAnyRole("ADMIN", "CUSTOMER")
                             .requestMatchers(HttpMethod.GET,"/api/contacts/pedidos").hasAuthority("random_pedido") //crear endpoint para testear este permiso
@@ -60,6 +63,11 @@ public class SecurityConfig {
                 .build();
         return new InMemoryUserDetailsManager(admin, customer);
     }*/
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception{
+        return configuration.getAuthenticationManager();
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
