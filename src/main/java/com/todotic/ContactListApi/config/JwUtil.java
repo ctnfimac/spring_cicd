@@ -31,6 +31,7 @@ public class JwUtil {
                     .verify(jwt);
             return true;
         }catch (JWTVerificationException  e){
+            System.out.println("Error en isValid: " + e);
             return false;
         }
     }
