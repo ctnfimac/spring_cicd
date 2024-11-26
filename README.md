@@ -16,6 +16,7 @@ Objetivos:
 - Implementar un sistema de Login con alguna plataforma como google
 - Implementar Json Web Token(JWT)
 
-
+## Diagrama Entidad Relación de la base de datos
+![DER_proyecto_ventas](https://github.com/user-attachments/assets/98d3688a-3c7a-4bdc-92c5-6e8859925eda)
 
 
