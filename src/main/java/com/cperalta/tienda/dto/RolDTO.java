@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class RolDTO {
-    @NotBlank(message = "Este campo es obligatorio")
+    @NotBlank(message = "La descripción es obligatoria")
     private String descripcion;
 }
