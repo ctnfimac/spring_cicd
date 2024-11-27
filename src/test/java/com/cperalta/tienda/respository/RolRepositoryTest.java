@@ -1,15 +1,15 @@
 package com.cperalta.tienda.respository;
 
-import com.cperalta.tienda.entity.Contact;
+import com.cperalta.tienda.entity.Rol;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
-
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,35 +17,34 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @ActiveProfiles("test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class ContactRepositoryTest {
+public class RolRepositoryTest {
 
     @Autowired
-    ContactRepository contactRepository;
-    // para hacer las pruebas en una base de datos en memoria
+    RolRepository rolRepository;
+
     @Autowired
     TestEntityManager testEntityManager;
 
-
     @BeforeEach
-    void setUp() {
-        Contact contact = Contact.builder()
-                .name("goku")
-                .email("goku@hotmail.com")
-                .createdAt(LocalDateTime.now())
+    void setUp(){
+        Rol rol = Rol.builder()
+                .descripcion("DELIVERY")
                 .build();
-
-        testEntityManager.persist(contact);
+        testEntityManager.persist(rol);
     }
 
     @Test
-    public void findContactByNameFound(){
-        Optional<Contact> contact = contactRepository.findByName("goku");
-        assertEquals(contact.get().getName(), "goku");
+    @DisplayName("Prueba de obtencion de un Rol con un id válido")
+    public void findRolByIdFound(){
+        Optional<Rol> rol = rolRepository.findById(1L);
+        assertTrue(rol.isPresent());
+        assertEquals("DELIVERY", rol.get().getDescripcion());
     }
 
     @Test
-    public void findContactByNameNotFound(){
-        Optional<Contact> contact = contactRepository.findByName("picoro");
-        assertEquals(contact, Optional.empty());
+    @DisplayName("Prueba de obtención de un Rol con un id no válido")
+    public void findRolbyIdNotFound(){
+        Optional<Rol> rol = rolRepository.findById(8L);
+        assertEquals(rol, Optional.empty());
     }
 }
