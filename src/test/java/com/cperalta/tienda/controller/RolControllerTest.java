@@ -20,6 +20,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Arrays;
@@ -150,8 +151,7 @@ class RolControllerTest {
                 .andExpect(status().isBadRequest());
     }
 
-    //TODO: corregir este test
-    /*@Test
+    @Test
     @DisplayName("Actualizar un Rol correctamente")
     public void testActualizarRolCorrectamente() throws Exception {
         Long id = 1L;
@@ -163,21 +163,39 @@ class RolControllerTest {
                 .id(id)
                 .descripcion("TIENDA")
                 .build();
-        Mockito.when(rolService.update(id, Mockito.any(RolDTO.class))).thenReturn(rolActualizado);
-        //Mockito.when(rolService.update(id, rolDatosNuevosDTO)).thenReturn(rolActualizado);
-        //Mockito.when(rolService.create(Mockito.any(RolDTO.class))).thenReturn(resultado);
-        //Mockito.when(rolService.update(eq(id), any())).thenReturn(oneCustomer);
-        //when(customerService.update(eq(oneCustomer.getId()), any())).thenReturn(oneCustomer);
+
+        Mockito.when(rolService.update(Mockito.any(Long.class), Mockito.any(RolDTO.class))).thenReturn(rolActualizado);
 
         // Convertir RolDTO a JSON
-        //String rolActualizadoJson = new ObjectMapper().writeValueAsString(rolActualizado);
-        String rolDatosNuevosJson = new ObjectMapper().writeValueAsString(rolActualizado);
+        String rolDatosNuevosJson = new ObjectMapper().writeValueAsString(rolDatosNuevosDTO);
 
-        mockMvc.perform(put("/api/rol/{id}", id).contentType(MediaType.APPLICATION_JSON)
-                        .content(rolDatosNuevosJson))
-                //.andDo(print());
-                .andExpect(status().isOk());
+        ResultActions response =  mockMvc.perform(put("/api/rol/{id}", id)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(rolDatosNuevosJson));
 
-    }*/
+        response.andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(jsonPath("$.descripcion").value("TIENDA"))
+                .andExpect(jsonPath("$.id").value(id));
+    }
+
+    @Test
+    @DisplayName("Actualizar un Rol de forma incorrecta")
+    public void testActualizarRolInorrectamente() throws Exception {
+        Long id = 8L;
+
+        RolDTO rolDatosNuevosDTO = new RolDTO();
+        rolDatosNuevosDTO.setDescripcion("TIENDA");
+
+        Mockito.when(rolService.update(Mockito.any(Long.class), Mockito.any(RolDTO.class))).thenReturn(null);
+
+        // Convertir RolDTO a JSON
+        String rolDatosNuevosJson = new ObjectMapper().writeValueAsString(rolDatosNuevosDTO);
+
+        ResultActions response =  mockMvc.perform(put("/api/rol/{id}", id)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(rolDatosNuevosJson));
+
+        response.andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
 
 }
