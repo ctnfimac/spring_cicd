@@ -32,6 +32,12 @@ public class EstadoServiceImpl implements EstadoService{
     @Override
     @Transactional
     public Estado create(EstadoDTO estadoDTO) {
+        // Valido que la nueva descripción no cause conflicto de unicidad
+        if (estadoDTO.getDescripcion() != null &&
+                estadoRepository.getEstadoByDescripcion(estadoDTO.getDescripcion()).isPresent()) {
+            throw new IllegalArgumentException("Ya existe un Estado con la descripción: " + estadoDTO.getDescripcion());
+        }
+
         Estado estadoNuevo = null;
         Estado estadoMapper = modelMapper.map(estadoDTO, Estado.class);
         estadoNuevo = estadoRepository.save(estadoMapper);
