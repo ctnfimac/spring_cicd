@@ -1,6 +1,7 @@
 package com.cperalta.tienda.controller;
 
 
+import com.cperalta.tienda.config.NoSecurityConfig;
 import com.cperalta.tienda.dto.RolDTO;
 import com.cperalta.tienda.entity.Rol;
 import com.cperalta.tienda.service.RolService;
@@ -15,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -26,15 +28,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.Arrays;
 import java.util.List;
 
-import static javax.management.Query.eq;
-import static javax.management.Query.value;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(RolController.class)
 @ActiveProfiles("test")
+@Import(NoSecurityConfig.class) // Incluye la configuración personalizada en la carpeta config(deshabilita el security)
 class RolControllerTest {
 
     @Autowired
