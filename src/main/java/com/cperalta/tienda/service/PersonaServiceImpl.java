@@ -11,6 +11,7 @@ import com.cperalta.tienda.respository.PersonaRepository;
 import com.cperalta.tienda.respository.RolRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +33,8 @@ public class PersonaServiceImpl implements PersonaService{
     @Autowired
     private final PersonaMapper personaMapper;
 
+    private final BCryptPasswordEncoder passwordEncoder;
+
 
     @Override
     public List<Persona> getAll() {
@@ -47,6 +50,9 @@ public class PersonaServiceImpl implements PersonaService{
     @Override
     @Transactional
     public Persona create(PersonaDTO personaDTO) {
+        String contraseniaEncriptada = this.encriptarContrasenia(personaDTO.getContrasenia());
+        personaDTO.setContrasenia(contraseniaEncriptada);
+
         Persona persona = personaMapper.toEntity(personaDTO);
         return personaRepository.save(persona);
     }
@@ -54,10 +60,13 @@ public class PersonaServiceImpl implements PersonaService{
     @Override
     public Persona update(Long id, PersonaUpdateDTO personaDTO) {
         Persona personaExistente = this.getById(id);
+
         personaExistente.setNombre(personaDTO.getNombre() != null? personaDTO.getNombre() : personaExistente.getNombre());
         personaExistente.setApellido(personaDTO.getApellido() != null? personaDTO.getApellido() : personaExistente.getApellido());
-        personaExistente.setContrasenia(personaDTO.getContrasenia() != null? personaDTO.getContrasenia() : personaExistente.getContrasenia());
-        personaExistente.setContrasenia(personaDTO.getContrasenia() != null? personaDTO.getContrasenia() : personaExistente.getContrasenia());
+        personaExistente.setContrasenia(personaDTO.getContrasenia() != null?
+                this.encriptarContrasenia(personaDTO.getContrasenia()) :
+                personaExistente.getContrasenia());
+
         if (personaDTO.getRolId() != null) {
             Rol rol = rolRepository.findById(personaDTO.getRolId().longValue())
                     .orElseThrow(() -> new IllegalArgumentException("Rol no encontrado con ID: " + personaDTO.getRolId()));
@@ -79,5 +88,9 @@ public class PersonaServiceImpl implements PersonaService{
             resultado = true;
         }
         return resultado;
+    }
+
+    private String encriptarContrasenia(String contrasenia){
+        return passwordEncoder.encode(contrasenia);
     }
 }

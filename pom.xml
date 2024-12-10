@@ -73,6 +73,18 @@
 			<version>42.5.0</version> <!-- Usa la última versión disponible -->
 		</dependency>
 
+		<!-- Dependencia de Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
