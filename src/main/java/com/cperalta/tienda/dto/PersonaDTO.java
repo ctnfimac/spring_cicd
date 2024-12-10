@@ -1,6 +1,7 @@
 package com.cperalta.tienda.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,9 +17,9 @@ public class PersonaDTO{
     @NotBlank(message = "La Contraseña es obligatorio")
     private String contrasenia;
 
-    @NotBlank(message = "EL Rol es obligatorio")
+    @NotNull(message = "EL Rol es obligatorio")
     private Integer rolId;
 
-    @NotBlank(message = "EL Estado es obligatorio")
+    @NotNull(message = "EL Estado es obligatorio")
     private Integer estadoId;
 }
