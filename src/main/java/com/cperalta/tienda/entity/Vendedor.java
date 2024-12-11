@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 public class Vendedor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(unique = true)
@@ -21,7 +21,7 @@ public class Vendedor {
     @Column(unique = true)
     private String email;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_persona", referencedColumnName = "id")
     private Persona persona;
 }
