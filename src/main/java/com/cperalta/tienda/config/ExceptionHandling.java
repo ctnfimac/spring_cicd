@@ -1,5 +1,7 @@
 package com.cperalta.tienda.config;
 
+import org.postgresql.util.PSQLException;
+import org.postgresql.util.ServerErrorMessage;
 import org.springframework.http.HttpStatus;
 
 
@@ -29,6 +31,18 @@ public class ExceptionHandling {
         }
 
         problemDetail.setProperty("errors",errors);
+
+        return problemDetail;
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(PSQLException.class)
+    ProblemDetail handleValidation(PSQLException exception){
+        ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+
+        ServerErrorMessage error =  exception.getServerErrorMessage();
+
+        problemDetail.setProperty("errors",error);
 
         return problemDetail;
     }

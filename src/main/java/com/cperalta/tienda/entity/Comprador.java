@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 public class Comprador {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(unique = true)
@@ -24,7 +24,7 @@ public class Comprador {
     private String latitud;
     private String longitud;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_persona", referencedColumnName = "id")
     private Persona persona;
 }
