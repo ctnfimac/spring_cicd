@@ -58,6 +58,7 @@ public class PersonaServiceImpl implements PersonaService{
     }
 
     @Override
+    @Transactional
     public Persona update(Long id, PersonaUpdateDTO personaDTO) {
         Persona personaExistente = this.getById(id);
 
@@ -81,6 +82,7 @@ public class PersonaServiceImpl implements PersonaService{
     }
 
     @Override
+    @Transactional
     public boolean delete(Long id) {
         boolean resultado = false;
         if(personaRepository.existsById(id)){
@@ -93,4 +95,5 @@ public class PersonaServiceImpl implements PersonaService{
     private String encriptarContrasenia(String contrasenia){
         return passwordEncoder.encode(contrasenia);
     }
+
 }
