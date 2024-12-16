@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(EstadoController.class)
 @ActiveProfiles("test")
 @Import(NoSecurityConfig.class) // Deshabilito el security
-public class EstadoControllerTest {
+public class EstadoControllerUnitTest {
     @Autowired
     private MockMvc mockMvc;
 

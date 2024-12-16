@@ -22,7 +22,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-public class RolServiceTest {
+public class RolServiceUnitTest {
 
     @InjectMocks
     private RolServiceImpl rolService;

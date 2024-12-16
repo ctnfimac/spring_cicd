@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @ActiveProfiles("test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class ContactRepositoryTest {
+class ContactRepositoryUnitTest {
 
     @Autowired
     ContactRepository contactRepository;

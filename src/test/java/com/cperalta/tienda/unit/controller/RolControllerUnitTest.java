@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(RolController.class)
 @ActiveProfiles("test")
 @Import(NoSecurityConfig.class) // Incluye la configuración personalizada en la carpeta config(deshabilita el security)
-class RolControllerTest {
+class RolControllerUnitTest {
 
     @Autowired
     private MockMvc mockMvc;

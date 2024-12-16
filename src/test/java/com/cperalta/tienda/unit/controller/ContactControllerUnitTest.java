@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(ContactController.class)
 @Import(NoSecurityConfig.class)
-class ContactControllerTest {
+class ContactControllerUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
