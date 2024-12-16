@@ -1,7 +1,7 @@
-package com.cperalta.tienda.respository;
+package com.cperalta.tienda.unit.respository;
 
 import com.cperalta.tienda.entity.Rol;
-import jakarta.transaction.Transactional;
+import com.cperalta.tienda.respository.RolRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

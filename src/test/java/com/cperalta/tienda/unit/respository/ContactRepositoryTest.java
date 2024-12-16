@@ -1,6 +1,7 @@
-package com.cperalta.tienda.respository;
+package com.cperalta.tienda.unit.respository;
 
 import com.cperalta.tienda.entity.Contact;
+import com.cperalta.tienda.respository.ContactRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

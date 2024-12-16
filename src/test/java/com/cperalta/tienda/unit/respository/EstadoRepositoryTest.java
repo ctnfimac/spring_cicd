@@ -1,6 +1,7 @@
-package com.cperalta.tienda.respository;
+package com.cperalta.tienda.unit.respository;
 
 import com.cperalta.tienda.entity.Estado;
+import com.cperalta.tienda.respository.EstadoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

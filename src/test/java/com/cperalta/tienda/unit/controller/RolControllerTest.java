@@ -1,7 +1,7 @@
-package com.cperalta.tienda.controller;
-
+package com.cperalta.tienda.unit.controller;
 
 import com.cperalta.tienda.config.NoSecurityConfig;
+import com.cperalta.tienda.controller.RolController;
 import com.cperalta.tienda.dto.RolDTO;
 import com.cperalta.tienda.entity.Rol;
 import com.cperalta.tienda.service.RolService;
@@ -9,17 +9,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;

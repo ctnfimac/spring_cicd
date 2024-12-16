@@ -1,7 +1,8 @@
-package com.cperalta.tienda.service;
+package com.cperalta.tienda.unit.service;
 
 import com.cperalta.tienda.entity.Contact;
 import com.cperalta.tienda.respository.ContactRepository;
+import com.cperalta.tienda.service.ContactServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

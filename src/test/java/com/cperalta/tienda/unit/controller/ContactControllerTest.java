@@ -1,6 +1,7 @@
-package com.cperalta.tienda.controller;
+package com.cperalta.tienda.unit.controller;
 
 import com.cperalta.tienda.config.NoSecurityConfig;
+import com.cperalta.tienda.controller.ContactController;
 import com.cperalta.tienda.entity.Contact;
 import com.cperalta.tienda.service.ContactService;
 import org.junit.jupiter.api.BeforeEach;

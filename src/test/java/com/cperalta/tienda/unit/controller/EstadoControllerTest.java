@@ -1,11 +1,10 @@
-package com.cperalta.tienda.controller;
+package com.cperalta.tienda.unit.controller;
 
 
 import com.cperalta.tienda.config.NoSecurityConfig;
+import com.cperalta.tienda.controller.EstadoController;
 import com.cperalta.tienda.dto.EstadoDTO;
-import com.cperalta.tienda.dto.RolDTO;
 import com.cperalta.tienda.entity.Estado;
-import com.cperalta.tienda.entity.Rol;
 import com.cperalta.tienda.service.EstadoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
