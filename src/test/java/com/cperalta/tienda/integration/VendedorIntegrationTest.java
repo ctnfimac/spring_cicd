@@ -2,13 +2,9 @@ package com.cperalta.tienda.integration;
 
 import com.cperalta.tienda.dto.*;
 import com.cperalta.tienda.entity.Estado;
-import com.cperalta.tienda.entity.Persona;
 import com.cperalta.tienda.entity.Rol;
 import com.cperalta.tienda.entity.Vendedor;
-import com.cperalta.tienda.respository.EstadoRepository;
-import com.cperalta.tienda.respository.PersonaRepository;
-import com.cperalta.tienda.respository.RolRepository;
-import com.cperalta.tienda.respository.VendedorRepository;
+import com.cperalta.tienda.respository.*;
 import com.cperalta.tienda.service.VendedorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -32,6 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
+@Transactional
 public class VendedorIntegrationTest {
 
     @Autowired

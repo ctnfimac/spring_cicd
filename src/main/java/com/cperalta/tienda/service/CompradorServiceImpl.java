@@ -38,15 +38,15 @@ public class CompradorServiceImpl implements CompradorService{
         return compradores.stream()
                 .map(comprador -> new CompradorResponseDTO(
                         comprador.getId(),
+                        comprador.getPersona().getNombre(),
+                        comprador.getPersona().getApellido(),
+                        comprador.getPersona().getRol().getDescripcion(),
+                        comprador.getPersona().getEstado().getDescripcion(),
                         comprador.getTelefono(),
                         comprador.getDireccion(),
                         comprador.getEmail(),
                         comprador.getLatitud(),
-                        comprador.getLongitud(),
-                        comprador.getPersona().getNombre(),
-                        comprador.getPersona().getApellido(),
-                        comprador.getPersona().getRol().getDescripcion(),
-                        comprador.getPersona().getEstado().getDescripcion()
+                        comprador.getLongitud()
                 ))
                 .collect(Collectors.toList());
     }
