@@ -1,6 +1,6 @@
 # Sistema de Ventas - Proyecto Spring 
 
-### Descripción y Objetivo del Proyecto
+## Descripción y Objetivo del Proyecto
 
 Este proyecto es un sistema de ventas de productos desarrollado con Spring Boot, cuyo objetivo es gestionar las funcionalidades principales de una plataforma de comercio. 
 En este sistema existen tres roles principales: **Administrador, Vendedor y Comprador**, cada uno con permisos y responsabilidades específicas.
@@ -12,7 +12,7 @@ El proyecto también incorpora buenas prácticas de desarrollo mediante pruebas 
 y está preparado para pipelines de CI/CD que garantizan la calidad y estabilidad del software en entornos de prueba  y más adelante también productivos
 
 
-### Tecnologías Utilizadas
+## Tecnologías Utilizadas
 - Java: Versión 17
 - Spring Boot: Versión 3.3.4
 - Swagger/OpenAPI: Implementación para la documentación de la API
@@ -23,12 +23,12 @@ y está preparado para pipelines de CI/CD que garantizan la calidad y estabilida
 
 
 
-### IDE Utilizado
+## IDE Utilizado
 El proyecto se desarrolló utilizando IntelliJ IDEA como entorno de desarrollo integrado, 
 pero también es compatible con otros IDEs como Eclipse o VS Code.
 
 
-### Requisitos Previos
+## Requisitos Previos
 Contar con las siguientes herramientas antes de instalar el proyecto:
 
 - Java JDK 17+
@@ -37,7 +37,7 @@ Contar con las siguientes herramientas antes de instalar el proyecto:
 - Git (para clonar el repositorio)
 
 
-### Instalación del proyecto
+## Instalación del proyecto
 
 1. Clonar el repositorio
 ```
@@ -62,7 +62,7 @@ mvn spring-boot:run
 http://localhost:8080
 ```
 
-### Documentación de la API (Swagger)
+## Documentación de la API (Swagger)
 El proyecto utiliza Swagger para documentar las APIs. Una vez que el servidor está en ejecución se 
 puede acceder a la misma en la siguiente URL:
 ```
@@ -70,10 +70,10 @@ http://127.0.0.1:8080/swagger-ui/index.html
 ```
 ![swagger_github](https://github.com/user-attachments/assets/10ec147c-e300-489b-89c9-3b2b9384b281)
 
-### Pruebas automatizadas
+## Pruebas automatizadas
 El proyecto incluye pruebas unitarias y pruebas de integración para garantizar el correcto funcionamiento de las funcionalidades.
 
-#### Ejecutar Pruebas
+## Ejecutar Pruebas
 
 - Pruebas unitarias
 ```
