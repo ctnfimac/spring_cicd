@@ -105,3 +105,11 @@ VALUES(4, '1121368752', 'lacarra 535', 'peluca@gmail.com', '-34.640065', '-58.48
 INSERT INTO vendedor(id_persona, telefono, email)
 VALUES(2, '1578410121', 'cubillas@gmail.com'),
 (3, '1160302040', 'miyagui@gmail.com');
+
+INSERT INTO estado_compra(descripcion)
+VALUES('PAGADO'),
+('ENVIO PREPARADO'),
+('EN CAMINO'),
+('REGRESADO'),
+('ENTREGADO'),
+('FINALIZADO');
