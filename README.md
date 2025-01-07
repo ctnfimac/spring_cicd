@@ -1,14 +1,26 @@
-# Sistema de Ventas - Proyecto Spring 
+# Sistema de Jardineria - Proyecto Spring 
 
 ## Descripción y Objetivo del Proyecto
 
-Este proyecto es un sistema de ventas de productos desarrollado con Spring Boot, cuyo objetivo es gestionar las funcionalidades principales de una plataforma de comercio. 
-En este sistema existen tres roles principales: **Administrador, Vendedor y Comprador**, cada uno con permisos y responsabilidades específicas.
+Este proyecto es un sistema de jardinería desarrollado con Spring Boot, cuyo objetivo es permitir a los clientes solicitar
+servicios de jardineria como por ejemplo: "Cortador de Pasto" y "Podador de Árboles".
 
-Además incluye funcionalidades como la gestión de usuarios, productos y pedidos, permitir el seguimiento de transacciones y la interacción entre vendedores y compradores. 
-Está diseñado con un enfoque modular y escalable, lo que permite integrar nuevas características en el futuro.
+En este sistema existen 3 tipos de roles principales: **Administrador, Jardinero y Cliente**, cada uno con permisos y responsabilidades específicas.
 
-El proyecto también incorpora buenas prácticas de desarrollo mediante pruebas automatizadas (unitarias e integrales) 
+El **Admin** tendrá permisos para bloquear o desbloquear jardineros y clientes, también podrá hacer un mantenimiento sobre los tipos de servicio de jardineria, 
+ver a través de un listado todos los clientes y jardineros, lo recaudado, las transacciones, las contrataciones de clientes a jardineros.
+
+Los **jardineros** podrán registrarse, activar su cuenta, inicar sesión, modificar su perfil, agregar fotos y descripciones de sus trabajos realizados(máximo 6),
+ver que cliente solicita el servicio, aceptar o no realizar el servicio, cuando acepta se cobra un adelanto y se termina con el pago una vez finalizado el trabajo; 
+en caso de cancelar se reintegrará el dinero al cliente.
+
+Los **clientes** podrá registrarse, activar cuenta, iniciar sesión, modificar perfil, buscar jardinero por tipo de servicio, disponibilidad, elegir fecha,
+solicitar servicio, si el jardinero acepta se le paga por adelantado y se termina de pagar una vez finalizado.
+
+Los pagos se realizarán con mercado pago.
+
+Está diseñado con un enfoque modular y escalable (Arquitectura Hexagonal), lo que permite integrar nuevas características en el futuro.
+El proyecto también incorpora buenas prácticas de desarrollo mediante pruebas automatizadas (unitarias e integrales)
 y está preparado para pipelines de CI/CD que garantizan la calidad y estabilidad del software en entornos de prueba  y más adelante también productivos
 
 
@@ -89,23 +101,24 @@ mvn test
 ```
 
 ## Funcionalidades Actuales
-1. Gestión de entidades base (CRUD):
-    - Ejemplo: Gestión de Vendedores con operaciones básicas (crear, leer, actualizar y eliminar).
-
-2. Documentación de APIs con Swagger:
-    - Auto-generación de endpoints y estructura API con OpenAPI.
-
-3. Soporte para base de datos en memoria (H2):
-    - Permite pruebas rápidas y configuración sencilla para entornos de desarrollo.
-
-4. Pruebas Automatizadas:
-    - Implementación de pruebas unitarias e integración con JUnit.
-
-5. Configuración CI/CD:
-    - Integración con herramientas de CI/CD para automatización de compilación y pruebas (en este caso con GitHub Actions).
 
 ## Funcionalidades Futuras
-1. Autenticación y Autorización:
+1. Gestión de entidades base (CRUD):
+   - Ejemplo: Gestión de Vendedores con operaciones básicas (crear, leer, actualizar y eliminar).
+
+2. Documentación de APIs con Swagger:
+   - Auto-generación de endpoints y estructura API con OpenAPI.
+
+3. Soporte para base de datos en memoria (H2):
+   - Permite pruebas rápidas y configuración sencilla para entornos de desarrollo.
+
+4. Pruebas Automatizadas:
+   - Implementación de pruebas unitarias e integración con JUnit.
+
+5. Configuración CI/CD:
+   - Integración con herramientas de CI/CD para automatización de compilación y pruebas (en este caso con GitHub Actions).
+
+6. Autenticación y Autorización:
     - Implementación de OAuth2 o JWT para asegurar los endpoints.
     - Registro de usuarios
     - Activar el usuario por medio de un email
@@ -122,7 +135,8 @@ mvn test
 
 
 ## Diagrama Entidad Relación de la base de datos
-![proyecto_ventas](https://github.com/user-attachments/assets/60b35607-a9bf-474d-abef-4c20ec155877)
+![proyecto_ventas (1)](https://github.com/user-attachments/assets/94b995ed-4d64-4b37-ad7f-73b17a013b94)
+
 
 
 
