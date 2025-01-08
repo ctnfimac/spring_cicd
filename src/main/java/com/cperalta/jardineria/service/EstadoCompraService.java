@@ -1,7 +1,7 @@
-package com.cperalta.tienda.service;
+package com.cperalta.jardineria.service;
 
-import com.cperalta.tienda.dto.EstadoCompraDTO;
-import com.cperalta.tienda.entity.EstadoCompra;
+import com.cperalta.jardineria.dto.EstadoCompraDTO;
+import com.cperalta.jardineria.entity.EstadoCompra;
 
 import java.util.List;
 

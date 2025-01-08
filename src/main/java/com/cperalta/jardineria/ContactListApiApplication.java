@@ -1,4 +1,4 @@
-package com.cperalta.tienda;
+package com.cperalta.jardineria;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;

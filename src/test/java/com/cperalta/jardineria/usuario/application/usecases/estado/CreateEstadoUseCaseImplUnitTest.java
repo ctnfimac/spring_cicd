@@ -23,7 +23,7 @@ public class CreateEstadoUseCaseImplUnitTest {
     private CreateEstadoUseCaseImpl createEstadoUseCase;
 
     @Test
-    @DisplayName("Prueba para crear correctamente un Estado desde el repositorio")
+    @DisplayName("Prueba para crear correctamente un Estado desde el UseCase")
     public void testCreateEstadoFound(){
         Estado estado = new Estado(1L, "ACTIVO");
 

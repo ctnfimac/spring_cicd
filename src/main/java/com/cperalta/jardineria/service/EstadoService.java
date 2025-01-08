@@ -1,10 +1,9 @@
-package com.cperalta.tienda.service;
+package com.cperalta.jardineria.service;
 
-import com.cperalta.tienda.dto.EstadoDTO;
-import com.cperalta.tienda.entity.Estado;
+import com.cperalta.jardineria.dto.EstadoDTO;
+import com.cperalta.jardineria.entity.Estado;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface EstadoService {
     List<Estado> getAll();

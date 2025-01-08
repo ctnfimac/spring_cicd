@@ -1,9 +1,9 @@
-package com.cperalta.tienda.service;
+package com.cperalta.jardineria.service;
 
-import com.cperalta.tienda.dto.VendedorDTO;
-import com.cperalta.tienda.dto.VendedorResponseDTO;
-import com.cperalta.tienda.dto.VendedorUpdateDTO;
-import com.cperalta.tienda.entity.Vendedor;
+import com.cperalta.jardineria.dto.VendedorDTO;
+import com.cperalta.jardineria.dto.VendedorResponseDTO;
+import com.cperalta.jardineria.dto.VendedorUpdateDTO;
+import com.cperalta.jardineria.entity.Vendedor;
 
 import java.util.List;
 

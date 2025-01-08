@@ -1,11 +1,11 @@
-package com.cperalta.tienda.unit.controller;
+package com.cperalta.jardineria.unit.controller;
 
 
-import com.cperalta.tienda.config.NoSecurityConfig;
-import com.cperalta.tienda.controller.EstadoController;
-import com.cperalta.tienda.dto.EstadoDTO;
-import com.cperalta.tienda.entity.Estado;
-import com.cperalta.tienda.service.EstadoService;
+import com.cperalta.jardineria.config.NoSecurityConfig;
+import com.cperalta.jardineria.controller.EstadoController;
+import com.cperalta.jardineria.dto.EstadoDTO;
+import com.cperalta.jardineria.entity.Estado;
+import com.cperalta.jardineria.service.EstadoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

@@ -1,4 +1,4 @@
-package com.cperalta.tienda.entity;
+package com.cperalta.jardineria.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

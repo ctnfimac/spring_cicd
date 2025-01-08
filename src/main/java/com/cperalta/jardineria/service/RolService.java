@@ -1,10 +1,9 @@
-package com.cperalta.tienda.service;
+package com.cperalta.jardineria.service;
 
-import com.cperalta.tienda.dto.RolDTO;
-import com.cperalta.tienda.entity.Rol;
+import com.cperalta.jardineria.dto.RolDTO;
+import com.cperalta.jardineria.entity.Rol;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface RolService {
     List<Rol> getAll();

@@ -1,9 +1,8 @@
-package com.cperalta.tienda.controller;
+package com.cperalta.jardineria.controller;
 
-import com.cperalta.tienda.dto.*;
-import com.cperalta.tienda.entity.Comprador;
-import com.cperalta.tienda.entity.Vendedor;
-import com.cperalta.tienda.service.CompradorService;
+import com.cperalta.jardineria.dto.*;
+import com.cperalta.jardineria.entity.Comprador;
+import com.cperalta.jardineria.service.CompradorService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

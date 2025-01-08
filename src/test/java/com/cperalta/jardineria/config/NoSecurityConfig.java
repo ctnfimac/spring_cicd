@@ -1,4 +1,4 @@
-package com.cperalta.tienda.config;
+package com.cperalta.jardineria.config;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;

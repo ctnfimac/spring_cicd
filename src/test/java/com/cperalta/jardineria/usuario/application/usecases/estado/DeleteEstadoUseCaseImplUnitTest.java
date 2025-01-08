@@ -25,7 +25,7 @@ public class DeleteEstadoUseCaseImplUnitTest {
 
 
     @Test
-    @DisplayName("Prueba para eliminar correctamente un estado desde el repositorio")
+    @DisplayName("Prueba para eliminar correctamente un estado desde el UseCase")
     public void testDeleteEstadoFound(){
         when(estadoRepositoryPort.delete(1L)).thenReturn(true);
 
@@ -36,7 +36,7 @@ public class DeleteEstadoUseCaseImplUnitTest {
 
 
     @Test
-    @DisplayName("Prueba para eliminar de forma icorrectaun estado desde el repositorio")
+    @DisplayName("Prueba para eliminar de forma icorrectaun estado desde el UseCase")
     public void testDeleteEstadoNotFound(){
         when(estadoRepositoryPort.delete(1L)).thenReturn(false);
 

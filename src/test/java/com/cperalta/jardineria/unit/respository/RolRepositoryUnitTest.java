@@ -1,7 +1,7 @@
-package com.cperalta.tienda.unit.respository;
+package com.cperalta.jardineria.unit.respository;
 
-import com.cperalta.tienda.entity.Rol;
-import com.cperalta.tienda.respository.RolRepository;
+import com.cperalta.jardineria.entity.Rol;
+import com.cperalta.jardineria.respository.RolRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

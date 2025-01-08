@@ -1,20 +1,16 @@
-package com.cperalta.tienda.service;
+package com.cperalta.jardineria.service;
 
-import com.cperalta.tienda.dto.EstadoCompraDTO;
-import com.cperalta.tienda.dto.EstadoDTO;
-import com.cperalta.tienda.entity.Estado;
-import com.cperalta.tienda.entity.EstadoCompra;
-import com.cperalta.tienda.respository.EstadoCompraRepository;
+import com.cperalta.jardineria.dto.EstadoCompraDTO;
+import com.cperalta.jardineria.entity.EstadoCompra;
+import com.cperalta.jardineria.respository.EstadoCompraRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor

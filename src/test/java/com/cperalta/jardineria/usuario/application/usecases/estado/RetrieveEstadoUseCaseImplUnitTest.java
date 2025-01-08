@@ -29,7 +29,7 @@ public class RetrieveEstadoUseCaseImplUnitTest {
     private RetrieveEstadoUseCaseImpl retrieveEstadoUseCase;
 
     @Test
-    @DisplayName("Prueba de obtencion de todos los estados desde el repositorio")
+    @DisplayName("Prueba de obtencion de todos los estados desde el UseCase")
     void testGetAllEstadosFound() {
         // Configuracion del mock para devolver una lista de estados
         List<Estado> estados = Arrays.asList(
@@ -50,7 +50,7 @@ public class RetrieveEstadoUseCaseImplUnitTest {
     }
 
     @Test
-    @DisplayName("Prueba de obtencion de un Estado con un id válido desde el repositorio")
+    @DisplayName("Prueba de obtencion de un Estado con un id válido desde el UseCase")
     public void testGetEstadoByIdFound(){
         Estado estado = new Estado(2L, "ACTIVO");
 
@@ -62,7 +62,7 @@ public class RetrieveEstadoUseCaseImplUnitTest {
     }
 
     @Test
-    @DisplayName("Prueba de obtencion de un Estado con un id NO válido desde el repositorio")
+    @DisplayName("Prueba de obtencion de un Estado con un id NO válido desde el UseCase")
     public void testBuscarEstadoPorIdIncorrecto(){
         Estado estado = new Estado(2L, "ACTIVO");
 

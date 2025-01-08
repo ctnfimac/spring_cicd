@@ -1,9 +1,9 @@
-package com.cperalta.tienda.unit.service;
+package com.cperalta.jardineria.unit.service;
 
-import com.cperalta.tienda.dto.RolDTO;
-import com.cperalta.tienda.entity.Rol;
-import com.cperalta.tienda.respository.RolRepository;
-import com.cperalta.tienda.service.RolServiceImpl;
+import com.cperalta.jardineria.dto.RolDTO;
+import com.cperalta.jardineria.entity.Rol;
+import com.cperalta.jardineria.respository.RolRepository;
+import com.cperalta.jardineria.service.RolServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

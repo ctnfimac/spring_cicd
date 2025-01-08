@@ -1,4 +1,4 @@
-package com.cperalta.tienda.dto;
+package com.cperalta.jardineria.dto;
 
 import lombok.Getter;
 import lombok.Setter;

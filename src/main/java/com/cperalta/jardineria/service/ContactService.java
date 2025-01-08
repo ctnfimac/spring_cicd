@@ -1,7 +1,7 @@
-package com.cperalta.tienda.service;
+package com.cperalta.jardineria.service;
 
-import com.cperalta.tienda.dto.ContactDTO;
-import com.cperalta.tienda.entity.Contact;
+import com.cperalta.jardineria.dto.ContactDTO;
+import com.cperalta.jardineria.entity.Contact;
 
 import java.util.List;
 import java.util.Optional;

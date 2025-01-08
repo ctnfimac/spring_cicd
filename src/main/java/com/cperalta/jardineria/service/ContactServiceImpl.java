@@ -1,8 +1,8 @@
-package com.cperalta.tienda.service;
+package com.cperalta.jardineria.service;
 
-import com.cperalta.tienda.dto.ContactDTO;
-import com.cperalta.tienda.entity.Contact;
-import com.cperalta.tienda.respository.ContactRepository;
+import com.cperalta.jardineria.dto.ContactDTO;
+import com.cperalta.jardineria.entity.Contact;
+import com.cperalta.jardineria.respository.ContactRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

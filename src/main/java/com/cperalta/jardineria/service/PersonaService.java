@@ -1,8 +1,8 @@
-package com.cperalta.tienda.service;
+package com.cperalta.jardineria.service;
 
-import com.cperalta.tienda.dto.PersonaDTO;
-import com.cperalta.tienda.dto.PersonaUpdateDTO;
-import com.cperalta.tienda.entity.Persona;
+import com.cperalta.jardineria.dto.PersonaDTO;
+import com.cperalta.jardineria.dto.PersonaUpdateDTO;
+import com.cperalta.jardineria.entity.Persona;
 
 import java.util.List;
 

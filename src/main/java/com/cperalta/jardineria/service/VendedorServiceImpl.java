@@ -1,14 +1,14 @@
-package com.cperalta.tienda.service;
+package com.cperalta.jardineria.service;
 
-import com.cperalta.tienda.dto.PersonaUpdateDTO;
-import com.cperalta.tienda.dto.VendedorDTO;
-import com.cperalta.tienda.dto.VendedorResponseDTO;
-import com.cperalta.tienda.dto.VendedorUpdateDTO;
-import com.cperalta.tienda.entity.Estado;
-import com.cperalta.tienda.entity.Persona;
-import com.cperalta.tienda.entity.Rol;
-import com.cperalta.tienda.entity.Vendedor;
-import com.cperalta.tienda.respository.VendedorRepository;
+import com.cperalta.jardineria.dto.PersonaUpdateDTO;
+import com.cperalta.jardineria.dto.VendedorDTO;
+import com.cperalta.jardineria.dto.VendedorResponseDTO;
+import com.cperalta.jardineria.dto.VendedorUpdateDTO;
+import com.cperalta.jardineria.entity.Estado;
+import com.cperalta.jardineria.entity.Persona;
+import com.cperalta.jardineria.entity.Rol;
+import com.cperalta.jardineria.entity.Vendedor;
+import com.cperalta.jardineria.respository.VendedorRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

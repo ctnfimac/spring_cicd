@@ -1,10 +1,10 @@
-package com.cperalta.tienda.unit.controller;
+package com.cperalta.jardineria.unit.controller;
 
-import com.cperalta.tienda.config.NoSecurityConfig;
-import com.cperalta.tienda.controller.RolController;
-import com.cperalta.tienda.dto.RolDTO;
-import com.cperalta.tienda.entity.Rol;
-import com.cperalta.tienda.service.RolService;
+import com.cperalta.jardineria.config.NoSecurityConfig;
+import com.cperalta.jardineria.controller.RolController;
+import com.cperalta.jardineria.dto.RolDTO;
+import com.cperalta.jardineria.entity.Rol;
+import com.cperalta.jardineria.service.RolService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

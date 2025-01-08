@@ -1,9 +1,9 @@
-package com.cperalta.tienda.unit.controller;
+package com.cperalta.jardineria.unit.controller;
 
-import com.cperalta.tienda.config.NoSecurityConfig;
-import com.cperalta.tienda.controller.ContactController;
-import com.cperalta.tienda.entity.Contact;
-import com.cperalta.tienda.service.ContactService;
+import com.cperalta.jardineria.config.NoSecurityConfig;
+import com.cperalta.jardineria.controller.ContactController;
+import com.cperalta.jardineria.entity.Contact;
+import com.cperalta.jardineria.service.ContactService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

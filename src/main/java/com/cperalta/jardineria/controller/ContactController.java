@@ -1,8 +1,8 @@
-package com.cperalta.tienda.controller;
+package com.cperalta.jardineria.controller;
 
-import com.cperalta.tienda.dto.ContactDTO;
-import com.cperalta.tienda.entity.Contact;
-import com.cperalta.tienda.service.ContactService;
+import com.cperalta.jardineria.dto.ContactDTO;
+import com.cperalta.jardineria.entity.Contact;
+import com.cperalta.jardineria.service.ContactService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;

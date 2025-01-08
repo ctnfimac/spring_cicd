@@ -1,7 +1,6 @@
-package com.cperalta.tienda.respository;
+package com.cperalta.jardineria.respository;
 
-import com.cperalta.tienda.entity.Estado;
-import com.cperalta.tienda.entity.EstadoCompra;
+import com.cperalta.jardineria.entity.EstadoCompra;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,6 +1,5 @@
-package com.cperalta.tienda.dto;
+package com.cperalta.jardineria.dto;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;

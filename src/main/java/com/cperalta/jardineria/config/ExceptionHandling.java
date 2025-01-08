@@ -1,4 +1,4 @@
-package com.cperalta.tienda.config;
+package com.cperalta.jardineria.config;
 
 import org.postgresql.util.PSQLException;
 import org.postgresql.util.ServerErrorMessage;

@@ -1,4 +1,4 @@
-package com.cperalta.tienda.exception;
+package com.cperalta.jardineria.exception;
 
 
 import org.springframework.http.HttpStatus;

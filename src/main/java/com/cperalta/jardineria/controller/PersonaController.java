@@ -1,12 +1,9 @@
-package com.cperalta.tienda.controller;
+package com.cperalta.jardineria.controller;
 
-import com.cperalta.tienda.dto.EstadoDTO;
-import com.cperalta.tienda.dto.PersonaDTO;
-import com.cperalta.tienda.dto.PersonaUpdateDTO;
-import com.cperalta.tienda.entity.Estado;
-import com.cperalta.tienda.entity.Persona;
-import com.cperalta.tienda.service.EstadoService;
-import com.cperalta.tienda.service.PersonaService;
+import com.cperalta.jardineria.dto.PersonaDTO;
+import com.cperalta.jardineria.dto.PersonaUpdateDTO;
+import com.cperalta.jardineria.entity.Persona;
+import com.cperalta.jardineria.service.PersonaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

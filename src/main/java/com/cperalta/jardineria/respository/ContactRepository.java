@@ -1,6 +1,6 @@
-package com.cperalta.tienda.respository;
+package com.cperalta.jardineria.respository;
 
-import com.cperalta.tienda.entity.Contact;
+import com.cperalta.jardineria.entity.Contact;
 
 /*
 import org.springframework.data.repository.CrudRepository;

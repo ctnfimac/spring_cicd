@@ -1,11 +1,11 @@
-package com.cperalta.tienda.integration;
+package com.cperalta.jardineria.integration;
 
-import com.cperalta.tienda.dto.*;
-import com.cperalta.tienda.entity.Estado;
-import com.cperalta.tienda.entity.Rol;
-import com.cperalta.tienda.entity.Vendedor;
-import com.cperalta.tienda.respository.*;
-import com.cperalta.tienda.service.VendedorService;
+import com.cperalta.jardineria.dto.*;
+import com.cperalta.jardineria.entity.Estado;
+import com.cperalta.jardineria.entity.Rol;
+import com.cperalta.jardineria.entity.Vendedor;
+import com.cperalta.jardineria.respository.*;
+import com.cperalta.jardineria.service.VendedorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

@@ -1,8 +1,8 @@
-package com.cperalta.tienda.service;
+package com.cperalta.jardineria.service;
 
-import com.cperalta.tienda.dto.*;
-import com.cperalta.tienda.entity.*;
-import com.cperalta.tienda.respository.CompradorRepository;
+import com.cperalta.jardineria.dto.*;
+import com.cperalta.jardineria.entity.*;
+import com.cperalta.jardineria.respository.CompradorRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
