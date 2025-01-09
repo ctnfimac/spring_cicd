@@ -22,10 +22,10 @@ public class PersonaEntity {
     private String contrasenia;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_rol", referencedColumnName = "id")
+    @JoinColumn(name = "rol_id", referencedColumnName = "id")
     private Rol rol;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_estado", referencedColumnName = "id")
+    @JoinColumn(name = "estado_id", referencedColumnName = "id")
     private Estado estado;
 }
