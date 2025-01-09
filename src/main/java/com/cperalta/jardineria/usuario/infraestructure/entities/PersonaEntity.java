@@ -1,6 +1,5 @@
 package com.cperalta.jardineria.usuario.infraestructure.entities;
 
-import com.cperalta.jardineria.entity.Estado;
 import com.cperalta.jardineria.entity.Rol;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,9 +22,9 @@ public class PersonaEntity {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "rol_id", referencedColumnName = "id")
-    private Rol rol;
+    private RolEntity rol;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "estado_id", referencedColumnName = "id")
-    private Estado estado;
+    private EstadoEntity estado;
 }

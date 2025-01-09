@@ -30,8 +30,8 @@ CREATE TABLE persona(
 	nombre varchar(20),
 	apellido varchar(20),
 	contrasenia varchar(72),
-	rol_id integer,
-	estado_id integer,
+	rol_id integer NOT NULL,
+	estado_id integer NOT NULL,
 	CONSTRAINT fk_persona_rol FOREIGN KEY(rol_id) REFERENCES rol(id),
 	CONSTRAINT fk_persona_estado FOREIGN KEY(estado_id) REFERENCES estado(id)
 );
@@ -40,7 +40,7 @@ CREATE TABLE persona(
 
 CREATE TABLE cliente(
 	id BIGSERIAL PRIMARY KEY,
-	telefono varchar(10) unique,
+	telefono varchar(12) unique,
 	direccion varchar(50),
 	email varchar(30) unique,
 	latitud varchar(20),
@@ -51,7 +51,7 @@ CREATE TABLE cliente(
 
 CREATE TABLE jardinero(
 	id BIGSERIAL PRIMARY KEY,
-	telefono varchar(10) unique,
+	telefono varchar(12) unique,
 	email varchar(30) unique,
 	presentacion TEXT,
 	persona_id integer NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE jardinero(
 
 CREATE TABLE trabajo_realizado(
 	 id SERIAL PRIMARY KEY,
-	 foto varchar(50),
+	 foto varchar(50) NOT NULL,
 	 descripcion TEXT,
 	 jardinero_id integer NOT NULL,
 	 CONSTRAINT fk_trabajorealizado_jardinero FOREIGN KEY(jardinero_id) REFERENCES jardinero(id)
@@ -70,13 +70,14 @@ CREATE TABLE trabajo_realizado(
 
 CREATE TABLE tipo_de_servicio(
 	id SERIAL PRIMARY KEY,
+	foto varchar(50) NOT NULL UNIQUE,
 	nombre varchar(30)
 );
 
 CREATE TABLE servicio(
 	id SERIAL PRIMARY KEY,
 	descripcion varchar(100),
-	precio decimal(10,2),
+	precio decimal(10,2) NOT NULL,
 	jardinero_id integer NOT NULL,
 	tipodeservicio_id integer NOT NULL,
 	CONSTRAINT fk_servicio_jardinero FOREIGN KEY(jardinero_id)

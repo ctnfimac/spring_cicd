@@ -1,6 +1,5 @@
 package com.cperalta.jardineria.usuario.infraestructure.entities;
 
-import com.cperalta.jardineria.entity.Persona;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,5 +26,5 @@ public class ClienteEntity {
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
-    private Persona persona;
+    private PersonaEntity persona;
 }

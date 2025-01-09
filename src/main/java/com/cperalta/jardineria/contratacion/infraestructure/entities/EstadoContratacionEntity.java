@@ -1,4 +1,4 @@
-package com.cperalta.jardineria.usuario.infraestructure.entities;
+package com.cperalta.jardineria.contratacion.infraestructure.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

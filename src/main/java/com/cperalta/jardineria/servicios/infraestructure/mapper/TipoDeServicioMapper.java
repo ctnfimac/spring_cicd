@@ -1,7 +1,7 @@
-package com.cperalta.jardineria.usuario.infraestructure.mapper;
+package com.cperalta.jardineria.servicios.infraestructure.mapper;
 
-import com.cperalta.jardineria.usuario.domain.models.TipoDeServicio;
-import com.cperalta.jardineria.usuario.infraestructure.entities.TipoDeServicioEntity;
+import com.cperalta.jardineria.servicios.domain.models.TipoDeServicio;
+import com.cperalta.jardineria.servicios.infraestructure.entities.TipoDeServicioEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 

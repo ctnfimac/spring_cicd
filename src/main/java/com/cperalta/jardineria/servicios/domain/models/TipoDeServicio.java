@@ -1,4 +1,4 @@
-package com.cperalta.jardineria.usuario.domain.models;
+package com.cperalta.jardineria.servicios.domain.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,4 +10,5 @@ import lombok.Setter;
 public class TipoDeServicio {
     private Long id;
     private String nombre;
+    private String foto;
 }

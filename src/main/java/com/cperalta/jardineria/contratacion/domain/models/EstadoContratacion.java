@@ -1,4 +1,4 @@
-package com.cperalta.jardineria.usuario.domain.models;
+package com.cperalta.jardineria.contratacion.domain.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

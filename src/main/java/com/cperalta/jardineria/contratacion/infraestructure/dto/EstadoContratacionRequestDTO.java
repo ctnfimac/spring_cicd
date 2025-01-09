@@ -1,4 +1,4 @@
-package com.cperalta.jardineria.usuario.infraestructure.dto;
+package com.cperalta.jardineria.contratacion.infraestructure.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

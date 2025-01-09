@@ -1,4 +1,4 @@
-package com.cperalta.jardineria.usuario.infraestructure.entities;
+package com.cperalta.jardineria.servicios.infraestructure.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,4 +17,7 @@ public class TipoDeServicioEntity {
 
     @Column(unique = true)
     private String nombre;
+
+    @Column(unique = true)
+    private String foto;
 }

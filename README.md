@@ -7,15 +7,15 @@ servicios de jardineria como por ejemplo: "Cortador de Pasto" y "Podador de Árb
 
 En este sistema existen 3 tipos de roles principales: **Administrador, Jardinero y Cliente**, cada uno con permisos y responsabilidades específicas.
 
-El **Admin** tendrá permisos para bloquear o desbloquear jardineros y clientes, también podrá hacer un mantenimiento sobre los tipos de servicio de jardineria, 
+El **Admin** tendrá permisos para bloquear o desbloquear jardineros y clientes, también podrá hacer un mantenimiento sobre los tipos de servicios de jardineria, 
 ver a través de un listado todos los clientes y jardineros, lo recaudado, las transacciones, las contrataciones de clientes a jardineros.
 
 Los **jardineros** podrán registrarse, activar su cuenta, inicar sesión, modificar su perfil, agregar fotos y descripciones de sus trabajos realizados(máximo 6),
-ver que cliente solicita el servicio, aceptar o no realizar el servicio, cuando acepta se cobra un adelanto y se termina con el pago una vez finalizado el trabajo; 
+ver que cliente solicita el servicios, aceptar o no realizar el servicios, cuando acepta se cobra un adelanto y se termina con el pago una vez finalizado el trabajo; 
 en caso de cancelar se reintegrará el dinero al cliente.
 
-Los **clientes** podrá registrarse, activar cuenta, iniciar sesión, modificar perfil, buscar jardinero por tipo de servicio, disponibilidad, elegir fecha,
-solicitar servicio, si el jardinero acepta se le paga por adelantado y se termina de pagar una vez finalizado.
+Los **clientes** podrá registrarse, activar cuenta, iniciar sesión, modificar perfil, buscar jardinero por tipo de servicios, disponibilidad, elegir fecha,
+solicitar servicios, si el jardinero acepta se le paga por adelantado y se termina de pagar una vez finalizado.
 
 Los pagos se realizarán con mercado pago.
 
@@ -123,7 +123,7 @@ Funcionalidades por parte del Cliente:
 1. Iniciar Sesión con usuario y contraseña
 2. Cerrar Sesión.
 3. Observar listado de jardineros
-4. Filtrar jardineros por tipo de servicio
+4. Filtrar jardineros por tipo de servicios
 5. Contratar jardinero
 
 ## Funcionalidades Futuras
@@ -136,7 +136,8 @@ Funcionalidades por parte del Cliente:
 
 
 ## Diagrama Entidad Relación de la base de datos
-![proyecto_ventas](https://github.com/user-attachments/assets/d2eebc79-3a2b-4113-995a-34732d444116)
+![proyecto_ventas](https://github.com/user-attachments/assets/a733608c-7130-4f1b-97f4-51413a5a4a78)
+
 
 
 
