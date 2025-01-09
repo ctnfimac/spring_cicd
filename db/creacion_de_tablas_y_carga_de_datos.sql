@@ -1,3 +1,19 @@
+-- BORRO TABLAS
+
+/*DROP TABLE servicio;
+DROP TABLE contrata;
+DROP TABLE trabajo_realizado;
+DROP TABLE jardinero;
+DROP TABLE cliente;
+DROP TABLE persona;
+
+DROP TABLE estado;
+DROP TABLE rol;
+DROP TABLE estado_contratacion;
+DROP TABLE tipo_de_servicio;
+*/
+
+-- CREACIÓN DE TABLAS
 CREATE TABLE rol(
 	id SERIAL PRIMARY KEY,
 	descripcion varchar(15) UNIQUE
@@ -14,68 +30,82 @@ CREATE TABLE persona(
 	nombre varchar(20),
 	apellido varchar(20),
 	contrasenia varchar(72),
-	id_rol integer,
-	id_estado integer,
-	CONSTRAINT fk_persona_rol FOREIGN KEY(id_rol) REFERENCES rol(id),
-	CONSTRAINT fk_persona_estado FOREIGN KEY(id_estado) REFERENCES estado(id)
+	rol_id integer,
+	estado_id integer,
+	CONSTRAINT fk_persona_rol FOREIGN KEY(rol_id) REFERENCES rol(id),
+	CONSTRAINT fk_persona_estado FOREIGN KEY(estado_id) REFERENCES estado(id)
 );
 
 
 
-CREATE TABLE comprador(
+CREATE TABLE cliente(
 	id BIGSERIAL PRIMARY KEY,
 	telefono varchar(10) unique,
 	direccion varchar(50),
 	email varchar(30) unique,
 	latitud varchar(20),
 	longitud varchar(20),
-	id_persona integer NOT NULL,
-	CONSTRAINT fk_comprador_persona FOREIGN KEY(id_persona) REFERENCES persona(id)
+	persona_id integer NOT NULL,
+	CONSTRAINT fk_cliente_persona FOREIGN KEY(persona_id) REFERENCES persona(id)
 );
 
-CREATE TABLE vendedor(
+CREATE TABLE jardinero(
 	id BIGSERIAL PRIMARY KEY,
 	telefono varchar(10) unique,
 	email varchar(30) unique,
-	id_persona integer NOT NULL,
-	CONSTRAINT fk_vendedor_persona FOREIGN KEY(id_persona) REFERENCES persona(id)
+	presentacion TEXT,
+	persona_id integer NOT NULL,
+	CONSTRAINT fk_jardinero_persona FOREIGN KEY(persona_id) REFERENCES persona(id)
 );
 
 
+CREATE TABLE trabajo_realizado(
+	 id SERIAL PRIMARY KEY,
+	 foto varchar(50),
+	 descripcion TEXT,
+	 jardinero_id integer NOT NULL,
+	 CONSTRAINT fk_trabajorealizado_jardinero FOREIGN KEY(jardinero_id) REFERENCES jardinero(id)
+);
 
-CREATE TABLE producto(
-	id BIGSERIAL PRIMARY KEY,
-	nombre varchar(30),
+
+CREATE TABLE tipo_de_servicio(
+	id SERIAL PRIMARY KEY,
+	nombre varchar(30)
+);
+
+CREATE TABLE servicio(
+	id SERIAL PRIMARY KEY,
 	descripcion varchar(100),
 	precio decimal(10,2),
-	stock integer default 0,
-	id_vendedor integer NOT NULL,
-	CONSTRAINT fk_producto_vendedor FOREIGN KEY(id_vendedor) REFERENCES vendedor(id)
+	jardinero_id integer NOT NULL,
+	tipodeservicio_id integer NOT NULL,
+	CONSTRAINT fk_servicio_jardinero FOREIGN KEY(jardinero_id)
+			REFERENCES jardinero(id),
+	CONSTRAINT fk_servicio_tipodeservicio FOREIGN KEY(tipodeservicio_id)
+			REFERENCES tipo_de_servicio(id),
+	CONSTRAINT unique_cliente_jardinero UNIQUE (jardinero_id, tipodeservicio_id)
 );
 
 
-CREATE TABLE estado_compra(
+CREATE TABLE estado_contratacion(
 	id SERIAL PRIMARY KEY,
 	descripcion varchar(15) UNIQUE
 );
 
 
-CREATE TABLE compra(
+CREATE TABLE contrata(
 	id BIGSERIAL PRIMARY KEY,
 	precio_total decimal(12,2),
-	id_comprador integer NOT NULL,
-	id_estado_compra integer NOT NULL,
-	CONSTRAINT fk_compra_comprador FOREIGN KEY(id_comprador) REFERENCES comprador(id),
-	CONSTRAINT fk_compra_estado_compra FOREIGN KEY(id_estado_compra) REFERENCES estado(id)
-);
-
-CREATE TABLE compra_producto(
-	id_compra integer,
-	id_producto integer,
-	cantidad integer default 1,
-	CONSTRAINT fk_compra_producto_producto FOREIGN KEY(id_producto) REFERENCES producto(id),
-	CONSTRAINT fk_compra_producto_compra FOREIGN KEY(id_compra) REFERENCES compra(id),
-	CONSTRAINT unique_compra_producto UNIQUE (id_compra, id_producto)
+	fecha date NOT NULL,
+	cliente_id integer NOT NULL,
+	jardinero_id integer NOT NULL,
+	estadocontratacion_id integer NOT NULL,
+	CONSTRAINT fk_contrata_cliente FOREIGN KEY(cliente_id)
+			REFERENCES cliente(id),
+	CONSTRAINT fk_contrata_jardinero FOREIGN KEY(jardinero_id)
+			REFERENCES jardinero(id),
+	CONSTRAINT fk_contrata_estadocontratacion FOREIGN KEY(estadocontratacion_id)
+			REFERENCES estado_contratacion(id)
 );
 
 
@@ -89,27 +119,58 @@ INSERT INTO estado(descripcion)
 VALUES('ACTIVO'),
 ('BLOQUEADO');
 
-INSERT INTO persona(nombre, apellido, contrasenia, id_rol, id_estado)
+INSERT INTO persona(nombre, apellido, contrasenia, rol_id, estado_id)
 VALUES('Christian', 'Peralta', '$2y$10$0/oN1VW5zp6fnZxLf7lGEeD8fY/ogvtjHKjInfzPAeZ5WIGZLia8e', 1, 1),
 ('Cubillas', 'Diaz', '$2y$10$im7hhroMo8qNm75kZjy1KuaMmdNQ3p5TjsIO3ZR8AyjWlfoiunthC', 3, 1),
 ('Miyagui', 'Silva', '$2y$10$jdVaCKSkZDiFGHZ7vBrKqOYhssQMtbkGbVVcIrqvBkYkeF5qaGxVy', 3, 1),
 ('Peluca', 'Milei', '$2y$10$3QaYSBEbgrdzuqrpJiEMHOD07GDj0CQVVAjzJvSiziuLFhXMGoAry', 2, 1),
 ('Donald', 'Trump', '$2y$10$cEwY668k5wGd79zK4GBBcu3k/JOIDbn0u75O1xFkkvVXQzCWYQKAu', 2, 1);
-select * from persona;
 
-INSERT INTO comprador(id_persona, telefono, direccion, email, latitud, longitud)
+
+INSERT INTO cliente(persona_id, telefono, direccion, email, latitud, longitud)
 VALUES(4, '1121368752', 'lacarra 535', 'peluca@gmail.com', '-34.640065', '-58.481578'),
 (5, '1150806210', 'las tunas 11122', 'donald@gmail.com', '-34.639639', '-58.521601');
 
 
-INSERT INTO vendedor(id_persona, telefono, email)
-VALUES(2, '1578410121', 'cubillas@gmail.com'),
-(3, '1160302040', 'miyagui@gmail.com');
+INSERT INTO jardinero(persona_id, telefono, email, presentacion)
+VALUES(2, '1578410121', 'cubillas@gmail.com', 'Mi nombre es cubillas etc etc'),
+(3, '1160302040', 'miyagui@gmail.com', 'Soy miyagui el karateca de la jardineria etc etc');
 
-INSERT INTO estado_compra(descripcion)
-VALUES('PAGADO'),
-('ENVIO PREPARADO'),
-('EN CAMINO'),
-('REGRESADO'),
-('ENTREGADO'),
+
+INSERT INTO trabajo_realizado(foto, descripcion, jardinero_id)
+VALUES('/fotos/trabajo1.jpg', 'trabajo de corte de pasto realizado en x lugar', 1),
+('/fotos/1/trabajo2.jpg', 'trabajo de Poda realizado para la señora Victoria', 1),
+('/fotos/2/trabajo1.jpg', 'trabajo dificil de poda de pino realizado en ramos mejia', 2);
+
+
+INSERT INTO tipo_de_servicio(nombre)
+VALUES('Corte de Pasto'),
+('Poda de Arboles'),
+('Fertilizar'),
+('Protección de plantas');
+
+
+INSERT INTO servicio(descripcion, precio, jardinero_id, tipodeservicio_id)
+VALUES('Descripcion puesta por el jardinero dando valor a su servicio', 5000.0, 1, 1),
+('Descripcion puesta por el jardinero dando valor a su servicio', 6000.0, 2, 1),
+('Descripcion puesta por el jardinero dando valor a su servicio', 7000.0, 1, 2),
+('Descripcion puesta por el jardinero dando valor a su servicio', 8000.0, 2, 3),
+('Descripcion puesta por el jardinero dando valor a su servicio', 9000.0, 2, 2),
+('Descripcion puesta por el jardinero dando valor a su servicio', 10000.0, 1, 4),
+('Descripcion puesta por el jardinero dando valor a su servicio', 11000.0, 1, 3),
+('Descripcion puesta por el jardinero dando valor a su servicio', 12000.0, 2, 4);
+
+
+INSERT INTO estado_contratacion(descripcion)
+VALUES('RESERVADO'),
+('PROCESO'),
 ('FINALIZADO');
+
+
+INSERT INTO contrata(precio_total, fecha, cliente_id, jardinero_id, estadocontratacion_id)
+VALUES(5000.0, '2025-02-01', 1, 1, 1),
+(10000.0, '2025-03-02', 2, 1, 2),
+(7000.0, '2025-05-03', 2, 2, 1),
+(12000.0, '2025-07-04', 2, 1, 1),
+(11000.0, '2025-08-05', 1, 2, 3);
+
