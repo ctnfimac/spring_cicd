@@ -1,0 +1,31 @@
+package com.cperalta.jardineria.usuario.infraestructure.entities;
+
+import com.cperalta.jardineria.entity.Estado;
+import com.cperalta.jardineria.entity.Rol;
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Table(name = "persona")
+@Setter
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class PersonaEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String nombre;
+    private String apellido;
+    private String contrasenia;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_rol", referencedColumnName = "id")
+    private Rol rol;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_estado", referencedColumnName = "id")
+    private Estado estado;
+}

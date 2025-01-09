@@ -8,7 +8,7 @@ import lombok.*;
 @Table(name = "estado")
 @Setter
 @Getter
-//@Builder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class EstadoEntity {
