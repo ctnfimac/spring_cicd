@@ -81,6 +81,7 @@ puede acceder a la misma en la siguiente URL:
 http://127.0.0.1:8080/swagger-ui/index.html
 ```
 ![swagger_github](https://github.com/user-attachments/assets/10ec147c-e300-489b-89c9-3b2b9384b281)
+(por ahora esta captura es de endpoints anteriores a la migración)
 
 ## Pruebas automatizadas
 El proyecto incluye pruebas unitarias y pruebas de integración para garantizar el correcto funcionamiento de las funcionalidades.
@@ -101,42 +102,41 @@ mvn test
 ```
 
 ## Funcionalidades Actuales
-
-## Funcionalidades Futuras
-1. Gestión de entidades base (CRUD):
-   - Ejemplo: Gestión de Vendedores con operaciones básicas (crear, leer, actualizar y eliminar).
-
-2. Documentación de APIs con Swagger:
-   - Auto-generación de endpoints y estructura API con OpenAPI.
-
+1. Configuración CI/CD:
+   - Integración con herramientas de CI/CD para automatización de compilación y pruebas (en este caso con GitHub Actions).
+2. Pruebas Automatizadas:
+   - Implementación de pruebas unitarias e integración con JUnit.
 3. Soporte para base de datos en memoria (H2):
    - Permite pruebas rápidas y configuración sencilla para entornos de desarrollo.
+4. Documentación de APIs con Swagger:
+   - Auto-generación de endpoints y estructura API con OpenAPI.
 
-4. Pruebas Automatizadas:
-   - Implementación de pruebas unitarias e integración con JUnit.
 
-5. Configuración CI/CD:
-   - Integración con herramientas de CI/CD para automatización de compilación y pruebas (en este caso con GitHub Actions).
+## Funcionalidades a realizar
+Funcionalidades por parte del Jardinero:
+1. Iniciar Sesión con usuario y contraseña
+2. Cerrar Sesión.
+3. Dar de alta, modificar, ver y eliminar sus servicios
+4. Dar de alta trabajo, modificar, ver y eliminar los trabajos realizados
 
-6. Autenticación y Autorización:
+Funcionalidades por parte del Cliente:
+1. Iniciar Sesión con usuario y contraseña
+2. Cerrar Sesión.
+3. Observar listado de jardineros
+4. Filtrar jardineros por tipo de servicio
+5. Contratar jardinero
+
+## Funcionalidades Futuras
+1. Configuración Docker para ambiente de producción:
+2. Autenticación y Autorización:
     - Implementación de OAuth2 o JWT para asegurar los endpoints.
     - Registro de usuarios
     - Activar el usuario por medio de un email
-    - Login de usuarios
-    - Cerrar Sesión
     
-
-2. Realización de compras por parte de los compradores (Carrito)
-    - Seleccionar uno o varios productos 
-    - Eliminar productos de la selección
-
-3. Puesta de ventas de productos por parde de los vendedores
-    - Crud completo de productos por parte de los vendedores
 
 
 ## Diagrama Entidad Relación de la base de datos
-![proyecto_ventas (1)](https://github.com/user-attachments/assets/94b995ed-4d64-4b37-ad7f-73b17a013b94)
-
+![proyecto_ventas](https://github.com/user-attachments/assets/d2eebc79-3a2b-4113-995a-34732d444116)
 
 
 
