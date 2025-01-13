@@ -1,6 +1,6 @@
 package com.cperalta.jardineria.usuario.infraestructure.repositories;
 
-import com.cperalta.jardineria.usuario.domain.ports.out.EstadoRepositoryPort;
+import com.cperalta.jardineria.usuario.domain.ports.output.EstadoRepositoryPort;
 import com.cperalta.jardineria.usuario.infraestructure.entities.EstadoEntity;
 import com.cperalta.jardineria.usuario.infraestructure.mapper.EstadoMapper;
 import lombok.AllArgsConstructor;

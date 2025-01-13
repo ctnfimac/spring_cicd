@@ -8,5 +8,5 @@ import org.mapstruct.MappingConstants;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface JardineroMapper {
     JardineroEntity jardineroToJardineroEntity(Jardinero jardinero);
-    Jardinero jardineroEntityToJardinero(JardineroEntity jardinero);
+    Jardinero jardineroEntityToJardinero(JardineroEntity jardineroEntity);
 }

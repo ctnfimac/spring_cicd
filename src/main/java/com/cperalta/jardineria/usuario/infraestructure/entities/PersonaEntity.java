@@ -18,6 +18,10 @@ public class PersonaEntity {
 
     private String nombre;
     private String apellido;
+
+    @Column(unique = true)
+    private String email;
+
     private String contrasenia;
 
     @ManyToOne(cascade = CascadeType.MERGE)

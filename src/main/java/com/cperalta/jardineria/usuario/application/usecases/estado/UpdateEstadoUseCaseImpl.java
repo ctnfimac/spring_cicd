@@ -1,8 +1,8 @@
 package com.cperalta.jardineria.usuario.application.usecases.estado;
 
 import com.cperalta.jardineria.usuario.domain.models.Estado;
-import com.cperalta.jardineria.usuario.domain.ports.in.estado.UpdateEstadoUseCase;
-import com.cperalta.jardineria.usuario.domain.ports.out.EstadoRepositoryPort;
+import com.cperalta.jardineria.usuario.domain.ports.input.estado.UpdateEstadoUseCase;
+import com.cperalta.jardineria.usuario.domain.ports.output.EstadoRepositoryPort;
 import lombok.AllArgsConstructor;
 
 import java.util.Optional;

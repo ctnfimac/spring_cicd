@@ -1,6 +1,6 @@
 -- BORRO TABLAS
 
-/*DROP TABLE servicio;
+DROP TABLE servicio;
 DROP TABLE contrata;
 DROP TABLE trabajo_realizado;
 DROP TABLE jardinero;
@@ -11,7 +11,7 @@ DROP TABLE estado;
 DROP TABLE rol;
 DROP TABLE estado_contratacion;
 DROP TABLE tipo_de_servicio;
-*/
+
 
 -- CREACIÓN DE TABLAS
 CREATE TABLE rol(
@@ -29,6 +29,7 @@ CREATE TABLE persona(
 	id BIGSERIAL PRIMARY KEY,
 	nombre varchar(20),
 	apellido varchar(20),
+	email varchar(30) unique,
 	contrasenia varchar(72),
 	rol_id integer NOT NULL,
 	estado_id integer NOT NULL,
@@ -42,7 +43,6 @@ CREATE TABLE cliente(
 	id BIGSERIAL PRIMARY KEY,
 	telefono varchar(12) unique,
 	direccion varchar(50),
-	email varchar(30) unique,
 	latitud varchar(20),
 	longitud varchar(20),
 	persona_id integer NOT NULL,
@@ -52,7 +52,6 @@ CREATE TABLE cliente(
 CREATE TABLE jardinero(
 	id BIGSERIAL PRIMARY KEY,
 	telefono varchar(12) unique,
-	email varchar(30) unique,
 	presentacion TEXT,
 	persona_id integer NOT NULL,
 	CONSTRAINT fk_jardinero_persona FOREIGN KEY(persona_id) REFERENCES persona(id)
@@ -113,29 +112,29 @@ CREATE TABLE contrata(
 -- CARGA DE DATOS PARA LAS PRUEBAS
 INSERT INTO rol(descripcion)
 VALUES('ADMIN'),
-('COMPRADOR'),
-('VENDEDOR');
+('CLIENTE'),
+('JARDINERO');
 
 INSERT INTO estado(descripcion)
 VALUES('ACTIVO'),
 ('BLOQUEADO');
 
-INSERT INTO persona(nombre, apellido, contrasenia, rol_id, estado_id)
-VALUES('Christian', 'Peralta', '$2y$10$0/oN1VW5zp6fnZxLf7lGEeD8fY/ogvtjHKjInfzPAeZ5WIGZLia8e', 1, 1),
-('Cubillas', 'Diaz', '$2y$10$im7hhroMo8qNm75kZjy1KuaMmdNQ3p5TjsIO3ZR8AyjWlfoiunthC', 3, 1),
-('Miyagui', 'Silva', '$2y$10$jdVaCKSkZDiFGHZ7vBrKqOYhssQMtbkGbVVcIrqvBkYkeF5qaGxVy', 3, 1),
-('Peluca', 'Milei', '$2y$10$3QaYSBEbgrdzuqrpJiEMHOD07GDj0CQVVAjzJvSiziuLFhXMGoAry', 2, 1),
-('Donald', 'Trump', '$2y$10$cEwY668k5wGd79zK4GBBcu3k/JOIDbn0u75O1xFkkvVXQzCWYQKAu', 2, 1);
+INSERT INTO persona(nombre, apellido, email, contrasenia, rol_id, estado_id)
+VALUES('Christian', 'Peralta', 'christian@gmail.com','$2y$10$bNIWz0bB3V6PuL2eg554ju6bBZzOa8.SV999LrlX9okWFKyxWmplG', 1, 1),
+('Cubillas', 'Diaz', 'cubillas@gmail.com','$2y$10$3lUiqen09.KhPpOrm.eWNu/KG5hh0VuaWLNWRNF1UMCp/dwwmr8Ci', 3, 1),
+('Miyagui', 'Silva', 'miyagui@gmail.com','$2y$10$bfdnFSYxpIZxaw6RWjOMEubk5zqoI/MZL.p2wkReoRlxjwn1Wxgd2', 3, 1),
+('Peluca', 'Milei', 'peluca@gmail.com','$2y$10$WmIKjs9gPavabhDI.BZ6NOe3BQka8By1Lt8H/jWbIbPHpZRSFwEj6', 2, 1),
+('Donald', 'Trump', 'donald@gmail.com','$2y$10$LgUHLBlQx0lUfq7kOh5.KuL9aznreuhrPz5Xcoy1VVBy1G2qtb8Fq', 2, 1);
 
 
-INSERT INTO cliente(persona_id, telefono, direccion, email, latitud, longitud)
-VALUES(4, '1121368752', 'lacarra 535', 'peluca@gmail.com', '-34.640065', '-58.481578'),
-(5, '1150806210', 'las tunas 11122', 'donald@gmail.com', '-34.639639', '-58.521601');
+INSERT INTO cliente(persona_id, telefono, direccion, latitud, longitud)
+VALUES(4, '1121368752', 'lacarra 535', '-34.640065', '-58.481578'),
+(5, '1150806210', 'las tunas 11122', '-34.639639', '-58.521601');
 
 
-INSERT INTO jardinero(persona_id, telefono, email, presentacion)
-VALUES(2, '1578410121', 'cubillas@gmail.com', 'Mi nombre es cubillas etc etc'),
-(3, '1160302040', 'miyagui@gmail.com', 'Soy miyagui el karateca de la jardineria etc etc');
+INSERT INTO jardinero(persona_id, telefono, presentacion)
+VALUES(2, '1578410121', 'Mi nombre es cubillas etc etc'),
+(3, '1160302040', 'Soy miyagui el karateca de la jardineria etc etc');
 
 
 INSERT INTO trabajo_realizado(foto, descripcion, jardinero_id)
@@ -144,11 +143,11 @@ VALUES('/fotos/trabajo1.jpg', 'trabajo de corte de pasto realizado en x lugar', 
 ('/fotos/2/trabajo1.jpg', 'trabajo dificil de poda de pino realizado en ramos mejia', 2);
 
 
-INSERT INTO tipo_de_servicio(nombre)
-VALUES('Corte de Pasto'),
-('Poda de Arboles'),
-('Fertilizar'),
-('Protección de plantas');
+INSERT INTO tipo_de_servicio(foto, nombre)
+VALUES('/fotos/corte_de_pasto.jpg', 'Corte de Pasto'),
+('/fotos/poda_de_arboles.jpg','Poda de Arboles'),
+('/fotos/fertilizar.jpg','Fertilizar'),
+('/fotos/proteccion_de_plantas.jpg','Protección de plantas');
 
 
 INSERT INTO servicio(descripcion, precio, jardinero_id, tipodeservicio_id)
@@ -174,4 +173,3 @@ VALUES(5000.0, '2025-02-01', 1, 1, 1),
 (7000.0, '2025-05-03', 2, 2, 1),
 (12000.0, '2025-07-04', 2, 1, 1),
 (11000.0, '2025-08-05', 1, 2, 3);
-

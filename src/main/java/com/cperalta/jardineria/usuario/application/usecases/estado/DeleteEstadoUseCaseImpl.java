@@ -1,7 +1,7 @@
 package com.cperalta.jardineria.usuario.application.usecases.estado;
 
-import com.cperalta.jardineria.usuario.domain.ports.in.estado.DeleteEstadoUseCase;
-import com.cperalta.jardineria.usuario.domain.ports.out.EstadoRepositoryPort;
+import com.cperalta.jardineria.usuario.domain.ports.input.estado.DeleteEstadoUseCase;
+import com.cperalta.jardineria.usuario.domain.ports.output.EstadoRepositoryPort;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

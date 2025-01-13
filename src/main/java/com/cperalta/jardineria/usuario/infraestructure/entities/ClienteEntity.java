@@ -19,8 +19,6 @@ public class ClienteEntity {
     private String telefono;
     private String direccion;
 
-    @Column(unique = true)
-    private String email;
     private String latitud;
     private String longitud;
 

@@ -136,8 +136,7 @@ Funcionalidades por parte del Cliente:
 
 
 ## Diagrama Entidad Relación de la base de datos
-![proyecto_ventas](https://github.com/user-attachments/assets/a733608c-7130-4f1b-97f4-51413a5a4a78)
-
+![proyecto_ventas](https://github.com/user-attachments/assets/94747463-dc80-4535-9fce-aaebd531a8af)
 
 
 

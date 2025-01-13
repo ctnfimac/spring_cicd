@@ -1,4 +1,4 @@
-package com.cperalta.jardineria.usuario.domain.ports.in.estado;
+package com.cperalta.jardineria.usuario.domain.ports.input.estado;
 
 import com.cperalta.jardineria.usuario.domain.models.Estado;
 

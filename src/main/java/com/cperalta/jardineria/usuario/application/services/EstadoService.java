@@ -1,10 +1,10 @@
 package com.cperalta.jardineria.usuario.application.services;
 
-import com.cperalta.jardineria.usuario.domain.ports.in.estado.CreateEstadoUseCase;
-import com.cperalta.jardineria.usuario.domain.ports.in.estado.DeleteEstadoUseCase;
-import com.cperalta.jardineria.usuario.domain.ports.in.estado.RetrieveEstadoUseCase;
+import com.cperalta.jardineria.usuario.domain.ports.input.estado.CreateEstadoUseCase;
+import com.cperalta.jardineria.usuario.domain.ports.input.estado.DeleteEstadoUseCase;
+import com.cperalta.jardineria.usuario.domain.ports.input.estado.RetrieveEstadoUseCase;
 import com.cperalta.jardineria.usuario.domain.models.Estado;
-import com.cperalta.jardineria.usuario.domain.ports.in.estado.UpdateEstadoUseCase;
+import com.cperalta.jardineria.usuario.domain.ports.input.estado.UpdateEstadoUseCase;
 import lombok.AllArgsConstructor;
 
 import java.util.List;

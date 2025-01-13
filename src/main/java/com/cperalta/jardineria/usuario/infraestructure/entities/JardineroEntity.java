@@ -19,9 +19,6 @@ public class JardineroEntity {
     @Column(unique = true)
     private String telefono;
 
-    @Column(unique = true)
-    private String email;
-
     private String presentacion;
 
     @OneToOne(cascade = CascadeType.PERSIST)

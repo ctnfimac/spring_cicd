@@ -1,8 +1,7 @@
 package com.cperalta.jardineria.usuario.application.usecases.estado;
 
 import com.cperalta.jardineria.usuario.domain.models.Estado;
-import com.cperalta.jardineria.usuario.domain.ports.in.estado.RetrieveEstadoUseCase;
-import com.cperalta.jardineria.usuario.domain.ports.out.EstadoRepositoryPort;
+import com.cperalta.jardineria.usuario.domain.ports.output.EstadoRepositoryPort;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
