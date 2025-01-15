@@ -1,23 +1,15 @@
 package com.cperalta.jardineria.usuario.application.services;
 
-import com.cperalta.jardineria.usuario.domain.models.Jardinero;
 import com.cperalta.jardineria.usuario.domain.models.Persona;
 import com.cperalta.jardineria.usuario.domain.models.Rol;
-import com.cperalta.jardineria.usuario.domain.ports.input.jardinero.RetrieveJardineroUseCase;
 import com.cperalta.jardineria.usuario.domain.ports.input.persona.PersonaRetrieveUseCase;
 import lombok.AllArgsConstructor;
-import org.hibernate.event.spi.SaveOrUpdateEvent;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-
-import java.util.Collections;
-import java.util.Optional;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -34,9 +26,6 @@ public class UserSecurityService implements UserDetailsService{
                 .orElseThrow( () -> new UsernameNotFoundException("Usuario " + email + " not found"));
 
         Rol rol = persona.getRol();
-
-        System.out.println("ROL ASIGNADO");
-        System.out.println(rol.getDescripcion());
 
         ArrayList<String> roles = new ArrayList<String>();
         roles.add(rol.getDescripcion());
