@@ -1,7 +1,7 @@
 package com.cperalta.jardineria.usuario.infraestructure.dto;
 
-import com.cperalta.jardineria.entity.Estado;
-import com.cperalta.jardineria.entity.Rol;
+import com.cperalta.jardineria.usuario.domain.models.Estado;
+import com.cperalta.jardineria.usuario.domain.models.Rol;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

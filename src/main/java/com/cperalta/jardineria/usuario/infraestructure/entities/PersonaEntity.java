@@ -1,6 +1,5 @@
 package com.cperalta.jardineria.usuario.infraestructure.entities;
 
-import com.cperalta.jardineria.entity.Rol;
 import jakarta.persistence.*;
 import lombok.*;
 

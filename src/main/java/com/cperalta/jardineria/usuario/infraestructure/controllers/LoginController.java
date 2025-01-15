@@ -33,11 +33,11 @@ public class LoginController {
     private final JwtUtil jwtUtil;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Validated @RequestBody LoginDTO loginDTO){
+    public ResponseEntity<Map<String, Object>> login(@Validated @RequestBody LoginDTO loginDTO){
         Optional<Persona> personaBuscada = personaService.findByEmail(loginDTO.getEmail());
 
         if (personaBuscada.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario o contraseña incorrectos");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error","Credenciales Incorrectas"));
         }
 
         // Genero un token de autenticación
@@ -60,7 +60,7 @@ public class LoginController {
             return new ResponseEntity<>(response, HttpStatus.OK);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario o contraseña incorrectos");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "Credenciales incorrectas"));
         }
 
     }
