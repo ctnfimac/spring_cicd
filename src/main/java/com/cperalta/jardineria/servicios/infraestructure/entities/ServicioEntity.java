@@ -5,7 +5,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "com/cperalta/jardineria/servicios")
+@Table(
+    name = "servicio",
+    uniqueConstraints = @UniqueConstraint(
+            columnNames = {"tipodeservicio_id", "jardinero_id"}
+    )
+)
 @Setter
 @Getter
 @Builder

@@ -11,7 +11,7 @@ import lombok.Setter;
 public class Servicio {
     private Long id;
     private String descripcion;
-    private Long precio;
+    private Float precio;
     private TipoDeServicio tipoDeServicio;
     private Jardinero jardinero;
 }
