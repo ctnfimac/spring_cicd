@@ -1,6 +1,7 @@
 package com.cperalta.jardineria.servicios.infraestructure.mapper;
 
 import com.cperalta.jardineria.servicios.domain.models.Servicio;
+import com.cperalta.jardineria.servicios.infraestructure.dto.ServicioResponseDTO;
 import com.cperalta.jardineria.servicios.infraestructure.entities.ServicioEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
@@ -9,4 +10,7 @@ import org.mapstruct.MappingConstants;
 public interface ServicioMapper {
     Servicio servicioEntityToServicio(ServicioEntity servicioEntity);
     ServicioEntity servicioToServicioEntity(Servicio servicio);
+    ServicioResponseDTO servicioToServicioResponseDTO(Servicio servicio);
+    Servicio servicioDTOToServicio(ServicioResponseDTO servicioResponseDTO);
+
 }

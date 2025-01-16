@@ -3,6 +3,7 @@ package com.cperalta.jardineria.servicios.infraestructure.entities;
 import com.cperalta.jardineria.usuario.infraestructure.entities.JardineroEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.UUID;
 
 @Entity
 @Table(
@@ -18,8 +19,13 @@ import lombok.*;
 @AllArgsConstructor
 public class ServicioEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) // Opción más común
+    @Column(columnDefinition = "UUID")
+    private UUID id;
+
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;*/
 
     @Column(unique = true)
     private String descripcion;

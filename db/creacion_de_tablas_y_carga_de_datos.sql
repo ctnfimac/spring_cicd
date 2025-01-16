@@ -1,3 +1,5 @@
+-- Creo la extensión uuids para las claves primarias
+
 -- BORRO TABLAS
 
 DROP TABLE servicio;
@@ -74,7 +76,8 @@ CREATE TABLE tipo_de_servicio(
 );
 
 CREATE TABLE servicio(
-	id SERIAL PRIMARY KEY,
+	id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+	--id SERIAL PRIMARY KEY,
 	descripcion varchar(100),
 	precio decimal(10,2) NOT NULL,
 	jardinero_id integer NOT NULL,
@@ -159,7 +162,6 @@ VALUES('Descripcion puesta por el jardinero dando valor a su servicio', 5000.0, 
 ('Descripcion puesta por el jardinero dando valor a su servicio', 10000.0, 1, 4),
 ('Descripcion puesta por el jardinero dando valor a su servicio', 11000.0, 1, 3),
 ('Descripcion puesta por el jardinero dando valor a su servicio', 12000.0, 2, 4);
-
 
 INSERT INTO estado_contratacion(descripcion)
 VALUES('RESERVADO'),

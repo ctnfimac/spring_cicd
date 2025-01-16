@@ -1,4 +1,4 @@
-package com.cperalta.jardineria.servicios.application.usecases;
+package com.cperalta.jardineria.servicios.application.usecases.tipodeservicio;
 
 import com.cperalta.jardineria.servicios.domain.models.TipoDeServicio;
 import com.cperalta.jardineria.servicios.domain.ports.input.tipoDeServicio.RetrieveTipoDeServicioUseCase;

@@ -1,7 +1,7 @@
-package com.cperalta.jardineria.servicios.domain.models;
+package com.cperalta.jardineria.servicios.infraestructure.dto;
 
+import com.cperalta.jardineria.servicios.domain.models.TipoDeServicio;
 import com.cperalta.jardineria.usuario.domain.models.Jardinero;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,11 +9,10 @@ import java.util.UUID;
 
 @Setter
 @Getter
-@AllArgsConstructor
-public class Servicio {
+public class ServicioResponseDTO {
     private UUID id;
     private String descripcion;
-    private Float precio;
+    private Long precio;
     private TipoDeServicio tipoDeServicio;
     private Jardinero jardinero;
 }
