@@ -26,7 +26,7 @@ public class JwtUtil {
                 .withSubject(email)
                 .withIssuer("ServiciosDeJardineria")
                 .withIssuedAt(new Date())
-                .withExpiresAt(new Date(System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(60))) // expira en 15 dias a partir de la fecha actual
+                .withExpiresAt(new Date(System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(600))) // expira en 15 dias a partir de la fecha actual
                 .sign(ALGORITHM);
     }
 

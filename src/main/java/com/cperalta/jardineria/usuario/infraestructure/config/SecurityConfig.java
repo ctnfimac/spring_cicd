@@ -29,11 +29,9 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults()) // para los CORS
                 .authorizeHttpRequests(customizeRequests -> {
                     customizeRequests
-                            .requestMatchers(HttpMethod.GET, "/api/v2/estado").hasRole("ADMIN")
-                            .requestMatchers(HttpMethod.GET, "/api/tipodeservicio").hasRole("ADMIN")
-                            .requestMatchers(HttpMethod.GET, "/api/tipodeservicio/*").hasRole("ADMIN")
-                            .requestMatchers(HttpMethod.GET, "/api/servicio").hasRole("ADMIN")
-                            .requestMatchers(HttpMethod.GET, "/api/servicio/*").hasRole("ADMIN")
+                            .requestMatchers("/api/estado/**").hasRole("ADMIN")
+                            .requestMatchers("/api/tipodeservicio/**").hasRole("ADMIN")
+                            .requestMatchers("/api/servicio/**").hasRole("ADMIN")
                             .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
                             .anyRequest()

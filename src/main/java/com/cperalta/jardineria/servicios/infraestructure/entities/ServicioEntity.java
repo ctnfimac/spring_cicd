@@ -30,7 +30,7 @@ public class ServicioEntity {
     @Column(unique = true)
     private String descripcion;
 
-    private Long precio;
+    private Float precio;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "tipodeservicio_id", referencedColumnName = "id")

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 public class Jardinero {
-    private Integer id;
+    private Long id;
     private String telefono;
     private String presentacion;
     private Persona persona;

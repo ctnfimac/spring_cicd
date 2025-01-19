@@ -19,7 +19,7 @@ public class JpaTipoDeServicioRepositoryAdapter implements TipoDeServicioReposit
     private final TipoDeServicioMapper tipoDeServicioMapper;
 
     @Override
-    public List<TipoDeServicio> getAllTiposDeServicios() {
+    public List<TipoDeServicio> getAll() {
         List<TipoDeServicioEntity> tiposDeServicio = jpaTipoDeServicioRepository.findAll();
         return tiposDeServicio.stream()
                 .map(tipoDeServicioMapper::tipoDeServicioEntityToTipoDeServicio)
@@ -27,22 +27,40 @@ public class JpaTipoDeServicioRepositoryAdapter implements TipoDeServicioReposit
     }
 
     @Override
-    public Optional<TipoDeServicio> getTipoDeServicioById(Long id) {
+    public Optional<TipoDeServicio> getById(Long id) {
         return jpaTipoDeServicioRepository.findById(id).map(tipoDeServicioMapper::tipoDeServicioEntityToTipoDeServicio);
     }
 
     @Override
-    public TipoDeServicio createTipoDeServicio(TipoDeServicio tipoDeServicio) {
-        return null;
+    public TipoDeServicio create(TipoDeServicio tipoDeServicio) {
+        TipoDeServicioEntity tipoDeServicioEntity = tipoDeServicioMapper.tipoDeServicioToTipoDeServicioEntity(tipoDeServicio);
+        TipoDeServicioEntity tipoDeServicioCreado = jpaTipoDeServicioRepository.save(tipoDeServicioEntity);
+        return tipoDeServicioMapper.tipoDeServicioEntityToTipoDeServicio(tipoDeServicioCreado);
     }
 
     @Override
-    public Optional<TipoDeServicio> updateTipoDeServicio(TipoDeServicio tipoDeServicio) {
+    public Optional<TipoDeServicio> update(Long id, TipoDeServicio tipoDeServicio) {
+        if(jpaTipoDeServicioRepository.existsById(id)){
+            TipoDeServicioEntity tipoDeServicioEntityActual = jpaTipoDeServicioRepository.getById(id);
+            tipoDeServicioEntityActual.setNombre(
+                    tipoDeServicio.getNombre()!= null? tipoDeServicio.getNombre() : tipoDeServicioEntityActual.getNombre()
+            );
+            tipoDeServicioEntityActual.setFoto(tipoDeServicio.getFoto() != null ?
+                    tipoDeServicio.getFoto() : tipoDeServicioEntityActual.getFoto()
+            );
+
+            TipoDeServicioEntity tipoDeServicioActualizado = jpaTipoDeServicioRepository.save(tipoDeServicioEntityActual);
+            return Optional.of(tipoDeServicioMapper.tipoDeServicioEntityToTipoDeServicio(tipoDeServicioActualizado));
+        }
         return Optional.empty();
     }
 
     @Override
-    public boolean deleteTipoDeServicio(Long id) {
+    public boolean delete(Long id) {
+        if(jpaTipoDeServicioRepository.existsById(id)){
+            jpaTipoDeServicioRepository.deleteById(id);
+            return true;
+        }
         return false;
     }
 }

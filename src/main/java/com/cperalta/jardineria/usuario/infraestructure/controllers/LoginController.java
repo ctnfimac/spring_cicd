@@ -5,6 +5,8 @@ import com.cperalta.jardineria.usuario.application.services.PersonaService;
 import com.cperalta.jardineria.usuario.domain.models.Persona;
 import com.cperalta.jardineria.usuario.infraestructure.config.JwtUtil;
 import com.cperalta.jardineria.usuario.infraestructure.dto.LoginDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,6 +26,7 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api/auth")
+@Tag(name = "API de gestión de autenticación y usuarios", description = "Administración de la sesión por parte de los Usuarios, los que pueden tener uno de los 3 Roles")
 @AllArgsConstructor
 public class LoginController {
     @Autowired
@@ -33,6 +36,10 @@ public class LoginController {
     private final JwtUtil jwtUtil;
 
     @PostMapping("/login")
+    @Operation(
+            summary = "Inició de Sesión",
+            description = "Este endpoint es para Iniciar Sesión por parte del usuario. No requiere token"
+    )
     public ResponseEntity<Map<String, Object>> login(@Validated @RequestBody LoginDTO loginDTO){
         Optional<Persona> personaBuscada = personaService.findByEmail(loginDTO.getEmail());
 

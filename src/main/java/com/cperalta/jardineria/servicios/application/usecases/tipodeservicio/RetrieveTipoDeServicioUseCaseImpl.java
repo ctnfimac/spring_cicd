@@ -14,12 +14,13 @@ public class RetrieveTipoDeServicioUseCaseImpl implements RetrieveTipoDeServicio
     private final TipoDeServicioRepositoryPort tipoDeServicioRepositoryPort;
 
     @Override
-    public List<TipoDeServicio> getAllTiposDeServicios() {
-        return tipoDeServicioRepositoryPort.getAllTiposDeServicios();
+    public List<TipoDeServicio> getAll() {
+        return tipoDeServicioRepositoryPort.getAll();
     }
 
     @Override
-    public Optional<TipoDeServicio> getTipoDeServicioById(Long id) {
-        return tipoDeServicioRepositoryPort.getTipoDeServicioById(id);
+    public Optional<TipoDeServicio> getById(Long id) {
+        return tipoDeServicioRepositoryPort.getById(id);
     }
+
 }

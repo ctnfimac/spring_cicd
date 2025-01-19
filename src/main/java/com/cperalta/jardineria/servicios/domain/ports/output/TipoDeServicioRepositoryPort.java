@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TipoDeServicioRepositoryPort {
-    List<TipoDeServicio> getAllTiposDeServicios();
-    Optional<TipoDeServicio> getTipoDeServicioById(Long id);
-    TipoDeServicio createTipoDeServicio(TipoDeServicio tipoDeServicio);
-    Optional<TipoDeServicio> updateTipoDeServicio(TipoDeServicio tipoDeServicio);
-    boolean deleteTipoDeServicio(Long id);
+    List<TipoDeServicio> getAll();
+    Optional<TipoDeServicio> getById(Long id);
+    TipoDeServicio create(TipoDeServicio tipoDeServicio);
+    Optional<TipoDeServicio> update(Long id,TipoDeServicio tipoDeServicio);
+    boolean delete(Long id);
 }

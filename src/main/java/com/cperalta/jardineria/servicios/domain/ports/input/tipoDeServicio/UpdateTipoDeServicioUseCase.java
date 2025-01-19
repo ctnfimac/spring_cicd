@@ -5,5 +5,5 @@ import com.cperalta.jardineria.servicios.domain.models.TipoDeServicio;
 import java.util.Optional;
 
 public interface UpdateTipoDeServicioUseCase {
-   Optional<TipoDeServicio> updateTipoDeServicio(Long id, TipoDeServicio tipoDeServicio);
+   Optional<TipoDeServicio> update(Long id, TipoDeServicio tipoDeServicio);
 }
