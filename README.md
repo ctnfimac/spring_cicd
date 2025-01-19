@@ -80,13 +80,13 @@ puede acceder a la misma en la siguiente URL:
 ```
 http://127.0.0.1:8080/swagger-ui/index.html
 ```
-![swagger_github](https://github.com/user-attachments/assets/10ec147c-e300-489b-89c9-3b2b9384b281)
+![Image](https://github.com/user-attachments/assets/3f122286-1311-4005-9273-f1ad1b575c8e)
 (por ahora esta captura es de endpoints anteriores a la migración)
 
 ## Pruebas automatizadas
-El proyecto incluye pruebas unitarias y pruebas de integración para garantizar el correcto funcionamiento de las funcionalidades.
+El proyecto cuenta con pruebas unitarias y pruebas de integración para garantizar el correcto funcionamiento de las funcionalidades.
 
-## Ejecutar Pruebas
+## Para ejecutar Pruebas
 
 - Pruebas unitarias
 ```
@@ -102,34 +102,33 @@ mvn test
 ```
 
 ## Funcionalidades Actuales
-1. Configuración CI/CD:
+1. Iniciar Sesión con usuario y contraseña
+   - Implementado JWT para asegurar los endpoints.
+2. Dar de alta, modificar, ver y eliminar Servicios
+3. Dar de alta, modificar, ver y eliminar Tipos de Servicios
+4. Dar de alta, modificar, ver y eliminar Estados
+5. Configuración CI/CD:
    - Integración con herramientas de CI/CD para automatización de compilación y pruebas (en este caso con GitHub Actions).
-2. Pruebas Automatizadas:
+6. Pruebas Automatizadas:
    - Implementación de pruebas unitarias e integración con JUnit.
-3. Soporte para base de datos en memoria (H2):
+7. Soporte para base de datos en memoria (H2):
    - Permite pruebas rápidas y configuración sencilla para entornos de desarrollo.
-4. Documentación de APIs con Swagger:
+8. Documentación de APIs con Swagger:
    - Auto-generación de endpoints y estructura API con OpenAPI.
 
 
 ## Funcionalidades a realizar
 Funcionalidades por parte del Jardinero:
-1. Iniciar Sesión con usuario y contraseña
-2. Cerrar Sesión.
-3. Dar de alta, modificar, ver y eliminar sus servicios
-4. Dar de alta trabajo, modificar, ver y eliminar los trabajos realizados
+1. Dar de alta trabajos, modificar, ver y eliminar los trabajos realizados
 
 Funcionalidades por parte del Cliente:
-1. Iniciar Sesión con usuario y contraseña
-2. Cerrar Sesión.
-3. Observar listado de jardineros
-4. Filtrar jardineros por tipo de servicios
-5. Contratar jardinero
+1. Observar listado de jardineros
+2. Filtrar jardineros por tipo de servicios
+3. Contratar jardinero
 
 ## Funcionalidades Futuras
 1. Configuración Docker para ambiente de producción:
 2. Autenticación y Autorización:
-    - Implementación de OAuth2 o JWT para asegurar los endpoints.
     - Registro de usuarios
     - Activar el usuario por medio de un email
     
