@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.Length;
 @Setter
 @Getter
 public class TipoDeServicioDTO {
+    private Long id;
     @NotBlank(message = "El nombre es obligatorio")
     @Length(max = 30, message = "La cantidad máxima de caracteres es 30")
     @NotNull

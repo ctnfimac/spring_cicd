@@ -8,8 +8,10 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 public class Cliente {
-    private Integer id;
+    private Long id;
     private String telefono;
     private String direccion;
     private Persona persona;
+    private String latitud;
+    private String longitud;
 }

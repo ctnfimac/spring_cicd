@@ -1,0 +1,41 @@
+package com.cperalta.jardineria.contratacion.infraestructure.config;
+
+import com.cperalta.jardineria.contratacion.application.services.EstadoContratacionService;
+import com.cperalta.jardineria.contratacion.application.services.TrabajoRealizadoService;
+import com.cperalta.jardineria.contratacion.application.usecases.estadocontratacion.CreateEstadoContratacionUseCaseImpl;
+import com.cperalta.jardineria.contratacion.application.usecases.estadocontratacion.DeleteEstadoContratacionUseCaseImpl;
+import com.cperalta.jardineria.contratacion.application.usecases.estadocontratacion.RetrieveEstadoContratacionUseCaseImpl;
+import com.cperalta.jardineria.contratacion.application.usecases.estadocontratacion.UpdateEstadoContratacionUseCaseImpl;
+import com.cperalta.jardineria.contratacion.application.usecases.trabajorealizado.CreateTrabajoRealizadoUseCaseImpl;
+import com.cperalta.jardineria.contratacion.application.usecases.trabajorealizado.DeleteTrabajoRealizadoUseCaseImpl;
+import com.cperalta.jardineria.contratacion.application.usecases.trabajorealizado.RetrieveTrabajoRealizadoUseCaseImpl;
+import com.cperalta.jardineria.contratacion.application.usecases.trabajorealizado.UpdateTrabajoRealizadoUseCaseImpl;
+import com.cperalta.jardineria.contratacion.domain.ports.output.EstadoContratacionRepositoryPort;
+import com.cperalta.jardineria.contratacion.domain.ports.output.TrabajoRealizadoRepositoryPort;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class ApplicationConfigModuleContratacion {
+
+    @Bean
+    public EstadoContratacionService estadoContratacionService(EstadoContratacionRepositoryPort estadoContratacionRepositoryPort){
+        return new EstadoContratacionService(
+                new RetrieveEstadoContratacionUseCaseImpl(estadoContratacionRepositoryPort),
+                new CreateEstadoContratacionUseCaseImpl(estadoContratacionRepositoryPort),
+                new UpdateEstadoContratacionUseCaseImpl(estadoContratacionRepositoryPort),
+                new DeleteEstadoContratacionUseCaseImpl(estadoContratacionRepositoryPort)
+        );
+    }
+
+    @Bean
+    public TrabajoRealizadoService trabajoRealizadoService(TrabajoRealizadoRepositoryPort trabajoRealizadoRepositoryPort){
+        return new TrabajoRealizadoService(
+                new RetrieveTrabajoRealizadoUseCaseImpl(trabajoRealizadoRepositoryPort),
+                new CreateTrabajoRealizadoUseCaseImpl(trabajoRealizadoRepositoryPort),
+                new UpdateTrabajoRealizadoUseCaseImpl(trabajoRealizadoRepositoryPort),
+                new DeleteTrabajoRealizadoUseCaseImpl(trabajoRealizadoRepositoryPort)
+        );
+    }
+
+}

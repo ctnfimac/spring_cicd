@@ -8,9 +8,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.UUID;
+
 @Setter
 @Getter
 public class ServicioRequestDTO {
+    private UUID id;
+
     @Length(max=100, message = "La cantidad máxima de caracteres es 100")
     private String descripcion;
 
