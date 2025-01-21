@@ -13,21 +13,21 @@ import java.util.Date;
 @Setter
 @Getter
 public class ContrataRequestDTO {
+
+    private Long id;
+
     private Float precio_total;
 
     @NotBlank(message = "La fecha de reserva es obligatorio")
     @NotNull(message = "Tiene que ingresar una fecha")
     private Date fecha;
 
-    @NotBlank(message = "EL cliente es obligatorio")
     @NotNull(message = "Tiene que seleccionar algún cliente")
-    private Cliente cliente;
+    private Long clienteId;
 
-    @NotBlank(message = "EL jardinero es obligatorio")
     @NotNull(message = "Tiene que seleccionar algún Jardinero")
-    private Jardinero jardinero;
+    private Long jardineroId;
 
-    @NotBlank(message = "EL Estado de contratación es obligatorio")
     @NotNull(message = "Tiene que seleccionar algún tipo de Contratación")
-    private EstadoContratacion estadoContratacion;
+    private Long estadoContratacionId;
 }

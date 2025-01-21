@@ -1,7 +1,12 @@
 package com.cperalta.jardineria.contratacion.infraestructure.config;
 
+import com.cperalta.jardineria.contratacion.application.services.ContrataService;
 import com.cperalta.jardineria.contratacion.application.services.EstadoContratacionService;
 import com.cperalta.jardineria.contratacion.application.services.TrabajoRealizadoService;
+import com.cperalta.jardineria.contratacion.application.usecases.contrata.CreateContrataUseCaseImpl;
+import com.cperalta.jardineria.contratacion.application.usecases.contrata.DeleteContrataUseCaseImpl;
+import com.cperalta.jardineria.contratacion.application.usecases.contrata.RetrieveContrataUseCaseImpl;
+import com.cperalta.jardineria.contratacion.application.usecases.contrata.UpdateContrataUseCaseImpl;
 import com.cperalta.jardineria.contratacion.application.usecases.estadocontratacion.CreateEstadoContratacionUseCaseImpl;
 import com.cperalta.jardineria.contratacion.application.usecases.estadocontratacion.DeleteEstadoContratacionUseCaseImpl;
 import com.cperalta.jardineria.contratacion.application.usecases.estadocontratacion.RetrieveEstadoContratacionUseCaseImpl;
@@ -10,6 +15,7 @@ import com.cperalta.jardineria.contratacion.application.usecases.trabajorealizad
 import com.cperalta.jardineria.contratacion.application.usecases.trabajorealizado.DeleteTrabajoRealizadoUseCaseImpl;
 import com.cperalta.jardineria.contratacion.application.usecases.trabajorealizado.RetrieveTrabajoRealizadoUseCaseImpl;
 import com.cperalta.jardineria.contratacion.application.usecases.trabajorealizado.UpdateTrabajoRealizadoUseCaseImpl;
+import com.cperalta.jardineria.contratacion.domain.ports.output.ContrataRepositoryPort;
 import com.cperalta.jardineria.contratacion.domain.ports.output.EstadoContratacionRepositoryPort;
 import com.cperalta.jardineria.contratacion.domain.ports.output.TrabajoRealizadoRepositoryPort;
 import org.springframework.context.annotation.Bean;
@@ -35,6 +41,16 @@ public class ApplicationConfigModuleContratacion {
                 new CreateTrabajoRealizadoUseCaseImpl(trabajoRealizadoRepositoryPort),
                 new UpdateTrabajoRealizadoUseCaseImpl(trabajoRealizadoRepositoryPort),
                 new DeleteTrabajoRealizadoUseCaseImpl(trabajoRealizadoRepositoryPort)
+        );
+    }
+
+    @Bean
+    public ContrataService contrataService(ContrataRepositoryPort contrataRepositoryPort){
+        return new ContrataService(
+                new RetrieveContrataUseCaseImpl(contrataRepositoryPort),
+                new CreateContrataUseCaseImpl(contrataRepositoryPort),
+                new UpdateContrataUseCaseImpl(contrataRepositoryPort),
+                new DeleteContrataUseCaseImpl(contrataRepositoryPort)
         );
     }
 
