@@ -2,16 +2,20 @@ package com.cperalta.jardineria.usuario.infraestructure.config;
 
 import com.cperalta.jardineria.usuario.application.services.*;
 import com.cperalta.jardineria.usuario.application.usecases.auth.AuthenticationUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.cliente.CreateClienteUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.cliente.DeleteClienteUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.cliente.RetrieveClienteUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.cliente.UpdateClienteUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.estado.CreateEstadoUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.estado.DeleteEstadoUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.estado.RetrieveEstadoUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.estado.UpdateEstadoUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.jardinero.CreateJardineroUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.jardinero.DeleteJardineroUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.jardinero.RetrieveJardineroUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.jardinero.UpdateJardineroUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.persona.PersonaRetrieveUseCaseImpl;
-import com.cperalta.jardineria.usuario.domain.ports.output.AuthenticationRepositoryPort;
-import com.cperalta.jardineria.usuario.domain.ports.output.EstadoRepositoryPort;
-import com.cperalta.jardineria.usuario.domain.ports.output.JardineroRepositoryPort;
-import com.cperalta.jardineria.usuario.domain.ports.output.PersonaRepositoryPort;
+import com.cperalta.jardineria.usuario.domain.ports.output.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,7 +34,20 @@ public class ApplicationConfig {
     @Bean
     public JardineroService jardineroService(JardineroRepositoryPort jardineroRepositoryPort){
         return new JardineroService(
-                new RetrieveJardineroUseCaseImpl(jardineroRepositoryPort)
+                new RetrieveJardineroUseCaseImpl(jardineroRepositoryPort),
+                new CreateJardineroUseCaseImpl(jardineroRepositoryPort),
+                new UpdateJardineroUseCaseImpl(jardineroRepositoryPort),
+                new DeleteJardineroUseCaseImpl(jardineroRepositoryPort)
+        );
+    }
+
+    @Bean
+    public ClienteService clienteService(ClienteRepositoryPort clienteRepositoryPort){
+        return new ClienteService(
+                new RetrieveClienteUseCaseImpl(clienteRepositoryPort),
+                new CreateClienteUseCaseImpl(clienteRepositoryPort),
+                new UpdateClienteUseCaseImpl(clienteRepositoryPort),
+                new DeleteClienteUseCaseImpl(clienteRepositoryPort)
         );
     }
 

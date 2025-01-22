@@ -5,6 +5,7 @@ import com.cperalta.jardineria.usuario.domain.ports.input.jardinero.RetrieveJard
 import com.cperalta.jardineria.usuario.domain.ports.output.JardineroRepositoryPort;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -20,5 +21,15 @@ public class RetrieveJardineroUseCaseImpl implements RetrieveJardineroUseCase {
     @Override
     public Optional<Jardinero> getByEmailAndContrasenia(String email, String contrasenia) {
         return jardineroRepositoryPort.getByEmailAndContrasenia(email, contrasenia);
+    }
+
+    @Override
+    public Optional<Jardinero> getById(Long id) {
+        return jardineroRepositoryPort.getById(id);
+    }
+
+    @Override
+    public List<Jardinero> getAll() {
+        return jardineroRepositoryPort.getAll();
     }
 }
