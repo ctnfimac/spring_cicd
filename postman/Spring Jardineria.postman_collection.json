@@ -1,0 +1,2175 @@
+{
+	"info": {
+		"_postman_id": "3c959419-f158-4be7-bcfc-d1d5c0ed1eb4",
+		"name": "Spring Jardineria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8537828"
+	},
+	"item": [
+		{
+			"name": "Api Auth",
+			"item": [
+				{
+					"name": "Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\": \"christian@gmail.com\",\r\n   \"contrasenia\": \"christian\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/auth/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Jardinero",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\": \"cubillas@gmail.com\",\r\n   \"contrasenia\": \"cubillas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/auth/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api Jardineros",
+			"item": [
+				{
+					"name": "Obtener Jardineros",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NTU5MDQ3LCJleHAiOjE3Mzc1NTk2NDd9.llsdm_sgRkK92Tlel2UgIrND-L-hTyUm2Lm9kcZY1Qk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/jardinero",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"jardinero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Jardinero por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NTU5MDQ3LCJleHAiOjE3Mzc1NTk2NDd9.llsdm_sgRkK92Tlel2UgIrND-L-hTyUm2Lm9kcZY1Qk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/jardinero/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"jardinero",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Vendedor",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"freezer\",\r\n    \"apellido\": \"dbz\",\r\n    \"contrasenia\": \"freezer\",\r\n    \"rolId\": 1,\r\n    \"estadoId\": 1,\r\n    \"telefono\": \"1532987520\",\r\n    \"email\": \"freezer@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/vendedor",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendedor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Jardinero",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/cliente/7",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cliente",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar el Vendedor",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"telefono\": \"1532985555\",\r\n    \"email\": \"freezer_edit@gmail.com\",\r\n    \"nombre\": \"frezer_edit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/vendedor/6",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendedor",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api Cliente",
+			"item": [
+				{
+					"name": "Obtener Cliente",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NjUxNjY3LCJleHAiOjE3Mzc2NTIyNjd9.dzbrzAIp9KOKIyIXQvlh-_AklT7S-RhgUEQgfqXMOos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/cliente",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Cliente por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NTY1Mzc0LCJleHAiOjE3Mzc1NjU5NzR9.eKWOX0E0fWvJGH9T4d0CJnTTyIO9LPNv_T1muOWIFfo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/cliente/2",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cliente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Cliente",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NjUxNjY3LCJleHAiOjE3Mzc2NTIyNjd9.dzbrzAIp9KOKIyIXQvlh-_AklT7S-RhgUEQgfqXMOos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Carlos\",\r\n    \"apellido\": \"Menem\",\r\n    \"contrasenia\": \"carlos\",\r\n    \"rolId\": 2,\r\n    \"estadoId\": 1,\r\n    \"telefono\": \"1545230284\",\r\n    \"email\": \"carlos@gmail.com\",\r\n    \"direccion\": \"lacarra 535\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/cliente",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Cliente 2",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NjUzNDMwLCJleHAiOjE3Mzc2NTQwMzB9.r8h3pUeMIB_a8iEpqxq3xng9O0I59dx_KaSvHwmfNCE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Arnold\",\r\n    \"apellido\": \"Shwalsenegger\",\r\n    \"contrasenia\": \"arnold\",\r\n    \"rolId\": 3,\r\n    \"estadoId\": 1,\r\n    \"telefono\": \"1598741256\",\r\n    \"email\": \"arnold@gmail.com\",\r\n    \"direccion\": \"lacarra 535\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/cliente",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Cliente",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NTY1Mzc0LCJleHAiOjE3Mzc1NjU5NzR9.eKWOX0E0fWvJGH9T4d0CJnTTyIO9LPNv_T1muOWIFfo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/cliente/2",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cliente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar el Comprador",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"telefono\": \"1652203010\",\r\n    \"direccion\": \"las tunas 11122\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/comprador/6",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"comprador",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api Persona",
+			"item": [
+				{
+					"name": "Obtener Personas",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/persona",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Persona por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/persona/2",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persona",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Persona",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"test_nombre\",\r\n    \"apellido\": \"test_apellido\",\r\n    \"contrasenia\": \"test_nombre\",\r\n    \"rolId\": 3,\r\n    \"estadoId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/persona",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Persona por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/persona/10",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persona",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar la Persona",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contrasenia\": \"EL Tiny\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/persona/9",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persona",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api Rol",
+			"item": [
+				{
+					"name": "Obtener roles",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3ODMyODI5LCJleHAiOjE3Mzc4MzM0Mjl9.zBnseSa2F3MmJyVeEBa-u6M5imX_rB2gTQUZYKXQYRk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/rol",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rol"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener rol por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3ODI4Njk5LCJleHAiOjE3Mzc4MjkyOTl9.I_OvQk1O_KWTqcWHoR3PXUCipkVpjMOZRluFcd8Xfjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/rol/5",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rol",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear rol",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3ODMwMzA3LCJleHAiOjE3Mzc4MzA5MDd9.5CQZRaQuDeuJ82hnz8daiJrLKqKF37ToT2ZaKiRQYTk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"TEST2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/rol",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rol"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar rol por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3ODI4Njk5LCJleHAiOjE3Mzc4MjkyOTl9.I_OvQk1O_KWTqcWHoR3PXUCipkVpjMOZRluFcd8Xfjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/rol/4",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rol",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar el rol",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3ODMyNTgyLCJleHAiOjE3Mzc4MzMxODJ9.p5RfFLSvpqoqxcZbQfR87QGfDU1dos9Ee1CldS12v-4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"TEST4_update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/rol/8",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rol",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api Estado",
+			"item": [
+				{
+					"name": "Obtener estados",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjdWJpbGxhc0BnbWFpbC5jb20iLCJpc3MiOiJTZXJ2aWNpb3NEZUphcmRpbmVyaWEiLCJpYXQiOjE3MzcyNTYwMDksImV4cCI6MTczNzI1NjYwOX0.XLGgha2f2kQJ6Dme8d4mE6CfrcJ7lUDp1Jiowyw1tpI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/estado",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estado por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/estado/16",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estado",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Estado",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"PLAZITA\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/estado",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Estado por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/estado/13",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estado",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar el Estado",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"EDITADODA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/estado/12",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estado",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api Estado Compra",
+			"item": [
+				{
+					"name": "Obtener estados de compra",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/estadocompra",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estadocompra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estado de compra por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/estadocompra/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estadocompra",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Estado de Compra por descripcion",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/estadocompra/buscar/finalizado",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estadocompra",
+								"buscar",
+								"finalizado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Estado de Compra",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"ESTADO NUEVO\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/estadocompra",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estadocompra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Estado de Compra por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/estadocompra/7",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estadocompra",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar el Estado de Compra",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"ESTADO EDIT2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/estadocompra/8",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estadocompra",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api Tipo De Servicios",
+			"item": [
+				{
+					"name": "Obtener tipos de Servicios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3MzMyNzQyLCJleHAiOjE3MzczMzMzNDJ9.7yFa5-vhcA6SJe4YFpJ-Lvbls-3E4FBxhl5VQMDiCtI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/tipodeservicio",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tipodeservicio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener tipo de Servicio por Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3MzMyNzQyLCJleHAiOjE3MzczMzMzNDJ9.7yFa5-vhcA6SJe4YFpJ-Lvbls-3E4FBxhl5VQMDiCtI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/tipodeservicio/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tipodeservicio",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Tipo de Servicio",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3MTQ2MTIzLCJleHAiOjE3MzcxNDYxODN9.2XQkgwvgNB-nvbBKzVJRT5mb97efo-lJ92T6ayXZmsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"TIPO DE SERVICIO NUEVO\",\r\n    \"foto\": \"/fotos/tipodeservicio/poda.jpeg\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/tipodeservicio",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tipodeservicio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Tipo de Servicio por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3MTQ2Mzg1LCJleHAiOjE3MzcxNDY5ODV9.Vy5nuRx7vz0bn9q4KjyzrbCWMoINvc9kY4IGcoQzBAw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/tipodeservicio/5",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tipodeservicio",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar el Tipo de Servicio",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3MTQ5MzMxLCJleHAiOjE3MzcxNDk5MzF9.SUZZiS21i8vQyXk0ID9KNBih0XNDh6rRkFLkSFj4Qnc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Protección de plantas edit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/tipodeservicio/4",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tipodeservicio",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api Servicios",
+			"item": [
+				{
+					"name": "Obtener los Servicios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3MjQzMjczLCJleHAiOjE3MzcyNDM4NzN9.3csyGq-53O5e7nEYenqWZyWp2K9yB77dIcFoa7ImYD0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/servicio",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"servicio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Servicio por uuid",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3MjEzMTU4LCJleHAiOjE3MzcyMTM3NTh9.se4w6CcCg0C8DJ7vwMwKLZuXvjtwMr8S7YiiqqnHHic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/servicio/2943f9a0-b41d-4fc1-b552-1a564f59dde3",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"servicio",
+								"2943f9a0-b41d-4fc1-b552-1a564f59dde3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Servicio",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3MTQ2MTIzLCJleHAiOjE3MzcxNDYxODN9.2XQkgwvgNB-nvbBKzVJRT5mb97efo-lJ92T6ayXZmsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"TIPO DE SERVICIO NUEVO\",\r\n    \"foto\": \"/fotos/tipodeservicio/poda.jpeg\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/servicio",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"servicio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Servicio",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3MjQyOTQ5LCJleHAiOjE3MzcyNDM1NDl9.2HdJS9gsCYnrJenFsN4XYRxtDmkWDp2S_vhFRrXRvu8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"Editado4 Descripcion puesta por el jardinero dando valor a su servicio\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/servicio/2943f9a0-b41d-4fc1-b552-1a564f59dde3",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"servicio",
+								"2943f9a0-b41d-4fc1-b552-1a564f59dde3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api Estado de Contratacion",
+			"item": [
+				{
+					"name": "Obtener Estados de Contratacion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NDAzMTY4LCJleHAiOjE3Mzc0MDM3Njh9.a5sqXofvfaytZuHTPaDHoW6TFtQJk-IoyZpSBx9zhM8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/estadodecontratacion",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estadodecontratacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Estado ed Contratación por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3MzMyOTExLCJleHAiOjE3MzczMzM1MTF9.LGuyc-wUEwetD1eDwu73ehX1fPRSXvEt0A8U6Nx_oOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/estadodecontratacion/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estadodecontratacion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Estado de Contratación",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3MzQwNzcyLCJleHAiOjE3MzczNDEzNzJ9.TdcxdlbsRPpi3USlar9IT2RMU3mYCBTHxYSdHn-6mLM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"CANCELADO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/estadodecontratacion",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estadodecontratacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Estado de Contratación por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NDAxODExLCJleHAiOjE3Mzc0MDI0MTF9.-1iaEdWdhb2xz4JhTrrAWh6w3b2e-vlzOk_l2VzMao0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/estadodecontratacion/4",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estadodecontratacion",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar el Estado de Contratación",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NDAzMTY4LCJleHAiOjE3Mzc0MDM3Njh9.a5sqXofvfaytZuHTPaDHoW6TFtQJk-IoyZpSBx9zhM8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"FINALIZADO edit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/estadodecontratacion/3",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estadodecontratacion",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api de Trabajos Realizados",
+			"item": [
+				{
+					"name": "Obtener Trabajos Realizados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NDAwNTI4LCJleHAiOjE3Mzc0MDExMjh9.7njfeg3WKOA2z4A50Jlg5dtNuMdWYAWRNYil9LsJ4PU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/trabajorealizado",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"trabajorealizado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Estado ed Contratación por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NDAxMjIxLCJleHAiOjE3Mzc0MDE4MjF9.yYwr3D_6YkwQtLkE_JXgXb3MRQA7ivKdizu4dUWGGUY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/trabajorealizado/4",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"trabajorealizado",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Trabajo Realizado",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3Mzk2NjczLCJleHAiOjE3MzczOTcyNzN9.lSTTdSz3weK9TpwXWzAyp8IhF70qRQuCp--1SeRWfhE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"test nuevo! trabajo realizado nuevo\",\r\n    \"foto\": \"/fotos/trabajorealiazdo/nuevo2.jpg\",\r\n    \"jardineroId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/trabajorealizado",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"trabajorealizado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Trabajo Realizado por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3Mzk3MzA0LCJleHAiOjE3MzczOTc5MDR9.UNFjrizJ0HvSkoDDPo9KHWKSAGeYR4aCdyu1y3oTvBs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/trabajorealizado/6",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"trabajorealizado",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar un Trabajo Realizado",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NDAxMjIxLCJleHAiOjE3Mzc0MDE4MjF9.yYwr3D_6YkwQtLkE_JXgXb3MRQA7ivKdizu4dUWGGUY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"jardinero editado 2\",\r\n    \"jardineroId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/trabajorealizado/40",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"trabajorealizado",
+								"40"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api de Contrataciones",
+			"item": [
+				{
+					"name": "Obtener Contrataciones",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NDY4MDE3LCJleHAiOjE3Mzc0Njg2MTd9.QcY8_S9Lans5bXYVNu_O0fXs7wd_yZzbJlWHsTVkh_c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/contrata",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"contrata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Contratación por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NDY4MDE3LCJleHAiOjE3Mzc0Njg2MTd9.QcY8_S9Lans5bXYVNu_O0fXs7wd_yZzbJlWHsTVkh_c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/contrata/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"contrata",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Trabajo Realizado",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3Mzk2NjczLCJleHAiOjE3MzczOTcyNzN9.lSTTdSz3weK9TpwXWzAyp8IhF70qRQuCp--1SeRWfhE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"test nuevo! trabajo realizado nuevo\",\r\n    \"foto\": \"/fotos/trabajorealiazdo/nuevo2.jpg\",\r\n    \"jardineroId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/trabajorealizado",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"trabajorealizado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Trabajo Realizado por id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3Mzk3MzA0LCJleHAiOjE3MzczOTc5MDR9.UNFjrizJ0HvSkoDDPo9KHWKSAGeYR4aCdyu1y3oTvBs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/trabajorealizado/6",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"trabajorealizado",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar un Trabajo Realizado",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NDAxMjIxLCJleHAiOjE3Mzc0MDE4MjF9.yYwr3D_6YkwQtLkE_JXgXb3MRQA7ivKdizu4dUWGGUY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"jardinero editado 2\",\r\n    \"jardineroId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/trabajorealizado/40",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"trabajorealizado",
+								"40"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
