@@ -15,6 +15,10 @@ import com.cperalta.jardineria.usuario.application.usecases.jardinero.DeleteJard
 import com.cperalta.jardineria.usuario.application.usecases.jardinero.RetrieveJardineroUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.jardinero.UpdateJardineroUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.persona.PersonaRetrieveUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.rol.CreateRolUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.rol.DeleteRolUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.rol.RetrieveRolUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.rol.UpdateRolUseCaseImpl;
 import com.cperalta.jardineria.usuario.domain.ports.output.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +32,16 @@ public class ApplicationConfig {
                 new CreateEstadoUseCaseImpl(estadoRepositoryPort),
                 new DeleteEstadoUseCaseImpl(estadoRepositoryPort),
                 new UpdateEstadoUseCaseImpl(estadoRepositoryPort)
+        );
+    }
+
+    @Bean
+    public RolService rolService(RolRepositoryPort rolRepositoryPort){
+        return new RolService(
+                new RetrieveRolUseCaseImpl(rolRepositoryPort),
+                new CreateRolUseCaseImpl(rolRepositoryPort),
+                new DeleteRolUseCaseImpl(rolRepositoryPort),
+                new UpdateRolUseCaseImpl(rolRepositoryPort)
         );
     }
 

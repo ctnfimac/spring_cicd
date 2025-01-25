@@ -30,11 +30,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(customizeRequests -> {
                     customizeRequests
                             .requestMatchers("/api/estado/**").hasRole("ADMIN")
+                            .requestMatchers("/api/rol/**").hasRole("ADMIN")
                             .requestMatchers("/api/tipodeservicio/**").hasRole("ADMIN")
                             .requestMatchers("/api/servicio/**").hasRole("ADMIN")
                             .requestMatchers("/api/estadodecontratacion/**").hasRole("ADMIN")
                             .requestMatchers("/api/contrata/**").hasRole("ADMIN")
                             .requestMatchers("/api/trabajorealizado/**").hasRole("ADMIN")
+                            .requestMatchers("/api/cliente/**").hasRole("ADMIN")
                             .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
                             .anyRequest()
@@ -52,6 +54,6 @@ public class SecurityConfig {
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(10);
     }
 }

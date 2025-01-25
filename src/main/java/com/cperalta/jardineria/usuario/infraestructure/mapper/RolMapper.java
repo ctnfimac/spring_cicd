@@ -1,6 +1,7 @@
 package com.cperalta.jardineria.usuario.infraestructure.mapper;
 
 import com.cperalta.jardineria.usuario.domain.models.Rol;
+import com.cperalta.jardineria.usuario.infraestructure.dto.RolDTO;
 import com.cperalta.jardineria.usuario.infraestructure.entities.RolEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
@@ -9,4 +10,6 @@ import org.mapstruct.MappingConstants;
 public interface RolMapper {
     Rol rolEntityToRol(RolEntity rolEntity);
     RolEntity rolToRolEntity(Rol rol);
+
+    Rol rolDTOtoRol(RolDTO rolDTO);
 }
