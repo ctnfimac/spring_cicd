@@ -2,6 +2,7 @@ package com.cperalta.jardineria.usuario.infraestructure.mapper;
 
 import com.cperalta.jardineria.usuario.domain.models.Cliente;
 import com.cperalta.jardineria.usuario.infraestructure.dto.ClienteRequestDTO;
+import com.cperalta.jardineria.usuario.infraestructure.dto.ClienteRequestUpdateDTO;
 import com.cperalta.jardineria.usuario.infraestructure.dto.ClienteResponseDTO;
 import com.cperalta.jardineria.usuario.infraestructure.entities.ClienteEntity;
 import org.mapstruct.Mapper;
@@ -39,4 +40,17 @@ public interface ClienteMapper {
     @Mapping(source = "persona.rol.descripcion", target= "rol")
     @Mapping(source = "persona.estado.descripcion", target= "estado")
     ClienteResponseDTO clienteToClienteResponseDTO(Cliente cliente);
+
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "rolId", target = "persona.rol.id")
+    @Mapping(source = "estadoId", target = "persona.estado.id")
+    @Mapping(source = "telefono", target = "telefono")
+    @Mapping(source = "direccion", target = "direccion")
+    @Mapping(source = "latitud", target = "latitud")
+    @Mapping(source = "longitud", target = "longitud")
+    @Mapping(source = "nombre", target= "persona.nombre")
+    @Mapping(source = "apellido", target= "persona.apellido")
+    @Mapping(source = "email", target= "persona.email")
+    @Mapping(source = "contrasenia", target= "persona.contrasenia")
+    Cliente clienteRequestUpdateDTOtoCliente(ClienteRequestUpdateDTO clienteRequestUpdateDTO);
 }

@@ -3,6 +3,7 @@ package com.cperalta.jardineria.usuario.infraestructure.controllers;
 import com.cperalta.jardineria.usuario.application.services.ClienteService;
 import com.cperalta.jardineria.usuario.domain.models.Cliente;
 import com.cperalta.jardineria.usuario.infraestructure.dto.ClienteRequestDTO;
+import com.cperalta.jardineria.usuario.infraestructure.dto.ClienteRequestUpdateDTO;
 import com.cperalta.jardineria.usuario.infraestructure.dto.ClienteResponseDTO;
 import com.cperalta.jardineria.usuario.infraestructure.mapper.ClienteMapper;
 import lombok.AllArgsConstructor;
@@ -45,5 +46,14 @@ public class ClienteController {
         return clienteService.delete(id) ?
                 new ResponseEntity<>(HttpStatus.NO_CONTENT) :
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ClienteResponseDTO> update(@PathVariable("id") Long id,
+                                                     @RequestBody ClienteRequestUpdateDTO clienteRequestUpdateDTO){
+        Cliente cliente = clienteMapper.clienteRequestUpdateDTOtoCliente(clienteRequestUpdateDTO);
+        Cliente clienteActualizado = clienteService.update(id,cliente);
+        ClienteResponseDTO clienteResponseDTO= clienteMapper.clienteToClienteResponseDTO(clienteActualizado);
+        return new ResponseEntity<>(clienteResponseDTO, HttpStatus.OK);
     }
 }

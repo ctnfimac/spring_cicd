@@ -6,6 +6,7 @@ import com.cperalta.jardineria.usuario.infraestructure.entities.ClienteEntity;
 import com.cperalta.jardineria.usuario.infraestructure.entities.EstadoEntity;
 import com.cperalta.jardineria.usuario.infraestructure.entities.PersonaEntity;
 import com.cperalta.jardineria.usuario.infraestructure.entities.RolEntity;
+import com.cperalta.jardineria.usuario.infraestructure.exceptions.ClienteNotFoundException;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.DuplicateResourceException;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.EstadoNotFoundException;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.RolNotFoundException;
@@ -75,7 +76,54 @@ public class JpaClienteRespositoryAdapter implements ClienteRepositoryPort {
 
     @Override
     public Cliente update(Long id, Cliente cliente) {
-        return null;
+        ClienteEntity clienteActual = jpaClienteRepository.findById(id)
+                .orElseThrow(() -> new ClienteNotFoundException("El cliente que quiere modificar no existe"));
+
+        clienteActual.setTelefono(cliente.getTelefono() != null ? cliente.getTelefono() : clienteActual.getTelefono());
+        clienteActual.setDireccion(cliente.getDireccion() != null ? cliente.getDireccion() : clienteActual.getDireccion());
+
+        clienteActual.getPersona().setNombre(cliente.getPersona().getNombre() != null ?
+                        cliente.getPersona().getNombre() :
+                        clienteActual.getPersona().getNombre()
+                );
+
+        PersonaEntity personaActual = clienteActual.getPersona();
+        personaActual.setApellido(cliente.getPersona().getApellido() != null ?
+                cliente.getPersona().getApellido() :
+                personaActual.getApellido()
+        );
+
+        Long estadoId = cliente.getPersona().getEstado().getId();
+        Long rolId = cliente.getPersona().getRol().getId();
+        String email = cliente.getPersona().getEmail();
+        String contrasenia = cliente.getPersona().getContrasenia();
+
+        personaActual.setEmail(email != null ? email : personaActual.getEmail());
+        if(contrasenia != null){
+            String contraseniaEncriptada = encryptPassword(contrasenia);
+            personaActual.setContrasenia(contraseniaEncriptada);
+        }
+
+        if(estadoId != null){
+            EstadoEntity estadoEntity = jpaEstadoRepository.findById(estadoId)
+                    .orElseThrow(() -> new EstadoNotFoundException("El Estado ingresado es inexistente."));
+            personaActual.setEstado(estadoEntity);
+        }
+
+        if(rolId != null){
+            RolEntity rolEntity = jpaRolRepository.findById(rolId)
+                    .orElseThrow(() -> new RolNotFoundException("El Rol ingresado es inexistente."));
+            personaActual.setRol(rolEntity);
+        }
+
+        clienteActual.setPersona(personaActual);
+
+        try{
+            ClienteEntity clienteCreado = jpaClienteRepository.save(clienteActual);
+            return clienteMapper.clienteEntityToCliente(clienteCreado);
+        }catch (DataIntegrityViolationException ex) {
+            throw new DuplicateResourceException("El Cliente ya existe.");
+        }
     }
 
     @Override
