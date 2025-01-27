@@ -196,12 +196,19 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3OTg0NTg4LCJleHAiOjE3Mzc5ODUxODh9.EDMtBJ370g8U5Jjc3MatD6agY_j_FCfKKPYRY_9QSBs",
+									"type": "string"
+								}
+							]
 						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1:8080/api/cliente/7",
+							"raw": "127.0.0.1:8080/api/cliente/4",
 							"host": [
 								"127",
 								"0",
@@ -212,7 +219,7 @@
 							"path": [
 								"api",
 								"cliente",
-								"7"
+								"4"
 							]
 						}
 					},
@@ -272,7 +279,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NjUxNjY3LCJleHAiOjE3Mzc2NTIyNjd9.dzbrzAIp9KOKIyIXQvlh-_AklT7S-RhgUEQgfqXMOos",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3OTg0NTg4LCJleHAiOjE3Mzc5ODUxODh9.EDMtBJ370g8U5Jjc3MatD6agY_j_FCfKKPYRY_9QSBs",
 									"type": "string"
 								}
 							]
@@ -387,7 +394,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NjUzNDMwLCJleHAiOjE3Mzc2NTQwMzB9.r8h3pUeMIB_a8iEpqxq3xng9O0I59dx_KaSvHwmfNCE",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3OTg0NTg4LCJleHAiOjE3Mzc5ODUxODh9.EDMtBJ370g8U5Jjc3MatD6agY_j_FCfKKPYRY_9QSBs",
 									"type": "string"
 								}
 							]
@@ -396,7 +403,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Arnold\",\r\n    \"apellido\": \"Shwalsenegger\",\r\n    \"contrasenia\": \"arnold\",\r\n    \"rolId\": 3,\r\n    \"estadoId\": 1,\r\n    \"telefono\": \"1598741256\",\r\n    \"email\": \"arnold@gmail.com\",\r\n    \"direccion\": \"lacarra 535\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Steven\",\r\n    \"apellido\": \"Strench\",\r\n    \"contrasenia\": \"steven\",\r\n    \"rolId\": 3,\r\n    \"estadoId\": 1,\r\n    \"telefono\": \"1541668723\",\r\n    \"email\": \"steven@gmail.com\",\r\n    \"direccion\": \"lisando de la torre 201\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

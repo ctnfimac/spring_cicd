@@ -30,7 +30,10 @@ public class PersonaDTO {
     private String contrasenia;
 
     @NotNull(message = "El rol es obligatorio")
-    private Rol rol;
+    //private Rol rol;
+    private Long rolId;
+
     @NotNull(message = "El estado es obligatorio")
-    private Estado estado;
+    //private Estado estado;
+    private Long estadoId;
 }
