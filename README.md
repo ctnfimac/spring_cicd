@@ -104,34 +104,38 @@ mvn test
 ## Funcionalidades Actuales
 1. Iniciar Sesión con usuario y contraseña
    - Implementado JWT para asegurar los endpoints.
-2. Dar de alta, modificar, ver y eliminar Servicios
-3. Dar de alta, modificar, ver y eliminar Tipos de Servicios
-4. Dar de alta, modificar, ver y eliminar Estados
-5. Configuración CI/CD:
+2. Crear, modificar, Ver y Eliminar Servicios
+3. Crear, modificar, Ver y Eliminar Tipos de Servicios
+4. Crear, modificar, Ver y Eliminar Estados
+5. Crear, modificar, Ver y Eliminar Roles
+6. Crear, modificar, Ver y Eliminar Clientes
+7. Crear, modificar, Ver y Eliminar Jardineros
+8. Crear, modificar, Ver y Eliminar Trabajos Realizados
+9. Crear, modificar, Ver y Eliminar Estados de Contratación
+10. Configuración CI/CD:
    - Integración con herramientas de CI/CD para automatización de compilación y pruebas (en este caso con GitHub Actions).
-6. Pruebas Automatizadas:
+11. Pruebas Automatizadas:
    - Implementación de pruebas unitarias e integración con JUnit.
-7. Soporte para base de datos en memoria (H2):
+12. Soporte para base de datos en memoria (H2):
    - Permite pruebas rápidas y configuración sencilla para entornos de desarrollo.
-8. Documentación de APIs con Swagger:
+13. Documentación de APIs con Swagger:
    - Auto-generación de endpoints y estructura API con OpenAPI.
 
 
 ## Funcionalidades a realizar
 Funcionalidades por parte del Jardinero:
-1. Dar de alta trabajos, modificar, ver y eliminar los trabajos realizados
+1. Registrarse en el Sistema
+2. Dar de alta trabajos, modificar, ver y eliminar los trabajos realizados
 
 Funcionalidades por parte del Cliente:
-1. Observar listado de jardineros
-2. Filtrar jardineros por tipo de servicios
-3. Contratar jardinero
+1. Registrarse en el Sistema
+2. Observar listado de jardineros
+3. Filtrar jardineros por tipo de servicios
+4. Contratar jardinero
 
 ## Funcionalidades Futuras
-1. Configuración Docker para ambiente de producción:
-2. Autenticación y Autorización:
-    - Registro de usuarios
-    - Activar el usuario por medio de un email
-    
+1. Configuración Docker para ambiente de producción
+
 
 
 ## Diagrama Entidad Relación de la base de datos

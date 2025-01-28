@@ -7,6 +7,7 @@ import com.cperalta.jardineria.contratacion.infraestructure.dto.TrabajoRealizado
 import com.cperalta.jardineria.contratacion.infraestructure.exceptions.TrabajoRealizadoException;
 import com.cperalta.jardineria.contratacion.infraestructure.mapper.TrabajoRealizadoMapper;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/trabajorealizado")
+@Tag(name = "API de Trabajos Realizados", description = "CRUD de los distintos Trabajos Realizados por los Jardineros")
 @AllArgsConstructor
 public class TrabajoRealizadoController {
 
