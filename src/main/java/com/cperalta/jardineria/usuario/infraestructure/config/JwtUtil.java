@@ -4,6 +4,7 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import org.springframework.beans.factory.annotation.Value;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -18,7 +19,6 @@ public class JwtUtil {
     private long expirationTime;
 
     private Algorithm ALGORITHM;
-
 
     public String generateToken(String email){
         ALGORITHM =Algorithm.HMAC256(secretKey);
@@ -51,5 +51,10 @@ public class JwtUtil {
                 .build()
                 .verify(jwt)
                 .getSubject();// por que en el withSubject le di el username en el metodo create
+    }
+
+    public String encryptPassword(String plainPassword) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder.encode(plainPassword);
     }
 }

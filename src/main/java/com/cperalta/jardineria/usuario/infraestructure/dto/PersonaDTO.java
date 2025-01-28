@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Length;
 @Setter
 @Getter
 public class PersonaDTO {
-    private Integer id;
+    private Long id;
 
     @NotBlank(message = "El email es obligatorio")
     @Length(max=30, message = "La cantidad máxima de caracteres es 30")
