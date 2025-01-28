@@ -92,7 +92,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NTU5MDQ3LCJleHAiOjE3Mzc1NTk2NDd9.llsdm_sgRkK92Tlel2UgIrND-L-hTyUm2Lm9kcZY1Qk",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM4MDczNzQ2LCJleHAiOjE3MzgwNzQzNDZ9.0CUYN8w8Z7qPbulbDc7w8xjN5mprt87IZEr4GaWIwCY",
 									"type": "string"
 								}
 							]
@@ -127,7 +127,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NTU5MDQ3LCJleHAiOjE3Mzc1NTk2NDd9.llsdm_sgRkK92Tlel2UgIrND-L-hTyUm2Lm9kcZY1Qk",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM4MDY2MzM4LCJleHAiOjE3MzgwNjY5Mzh9.AUjT__tPXR7CLOq-QU6dmTrgKQtu6mxLWiTIftzX8TQ",
 									"type": "string"
 								}
 							]
@@ -153,19 +153,26 @@
 					"response": []
 				},
 				{
-					"name": "Crear Vendedor",
+					"name": "Crear Jardinero",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {}
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM4MDczNzQ2LCJleHAiOjE3MzgwNzQzNDZ9.0CUYN8w8Z7qPbulbDc7w8xjN5mprt87IZEr4GaWIwCY",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"freezer\",\r\n    \"apellido\": \"dbz\",\r\n    \"contrasenia\": \"freezer\",\r\n    \"rolId\": 1,\r\n    \"estadoId\": 1,\r\n    \"telefono\": \"1532987520\",\r\n    \"email\": \"freezer@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"email\": \"freezer@gmail.com\",\r\n    \"nombre\": \"freezer\",\r\n    \"apellido\": \"dbz\",\r\n    \"contrasenia\": \"freezer\",\r\n    \"rolId\": 1,\r\n    \"estadoId\": 1,\r\n    \"telefono\": \"1532987520\",\r\n    \"presentacion\": \"Mi nombre es freezer y ofresco servicios de Corte de pasto\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -173,7 +180,7 @@
 							}
 						},
 						"url": {
-							"raw": "127.0.0.1:8080/api/vendedor",
+							"raw": "127.0.0.1:8080/api/jardinero",
 							"host": [
 								"127",
 								"0",
@@ -183,7 +190,7 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"vendedor"
+								"jardinero"
 							]
 						}
 					},
@@ -200,7 +207,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3OTg0NTg4LCJleHAiOjE3Mzc5ODUxODh9.EDMtBJ370g8U5Jjc3MatD6agY_j_FCfKKPYRY_9QSBs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM4MDczNzQ2LCJleHAiOjE3MzgwNzQzNDZ9.0CUYN8w8Z7qPbulbDc7w8xjN5mprt87IZEr4GaWIwCY",
 									"type": "string"
 								}
 							]
@@ -208,7 +215,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1:8080/api/cliente/4",
+							"raw": "127.0.0.1:8080/api/jardinero/3",
 							"host": [
 								"127",
 								"0",
@@ -218,15 +225,15 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"cliente",
-								"4"
+								"jardinero",
+								"3"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Modificar el Vendedor",
+					"name": "Modificar el Jardinero",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {}
 					},
@@ -279,7 +286,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3OTg0NTg4LCJleHAiOjE3Mzc5ODUxODh9.EDMtBJ370g8U5Jjc3MatD6agY_j_FCfKKPYRY_9QSBs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM4MDczNzQ2LCJleHAiOjE3MzgwNzQzNDZ9.0CUYN8w8Z7qPbulbDc7w8xjN5mprt87IZEr4GaWIwCY",
 									"type": "string"
 								}
 							]
@@ -314,7 +321,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3NTY1Mzc0LCJleHAiOjE3Mzc1NjU5NzR9.eKWOX0E0fWvJGH9T4d0CJnTTyIO9LPNv_T1muOWIFfo",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3OTk2NjY3LCJleHAiOjE3Mzc5OTcyNjd9.fqeDKIywzfuscsPsjArmKIbUoHh8IGUPdhTTvymsdpg",
 									"type": "string"
 								}
 							]
@@ -322,7 +329,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1:8080/api/cliente/2",
+							"raw": "127.0.0.1:8080/api/cliente/5",
 							"host": [
 								"127",
 								"0",
@@ -333,7 +340,7 @@
 							"path": [
 								"api",
 								"cliente",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -464,19 +471,26 @@
 					"response": []
 				},
 				{
-					"name": "Modificar el Comprador",
+					"name": "Modificar el Cliente",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {}
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM3OTk2NjY3LCJleHAiOjE3Mzc5OTcyNjd9.fqeDKIywzfuscsPsjArmKIbUoHh8IGUPdhTTvymsdpg",
+									"type": "string"
+								}
+							]
 						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"telefono\": \"1652203010\",\r\n    \"direccion\": \"las tunas 11122\"\r\n}",
+							"raw": "{\r\n    \"telefono\": \"1588888888\",\r\n    \"nombre\": \"Doctor\",\r\n    \"apellido\": \"Extraño\",\r\n    \"rolId\": 1,\r\n    \"estadoId\": 2,\r\n    \"contrasenia\": \"test\"\r\n    //\"email\": \"carlos@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -484,7 +498,7 @@
 							}
 						},
 						"url": {
-							"raw": "127.0.0.1:8080/api/comprador/6",
+							"raw": "127.0.0.1:8080/api/cliente/5",
 							"host": [
 								"127",
 								"0",
@@ -494,8 +508,8 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"comprador",
-								"6"
+								"cliente",
+								"5"
 							]
 						}
 					},
