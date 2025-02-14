@@ -1,9 +1,12 @@
 package com.cperalta.jardineria.usuario.infraestructure.mapper;
 
 import com.cperalta.jardineria.usuario.domain.models.Jardinero;
+import com.cperalta.jardineria.usuario.domain.records.JardineroRecord;
 import com.cperalta.jardineria.usuario.infraestructure.dto.JardineroRequestDTO;
 import com.cperalta.jardineria.usuario.infraestructure.dto.JardineroRequestUpdateDTO;
 import com.cperalta.jardineria.usuario.infraestructure.dto.JardineroResponseDTO;
+import com.cperalta.jardineria.usuario.infraestructure.dto.registrojardinero.RegistroJardineroRequestDTO;
+import com.cperalta.jardineria.usuario.infraestructure.dto.registrojardinero.RegistroJardineroResponseDTO;
 import com.cperalta.jardineria.usuario.infraestructure.entities.JardineroEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -56,4 +59,23 @@ public interface JardineroMapper {
     @Mapping(source = "estadoId", target = "persona.estado.id")
     Jardinero jardineroRequestUpdateDTOtoJardinero(JardineroRequestUpdateDTO jardineroRequestUpdateDTO);
 
+    @Mapping(source = "telefono", target = "telefono")
+    @Mapping(source = "nombre", target = "nombre")
+    @Mapping(source = "apellido", target= "apellido")
+    @Mapping(source = "email", target= "email")
+    @Mapping(source = "contrasenia", target= "contrasenia")
+    JardineroRecord registroJardineroRequestDTOtoJardineroRecord(RegistroJardineroRequestDTO registroJardineroRequestDTO);
+
+    @Mapping(source = "telefono", target = "telefono")
+    @Mapping(source = "persona.nombre", target = "nombre")
+    @Mapping(source = "persona.apellido", target= "apellido")
+    @Mapping(source = "persona.email", target= "email")
+    RegistroJardineroResponseDTO jardineroToRegistroJardineroResponseDTO(Jardinero jardinero);
+
+    @Mapping(source = "telefono", target = "telefono")
+    @Mapping(source = "nombre", target = "persona.nombre")
+    @Mapping(source = "apellido", target= "persona.apellido")
+    @Mapping(source = "email", target= "persona.email")
+    @Mapping(source = "contrasenia", target= "persona.contrasenia")
+    JardineroEntity jardineroRecordToJardineroEntity(JardineroRecord jardineroRecord);
 }

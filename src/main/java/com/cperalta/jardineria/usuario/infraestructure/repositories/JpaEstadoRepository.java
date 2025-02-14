@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface JpaEstadoRepository extends JpaRepository<EstadoEntity, Long> {
     Optional<Estado> getEstadoByDescripcion(String descripcion);
+    EstadoEntity findEstadoEntityByDescripcion(String descripcion);
 }

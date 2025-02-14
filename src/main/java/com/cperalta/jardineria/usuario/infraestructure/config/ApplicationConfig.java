@@ -10,10 +10,7 @@ import com.cperalta.jardineria.usuario.application.usecases.estado.CreateEstadoU
 import com.cperalta.jardineria.usuario.application.usecases.estado.DeleteEstadoUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.estado.RetrieveEstadoUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.estado.UpdateEstadoUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.jardinero.CreateJardineroUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.jardinero.DeleteJardineroUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.jardinero.RetrieveJardineroUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.jardinero.UpdateJardineroUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.jardinero.*;
 import com.cperalta.jardineria.usuario.application.usecases.persona.PersonaRetrieveUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.rol.CreateRolUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.rol.DeleteRolUseCaseImpl;
@@ -83,6 +80,14 @@ public class ApplicationConfig {
     public PersonaService personaService(PersonaRepositoryPort personaRepositoryPort){
         return new PersonaService(
                 new PersonaRetrieveUseCaseImpl(personaRepositoryPort)
+        );
+    }
+
+    @Bean
+    public RegistrarJardineroService registrarJardineroService(RegistrarJardineroRepositoryPort registrarJardineroRepositoryPort,
+                                                               PasswordEncoderPort passwordEncoderPort){
+        return new RegistrarJardineroService(
+                new RegistrarJardineroUseCaseImpl(registrarJardineroRepositoryPort,passwordEncoderPort)
         );
     }
 }
