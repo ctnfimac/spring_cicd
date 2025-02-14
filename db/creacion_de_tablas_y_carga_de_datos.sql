@@ -120,6 +120,7 @@ VALUES('ADMIN'),
 
 INSERT INTO estado(descripcion)
 VALUES('ACTIVO'),
+('SIN_ACTIVAR'),
 ('BLOQUEADO');
 
 INSERT INTO persona(nombre, apellido, email, contrasenia, rol_id, estado_id)
