@@ -85,9 +85,9 @@ public class ApplicationConfig {
 
     @Bean
     public RegistrarJardineroService registrarJardineroService(RegistrarJardineroRepositoryPort registrarJardineroRepositoryPort,
-                                                               PasswordEncoderPort passwordEncoderPort){
+                                                               PasswordEncoderPort passwordEncoderPort, EmailSenderPort emailSenderPort){
         return new RegistrarJardineroService(
-                new RegistrarJardineroUseCaseImpl(registrarJardineroRepositoryPort,passwordEncoderPort)
+                new RegistrarJardineroUseCaseImpl(registrarJardineroRepositoryPort,passwordEncoderPort, emailSenderPort)
         );
     }
 }

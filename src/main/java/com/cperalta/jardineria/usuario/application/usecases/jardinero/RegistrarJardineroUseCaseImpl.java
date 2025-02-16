@@ -2,6 +2,7 @@ package com.cperalta.jardineria.usuario.application.usecases.jardinero;
 
 import com.cperalta.jardineria.usuario.domain.models.Jardinero;
 import com.cperalta.jardineria.usuario.domain.ports.input.jardinero.RegistrarJardineroUseCase;
+import com.cperalta.jardineria.usuario.domain.ports.output.EmailSenderPort;
 import com.cperalta.jardineria.usuario.domain.ports.output.PasswordEncoderPort;
 import com.cperalta.jardineria.usuario.domain.ports.output.RegistrarJardineroRepositoryPort;
 import com.cperalta.jardineria.usuario.domain.records.JardineroRecord;
@@ -13,6 +14,7 @@ public class RegistrarJardineroUseCaseImpl implements RegistrarJardineroUseCase 
 
     private final RegistrarJardineroRepositoryPort registrarJardineroRepositoryPort;
     private final PasswordEncoderPort passwordEncoderPort;
+    private final EmailSenderPort emailSender;
 
     @Override
     public Jardinero registrar(JardineroRecord jardineroRecord) {
@@ -24,6 +26,14 @@ public class RegistrarJardineroUseCaseImpl implements RegistrarJardineroUseCase 
                 jardineroRecord.apellido(),
                 jardineroRecord.email(),
                 hashedPassword);
-        return registrarJardineroRepositoryPort.registrar(jardineroRecordEditado);
+
+        Jardinero jardineroNuevo = registrarJardineroRepositoryPort.registrar(jardineroRecordEditado);
+
+        //Envio el Correo para la activación
+        String asunto = "Bienvenido a nuestra plataforma de Jardineria";
+        String mensaje = "Hola " + jardineroRecord.nombre() + ", tu cuenta ha sido creada con éxito.";
+        emailSender.enviarCorreo(jardineroRecord.email(), asunto, mensaje);
+
+        return jardineroNuevo;
     }
 }
