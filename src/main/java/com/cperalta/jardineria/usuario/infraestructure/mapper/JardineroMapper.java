@@ -77,5 +77,6 @@ public interface JardineroMapper {
     @Mapping(source = "apellido", target= "persona.apellido")
     @Mapping(source = "email", target= "persona.email")
     @Mapping(source = "contrasenia", target= "persona.contrasenia")
+    @Mapping(source = "tokenActivacion", target= "persona.token_activacion")
     JardineroEntity jardineroRecordToJardineroEntity(JardineroRecord jardineroRecord);
 }

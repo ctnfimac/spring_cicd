@@ -5,6 +5,7 @@ public record JardineroRecord(
         String nombre,
         String apellido,
         String email,
-        String contrasenia
+        String contrasenia,
+        String tokenActivacion
 ) {
 }
