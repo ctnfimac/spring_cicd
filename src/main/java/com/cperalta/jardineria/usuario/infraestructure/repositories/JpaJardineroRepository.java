@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface JpaJardineroRepository extends JpaRepository<JardineroEntity, Long> {
      Optional<JardineroEntity> findJardineroEntityByPersonaEmail(String email);
      Optional<JardineroEntity> findJardineroEntityByPersonaEmailAndPersonaContrasenia(String email, String contrasenia);
+     JardineroEntity findJardineroEntityByPersonaEmailAndPersonaTokenActivacion(String email, String token);
 }

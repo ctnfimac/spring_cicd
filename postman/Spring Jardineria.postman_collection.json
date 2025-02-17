@@ -92,7 +92,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM4MDczNzQ2LCJleHAiOjE3MzgwNzQzNDZ9.0CUYN8w8Z7qPbulbDc7w8xjN5mprt87IZEr4GaWIwCY",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM5ODMxOTM5LCJleHAiOjE3Mzk4MzI1Mzl9.svsRMcQP8lTSU5l4VgqSkCXRtonMXl7mtASp4_p5p50",
 									"type": "string"
 								}
 							]
@@ -127,7 +127,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM4MDY2MzM4LCJleHAiOjE3MzgwNjY5Mzh9.AUjT__tPXR7CLOq-QU6dmTrgKQtu6mxLWiTIftzX8TQ",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM4MDc5MzIyLCJleHAiOjE3MzgwNzk5MjJ9.fqwnAMLV_BPytddt7W1NgsJYI3nxSVfPNd-9rXA3zeA",
 									"type": "string"
 								}
 							]
@@ -135,7 +135,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1:8080/api/jardinero/1",
+							"raw": "127.0.0.1:8080/api/jardinero/4",
 							"host": [
 								"127",
 								"0",
@@ -146,7 +146,7 @@
 							"path": [
 								"api",
 								"jardinero",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -239,13 +239,20 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM4MDc5MzIyLCJleHAiOjE3MzgwNzk5MjJ9.fqwnAMLV_BPytddt7W1NgsJYI3nxSVfPNd-9rXA3zeA",
+									"type": "string"
+								}
+							]
 						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"telefono\": \"1532985555\",\r\n    \"email\": \"freezer_edit@gmail.com\",\r\n    \"nombre\": \"frezer_edit\"\r\n}",
+							"raw": "{\r\n    \"email\": \"freezer_2@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -253,7 +260,7 @@
 							}
 						},
 						"url": {
-							"raw": "127.0.0.1:8080/api/vendedor/6",
+							"raw": "127.0.0.1:8080/api/jardinero/4",
 							"host": [
 								"127",
 								"0",
@@ -263,8 +270,8 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"vendedor",
-								"6"
+								"jardinero",
+								"4"
 							]
 						}
 					},
@@ -527,7 +534,14 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM5ODI3OTI1LCJleHAiOjE3Mzk4Mjg1MjV9.ph4U35sr6qwG0H77ZdDk21tdM5nW7gXezBNukclvBDU",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [],
@@ -2185,6 +2199,79 @@
 								"api",
 								"trabajorealizado",
 								"40"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api Registro de Usuarios",
+			"item": [
+				{
+					"name": "Registro de Jardineros",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"telefono\": \"1166114481\",\r\n    \"nombre\": \"babe9\",\r\n    \"apellido\": \"t-x\",\r\n    \"email\": \"babe9@gmail.com\",\r\n    \"contrasenia\": \"babe9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/api/registro/jardinero",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"registro",
+								"jardinero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activar Usuario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/registro/activar?token=3a3e4204-59cd-419f-b99e-e47bfa8dd29f&id=eR2BCQapOAyCmnfz7cipLg==",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"registro",
+								"activar"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "3a3e4204-59cd-419f-b99e-e47bfa8dd29f"
+								},
+								{
+									"key": "id",
+									"value": "eR2BCQapOAyCmnfz7cipLg=="
+								}
 							]
 						}
 					},

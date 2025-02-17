@@ -15,4 +15,9 @@ public class RegistrarJardineroService implements RegistrarJardineroUseCase {
         return registrarJardineroUseCase.registrar(jardineroRecord);
     }
 
+    @Override
+    public Boolean activar(String email, String token) {
+        return registrarJardineroUseCase.activar(email, token);
+    }
+
 }

@@ -5,4 +5,5 @@ import com.cperalta.jardineria.usuario.domain.records.JardineroRecord;
 
 public interface RegistrarJardineroUseCase {
    Jardinero registrar(JardineroRecord jardineroRecord);
+   Boolean activar(String email, String token);
 }

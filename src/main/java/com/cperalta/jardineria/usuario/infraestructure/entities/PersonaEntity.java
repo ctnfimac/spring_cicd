@@ -23,7 +23,8 @@ public class PersonaEntity {
 
     private String contrasenia;
 
-    private String token_activacion;
+    @Column(name = "token_activacion")
+    private String tokenActivacion;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "rol_id", referencedColumnName = "id")

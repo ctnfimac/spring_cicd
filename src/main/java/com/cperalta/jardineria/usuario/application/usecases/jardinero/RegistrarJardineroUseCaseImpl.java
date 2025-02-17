@@ -2,10 +2,7 @@ package com.cperalta.jardineria.usuario.application.usecases.jardinero;
 
 import com.cperalta.jardineria.usuario.domain.models.Jardinero;
 import com.cperalta.jardineria.usuario.domain.ports.input.jardinero.RegistrarJardineroUseCase;
-import com.cperalta.jardineria.usuario.domain.ports.output.EmailSenderPort;
-import com.cperalta.jardineria.usuario.domain.ports.output.PasswordEncoderPort;
-import com.cperalta.jardineria.usuario.domain.ports.output.RegistrarJardineroRepositoryPort;
-import com.cperalta.jardineria.usuario.domain.ports.output.TokenGeneratorPort;
+import com.cperalta.jardineria.usuario.domain.ports.output.*;
 import com.cperalta.jardineria.usuario.domain.records.JardineroRecord;
 import lombok.AllArgsConstructor;
 
@@ -17,6 +14,8 @@ public class RegistrarJardineroUseCaseImpl implements RegistrarJardineroUseCase 
     private final PasswordEncoderPort passwordEncoderPort;
     private final EmailSenderPort emailSender;
     private final TokenGeneratorPort tokenGeneratorPort;
+    private final EncryptionPort encryptionPort;
+
 
     @Override
     public Jardinero registrar(JardineroRecord jardineroRecord) {
@@ -33,15 +32,24 @@ public class RegistrarJardineroUseCaseImpl implements RegistrarJardineroUseCase 
 
         Jardinero jardineroNuevo = registrarJardineroRepositoryPort.registrar(jardineroRecordEditado);
 
-        //Envio el Correo para la activación
-        String id = passwordEncoderPort.encode(jardineroRecord.email());
-        String urlValidacion = "http://127.0.0.1:8080/api/confirmar?token=" + tokenDeValidacion + "&id=" + id;
+        if(jardineroNuevo != null){
+            //Envio el Correo para la activación
+            //String id = passwordEncoderPort.encode(jardineroRecord.email());
+            String id = encryptionPort.encrypt(jardineroRecord.email());
+            String urlValidacion = "http://127.0.0.1:8080/api/registro/activar?token=" + tokenDeValidacion + "&id=" + id;
 
-        String asunto = "Bienvenido a nuestra plataforma de Jardineria";
-        String mensaje = "Hola " + jardineroRecord.nombre() + ", tu cuenta ha sido creada con éxito.<br>" +
-                " Para activar su cuenta ingrese en el siguiente enlace: <br> <a href='"+urlValidacion+"'>" + urlValidacion + "</a>";
-        emailSender.enviarCorreo(jardineroRecord.email(), asunto, mensaje);
+            String asunto = "Bienvenido a nuestra plataforma de Jardineria";
+            String mensaje = "Hola " + jardineroRecord.nombre() + ", tu cuenta ha sido creada con éxito.<br>" +
+                    " Para activar su cuenta ingrese en el siguiente enlace: <br> <a href='"+urlValidacion+"'>" + urlValidacion + "</a>";
+            emailSender.enviarCorreo(jardineroRecord.email(), asunto, mensaje);
+        }
 
         return jardineroNuevo;
+    }
+
+    @Override
+    public Boolean activar(String email, String token) {
+        String emailDesencriptado = encryptionPort.decrypt(email);
+        return registrarJardineroRepositoryPort.activar(emailDesencriptado,token);
     }
 }

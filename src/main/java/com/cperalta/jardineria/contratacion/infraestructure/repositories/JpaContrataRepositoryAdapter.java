@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class JpaContrataRepositoryAdapter implements ContrataRepositoryPort {
 
     private final JpaContrataRepository jpaContrataRepository;
-    private final JpaJardineroRepository jpaJardineroRepository;
+    //private final JpaJardineroRepository jpaJardineroRepository;
     private final ContrataMapper contrataMapper;
 
     @Override

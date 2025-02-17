@@ -43,4 +43,17 @@ public class JpaRegistrarJardineroRepositoryAdapter implements RegistrarJardiner
             throw new DuplicateResourceException("El Jardinero ingresado ya existe.");
         }
     }
+
+    @Override
+    public Boolean activar(String email, String token) {
+        JardineroEntity jardinero = jpaJardineroRepository.findJardineroEntityByPersonaEmailAndPersonaTokenActivacion(email, token);
+        if(jardinero != null){
+            EstadoEntity estado = jpaEstadoRepository.findEstadoEntityByDescripcion(EstadoEnum.ACTIVO.toString());
+            jardinero.getPersona().setEstado(estado);
+            jardinero.getPersona().setTokenActivacion(null);
+            jpaJardineroRepository.save(jardinero);
+            return true;
+        }
+        return false;
+    }
 }
