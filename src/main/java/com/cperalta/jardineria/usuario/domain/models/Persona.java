@@ -13,6 +13,7 @@ public class Persona {
     private String nombre;
     private String apellido;
     private String contrasenia;
+    private String token_activacion;
     private Rol rol;
     private Estado estado;
 }

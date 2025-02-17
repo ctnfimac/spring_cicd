@@ -33,6 +33,7 @@ CREATE TABLE persona(
 	apellido varchar(20),
 	email varchar(30) unique,
 	contrasenia varchar(72),
+	token_activacion varchar(40),
 	rol_id integer NOT NULL,
 	estado_id integer NOT NULL,
 	CONSTRAINT fk_persona_rol FOREIGN KEY(rol_id) REFERENCES rol(id),
