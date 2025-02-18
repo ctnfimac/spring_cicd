@@ -27,13 +27,15 @@ y está preparado para pipelines de CI/CD que garantizan la calidad y estabilida
 ## Tecnologías Utilizadas
 - Java: Versión 17
 - Spring Boot: Versión 3.3.4
+- Spring Security
 - Swagger/OpenAPI: Implementación para la documentación de la API
 - Maven: Gestión de dependencias
 - H2 Database: Base de datos en memoria para pruebas rápidas
 - JUnit: Framework de pruebas unitarias e integración
 - Docker: Para contenedores de servicios como Postgresql y Pgadmin
 
-
+## Arquitectura Utlizada actualmente
+- Hexagonal
 
 ## IDE Utilizado
 El proyecto se desarrolló utilizando IntelliJ IDEA como entorno de desarrollo integrado, 
@@ -61,15 +63,23 @@ cd spring_cicd
 ```
 git checkout develop
 ```
-3. Instala las dependencias:
+3. Creo la base de datos:
+```
+docker-compose up -d
+
+Para generar las tablas y Cargar datos de prueba se deja un script dentro de la carpeta
+db llamado creacion_de_tablas_y_carga_de_datos.sql el cual puedo correr desde el pgadmin 
+o conectandome a la base de datos dentro del contenedor de postgres 
+```
+4. Instala las dependencias del proyecto:
 ```
 mvn clean install
 ```
-4. Ejecuta la aplicación:
+5. Ejecuta la aplicación:
 ```
 mvn spring-boot:run
 ```
-5. La aplicación estará disponible en:
+6. La aplicación estará disponible en:
 ```
 http://localhost:8080
 ```
@@ -120,12 +130,12 @@ mvn test
    - Permite pruebas rápidas y configuración sencilla para entornos de desarrollo.
 13. Documentación de APIs con Swagger:
    - Auto-generación de endpoints y estructura API con OpenAPI.
-
+14. Registro de Usuarios:
+   - Registro al Sistema por parte de los Jardineros (incluye activación de la cuenta desde el email)
 
 ## Funcionalidades a realizar
 Funcionalidades por parte del Jardinero:
-1. Registrarse en el Sistema
-2. Dar de alta trabajos, modificar, ver y eliminar los trabajos realizados
+1. Dar de alta trabajos, modificar, ver y eliminar los trabajos realizados
 
 Funcionalidades por parte del Cliente:
 1. Registrarse en el Sistema
@@ -143,5 +153,80 @@ Funcionalidades por parte del Cliente:
 
 
 
+## API Endpoints
+
+### Autenticación
+- `POST /api/auth/login` - Inicio de Sesión de los Usuarios
+
+### Registro de Usuarios
+- `POST /api/registro/jardinero` - Registro de un Jardinero
+- `GET /api/registro/activar?token={token}&id={id}` - Activar la cuenta de un Usuario
+
+### Jardineros
+- `GET /api/jardinero` - Obtiene todos los jardineros
+- `GET /api/jardinero/{id}` - Obtiene un jardinero por ID
+- `POST /api/jardinero` - Crea un nuevo jardinero
+- `PUT /api/jardinero/{id}` - Actualiza un jardinero
+- `DELETE /api/jardinero/{id}` - Elimina un jardinero
+
+### Clientes
+- `GET /api/cliente` - Obtiene todos los clientes
+- `GET /api/cliente/{id}` - Obtiene un cliente por ID
+- `POST /api/cliente` - Crea un nuevo cliente
+- `PUT /api/cliente/{id}` - Actualiza un cliente
+- `DELETE /api/cliente/{id}` - Elimina un cliente
+
+### Roles
+- `GET /api/rol` - Obtiene todos los roles
+- `GET /api/rol/{id}` - Obtiene un rol por ID
+- `POST /api/rol` - Crea un nuevo rol
+- `PUT /api/rol/{id}` - Actualiza un rol
+- `DELETE /api/rol/{id}` - Elimina un rol
+
+### Estados
+- `GET /api/estado` - Obtiene todos los estados
+- `GET /api/estado/{id}` - Obtiene un estado por ID
+- `POST /api/estado` - Crea un nuevo estado
+- `PUT /api/estado/{id}` - Actualiza un estado
+- `DELETE /api/estado/{id}` - Elimina un estado
+
+### Estados de Compra
+- `GET /api/estadocompra` - Obtiene todos los estados de compras
+- `GET /api/estadocompra/{id}` - Obtiene un estado de compra por ID
+- `POST /api/estadocompra` - Crea un nuevo estado de compra
+- `PUT /api/estadocompra/{id}` - Actualiza un estado de compra
+- `DELETE /api/estadocompra/{id}` - Elimina un estado de compra
+
+### Tipo de Servicios
+- `GET /api/tipodeservicio` - Obtiene todos los tipos de servicios
+- `GET /api/tipodeservicio/{id}` - Obtiene un tipo de servicio por ID
+- `POST /api/tipodeservicio` - Crea un nuevo tipo de servicio
+- `PUT /api/tipodeservicio/{id}` - Actualiza un tipo de servicio
+- `DELETE /api/tipodeservicio/{id}` - Elimina un tipo de servicio
+
+### Servicios
+- `GET /api/servicio` - Obtiene todos los servicios
+- `GET /api/servicio/{UUID}` - Obtiene un servicio por UUID
+- `POST /api/servicio` - Crea un nuevo servicio
+- `PUT /api/servicio/{UUID}` - Actualiza un servicio
+- `DELETE /api/servicio/{UUID}` - Elimina un servicio
+
+### Estados de Contratación
+- `GET /api/estadodecontratacion` - Obtiene todos los estados de contratación
+- `GET /api/estadodecontratacion/{id}` - Obtiene un estado de contratacion por ID
+- `POST /api/estadodecontratacion` - Crea un nuevo estado de contratacion
+- `PUT /api/estadodecontratacion/{id}` - Actualiza un estado de contratacion
+- `DELETE /api/estadodecontratacion/{id}` - Elimina un estado de contratacion
+
+### Trabajos Realizados
+- `GET /api/trabajorealizado` - Obtiene todos los trabajos realizados
+- `GET /api/trabajorealizado/{id}` - Obtiene un trabajo realizado por ID
+- `POST /api/trabajorealizado` - Crea un nuevo trabajo realizado
+- `PUT /api/trabajorealizado/{id}` - Actualiza un trabajo realizado
+- `DELETE /api/trabajorealizado/{id}` - Elimina un trabajo realizado
+
+### Contrataciones
+- `GET /api/contrata` - Obtiene todas las contrataciones
+- `GET /api/contrata/{id}` - Obtiene una contratación por ID
 
 
