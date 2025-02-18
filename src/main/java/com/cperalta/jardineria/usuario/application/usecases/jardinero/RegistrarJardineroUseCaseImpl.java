@@ -36,7 +36,7 @@ public class RegistrarJardineroUseCaseImpl implements RegistrarJardineroUseCase 
             //Envio el Correo para la activación
             //String id = passwordEncoderPort.encode(jardineroRecord.email());
             String id = encryptionPort.encrypt(jardineroRecord.email());
-            String urlValidacion = "http://127.0.0.1:8080/api/registro/activar?token=" + tokenDeValidacion + "&id=" + id;
+            String urlValidacion = "http://127.0.0.1:8080/api/registro/activar_jardinero?token=" + tokenDeValidacion + "&id=" + id;
 
             String asunto = "Bienvenido a nuestra plataforma de Jardineria";
             String mensaje = "Hola " + jardineroRecord.nombre() + ", tu cuenta ha sido creada con éxito.<br>" +

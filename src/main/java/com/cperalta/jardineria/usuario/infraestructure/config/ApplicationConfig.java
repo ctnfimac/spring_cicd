@@ -2,10 +2,7 @@ package com.cperalta.jardineria.usuario.infraestructure.config;
 
 import com.cperalta.jardineria.usuario.application.services.*;
 import com.cperalta.jardineria.usuario.application.usecases.auth.AuthenticationUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.cliente.CreateClienteUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.cliente.DeleteClienteUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.cliente.RetrieveClienteUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.cliente.UpdateClienteUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.cliente.*;
 import com.cperalta.jardineria.usuario.application.usecases.estado.CreateEstadoUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.estado.DeleteEstadoUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.estado.RetrieveEstadoUseCaseImpl;
@@ -89,6 +86,15 @@ public class ApplicationConfig {
                                                                TokenGeneratorPort tokenGeneratorPort, EncryptionPort encryptionPort){
         return new RegistrarJardineroService(
                 new RegistrarJardineroUseCaseImpl(registrarJardineroRepositoryPort,passwordEncoderPort, emailSenderPort, tokenGeneratorPort, encryptionPort)
+        );
+    }
+
+    @Bean
+    public RegistrarClienteService registrarClienteService(RegistrarClienteRepositoryPort registrarClienteRepositoryPort,
+                                                               PasswordEncoderPort passwordEncoderPort, EmailSenderPort emailSenderPort,
+                                                               TokenGeneratorPort tokenGeneratorPort, EncryptionPort encryptionPort){
+        return new RegistrarClienteService(
+                new RegistrarClienteUseCaseImpl(registrarClienteRepositoryPort,passwordEncoderPort, emailSenderPort, tokenGeneratorPort, encryptionPort)
         );
     }
 }

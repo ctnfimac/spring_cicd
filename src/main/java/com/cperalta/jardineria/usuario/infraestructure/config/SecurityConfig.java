@@ -40,7 +40,9 @@ public class SecurityConfig {
                             .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/registro/jardinero").permitAll()
-                            .requestMatchers(HttpMethod.GET, "/api/registro/activar").permitAll()
+                            .requestMatchers(HttpMethod.POST, "/api/registro/cliente").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/api/registro/activar_cliente").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/api/registro/activar_jardinero").permitAll()
                             .anyRequest()
                             .authenticated();
                 })

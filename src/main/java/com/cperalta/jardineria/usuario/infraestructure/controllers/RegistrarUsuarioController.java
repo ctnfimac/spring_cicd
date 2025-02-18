@@ -1,11 +1,17 @@
 package com.cperalta.jardineria.usuario.infraestructure.controllers;
 
+import com.cperalta.jardineria.usuario.application.services.RegistrarClienteService;
 import com.cperalta.jardineria.usuario.application.services.RegistrarJardineroService;
+import com.cperalta.jardineria.usuario.domain.models.Cliente;
 import com.cperalta.jardineria.usuario.domain.models.Jardinero;
+import com.cperalta.jardineria.usuario.domain.records.ClienteRecord;
 import com.cperalta.jardineria.usuario.domain.records.JardineroRecord;
 import com.cperalta.jardineria.usuario.infraestructure.adapters.EncryptionAdapter;
+import com.cperalta.jardineria.usuario.infraestructure.dto.registrocliente.RegistroClienteRequestDTO;
+import com.cperalta.jardineria.usuario.infraestructure.dto.registrocliente.RegistroClienteResponseDTO;
 import com.cperalta.jardineria.usuario.infraestructure.dto.registrojardinero.RegistroJardineroRequestDTO;
 import com.cperalta.jardineria.usuario.infraestructure.dto.registrojardinero.RegistroJardineroResponseDTO;
+import com.cperalta.jardineria.usuario.infraestructure.mapper.ClienteMapper;
 import com.cperalta.jardineria.usuario.infraestructure.mapper.JardineroMapper;
 import jakarta.validation.constraints.Null;
 import lombok.AllArgsConstructor;
@@ -24,8 +30,9 @@ import java.util.Optional;
 public class RegistrarUsuarioController {
 
     private final RegistrarJardineroService registrarJardineroService;
+    private final RegistrarClienteService registrarClienteService;
     private final JardineroMapper jardineroMapper;
-    private final EncryptionAdapter encryptionAdapter;
+    private final ClienteMapper clienteMapper;
 
     @PostMapping("/jardinero")
     public ResponseEntity<RegistroJardineroResponseDTO> registrarJardinero(@Validated @RequestBody RegistroJardineroRequestDTO registroJardineroRequestDTO){
@@ -35,12 +42,27 @@ public class RegistrarUsuarioController {
         return new ResponseEntity<>(registroJardineroResponseDTO, HttpStatus.CREATED);
     }
 
-    @GetMapping("/activar")
-    public ResponseEntity<Map<String, Boolean>> confirmarRegistro(@RequestParam("token") String token, @RequestParam("id") String id){
-        //System.out.println("TOKEN: " + token);
-        //System.out.println("EMAIL:" + encryptionAdapter.decrypt(id));
-        //return ResponseEntity.ok("Token: " + token + ", ID: " + encryptionAdapter.decrypt(id));
+    @PostMapping("/cliente")
+    public ResponseEntity<RegistroClienteResponseDTO> registrarCliente(@Validated @RequestBody RegistroClienteRequestDTO registroClienteRequestDTO){
+        ClienteRecord clienteRecord = clienteMapper.registroClienteRequestDTOtoClienteRecord(registroClienteRequestDTO);
+        Cliente clienteNuevo = registrarClienteService.registrar(clienteRecord);
+        RegistroClienteResponseDTO registroClienteResponseDTO = clienteMapper.clienteToRegistroClienteResponseDTO(clienteNuevo);
+        return new ResponseEntity<>(registroClienteResponseDTO, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/activar_jardinero")
+    public ResponseEntity<Map<String, Boolean>> confirmarRegistroDelJardinero(@RequestParam("token") String token, @RequestParam("id") String id){
         Boolean resultado = registrarJardineroService.activar(id, token);
+
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("usuario_activado", resultado);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/activar_cliente")
+    public ResponseEntity<Map<String, Boolean>> confirmarRegistroDelCliente(@RequestParam("token") String token, @RequestParam("id") String id){
+        Boolean resultado = registrarClienteService.activar(id, token);
 
         Map<String, Boolean> response = new HashMap<>();
         response.put("usuario_activado", resultado);
