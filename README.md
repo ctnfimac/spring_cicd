@@ -132,16 +132,16 @@ mvn test
    - Auto-generación de endpoints y estructura API con OpenAPI.
 14. Registro de Usuarios:
    - Registro al Sistema por parte de los Jardineros (incluye activación de la cuenta desde el email)
+   - Registro al Sistema por parte de los Clientes (incluye activación de la cuenta desde el email)
 
 ## Funcionalidades a realizar
 Funcionalidades por parte del Jardinero:
 1. Dar de alta trabajos, modificar, ver y eliminar los trabajos realizados
 
 Funcionalidades por parte del Cliente:
-1. Registrarse en el Sistema
-2. Observar listado de jardineros
-3. Filtrar jardineros por tipo de servicios
-4. Contratar jardinero
+1. Observar listado de jardineros
+2. Filtrar jardineros por tipo de servicios
+3. Contratar jardinero
 
 ## Funcionalidades Futuras
 1. Configuración Docker para ambiente de producción
@@ -160,7 +160,9 @@ Funcionalidades por parte del Cliente:
 
 ### Registro de Usuarios
 - `POST /api/registro/jardinero` - Registro de un Jardinero
-- `GET /api/registro/activar?token={token}&id={id}` - Activar la cuenta de un Usuario
+- `GET /api/registro/activar_jardinero?token={token}&id={id}` - Activar la cuenta de un Jardinero
+- `POST /api/registro/cliente` - Registro de un Cliente
+- `GET /api/registro/activar_cliente?token={token}&id={id}` - Activar la cuenta de un Cliente
 
 ### Jardineros
 - `GET /api/jardinero` - Obtiene todos los jardineros

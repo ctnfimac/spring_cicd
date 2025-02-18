@@ -293,7 +293,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM4MDczNzQ2LCJleHAiOjE3MzgwNzQzNDZ9.0CUYN8w8Z7qPbulbDc7w8xjN5mprt87IZEr4GaWIwCY",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjaHJpc3RpYW5AZ21haWwuY29tIiwiaXNzIjoiU2VydmljaW9zRGVKYXJkaW5lcmlhIiwiaWF0IjoxNzM5OTAxMjI5LCJleHAiOjE3Mzk5MDE4Mjl9.xm8RVnjMsTOkg2aPYLhklLZTLyYeD6UIr2Tsl6xKa48",
 									"type": "string"
 								}
 							]
@@ -2242,15 +2242,21 @@
 					"response": []
 				},
 				{
-					"name": "Activar Usuario",
+					"name": "Registro de Clientes",
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"telefono\": \"1166114484\",\r\n    \"nombre\": \"babe12\",\r\n    \"apellido\": \"chanchito\",\r\n    \"email\": \"babe12@gmail.com\",\r\n    \"contrasenia\": \"babe12\",\r\n    \"direccion\": \"lavalle 324\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "127.0.0.1:8080/api/registro/activar?token=3a3e4204-59cd-419f-b99e-e47bfa8dd29f&id=eR2BCQapOAyCmnfz7cipLg==",
+							"raw": "127.0.0.1:8080/api/registro/cliente",
 							"host": [
 								"127",
 								"0",
@@ -2261,7 +2267,33 @@
 							"path": [
 								"api",
 								"registro",
-								"activar"
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activar Jardinero",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/registro/activar_jardinero?token=3a3e4204-59cd-419f-b99e-e47bfa8dd29f&id=eR2BCQapOAyCmnfz7cipLg==",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"registro",
+								"activar_jardinero"
 							],
 							"query": [
 								{
@@ -2271,6 +2303,42 @@
 								{
 									"key": "id",
 									"value": "eR2BCQapOAyCmnfz7cipLg=="
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activar Cliente",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/api/registro/activar_cliente?token=950d3ca3-37be-4aeb-abd7-4ff88cd93001&id=mAwAjiy1RzSzh7x6tJxEsAUBh6DN5amHLLqwkatz5VM=",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"registro",
+								"activar_cliente"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "950d3ca3-37be-4aeb-abd7-4ff88cd93001"
+								},
+								{
+									"key": "id",
+									"value": "mAwAjiy1RzSzh7x6tJxEsAUBh6DN5amHLLqwkatz5VM="
 								}
 							]
 						}
