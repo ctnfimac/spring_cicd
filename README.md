@@ -1,6 +1,6 @@
 # Sistema de Jardineria - Proyecto Spring 
 
-## Descripción y Objetivo del Proyecto
+## 📄 Descripción y Objetivo del Proyecto
 
 Este proyecto es un sistema de jardinería desarrollado con Spring Boot, cuyo objetivo es permitir a los clientes solicitar
 servicios de jardineria como por ejemplo: "Cortador de Pasto" y "Podador de Árboles".
@@ -24,7 +24,7 @@ El proyecto también incorpora buenas prácticas de desarrollo mediante pruebas 
 y está preparado para pipelines de CI/CD que garantizan la calidad y estabilidad del software en entornos de prueba  y más adelante también productivos
 
 
-## Tecnologías Utilizadas
+## ⚒ Tecnologías Utilizadas
 - Java: Versión 17
 - Spring Boot: Versión 3.3.4
 - Spring Security
@@ -34,7 +34,7 @@ y está preparado para pipelines de CI/CD que garantizan la calidad y estabilida
 - JUnit: Framework de pruebas unitarias e integración
 - Docker: Para contenedores de servicios como Postgresql y Pgadmin
 
-## Arquitectura Utlizada actualmente
+## 🏗 Arquitectura Utlizada actualmente
 - Hexagonal
 
 ## IDE Utilizado
@@ -51,7 +51,7 @@ Contar con las siguientes herramientas antes de instalar el proyecto:
 - Git (para clonar el repositorio)
 
 
-## Instalación del proyecto
+## ⚒ Instalación del proyecto
 
 1. Clonar el repositorio
 ```
@@ -91,61 +91,52 @@ puede acceder a la misma en la siguiente URL:
 http://127.0.0.1:8080/swagger-ui/index.html
 ```
 ![Image](https://github.com/user-attachments/assets/3f122286-1311-4005-9273-f1ad1b575c8e)
-(por ahora esta captura es de endpoints anteriores a la migración)
 
-## Pruebas automatizadas
+
+## Pruebas Unitarias y de Integración
 El proyecto cuenta con pruebas unitarias y pruebas de integración para garantizar el correcto funcionamiento de las funcionalidades.
 
-## Para ejecutar Pruebas
-
-- Pruebas unitarias
+Ejecutar pruebas unitarias
 ```
 mvn test -P unit-tests
 ```
-- Pruebas de Integración
+Ejecutar pruebas de Integración
 ```
 mvn test -P integration-tests
 ```
-- Todas las Pruebas
+Ejecutar todas las Pruebas
 ```
 mvn test
 ```
 
 ## Funcionalidades Actuales
-1. Iniciar Sesión con usuario y contraseña
-   - Implementado JWT para asegurar los endpoints.
-2. Crear, modificar, Ver y Eliminar Servicios
-3. Crear, modificar, Ver y Eliminar Tipos de Servicios
-4. Crear, modificar, Ver y Eliminar Estados
-5. Crear, modificar, Ver y Eliminar Roles
-6. Crear, modificar, Ver y Eliminar Clientes
-7. Crear, modificar, Ver y Eliminar Jardineros
-8. Crear, modificar, Ver y Eliminar Trabajos Realizados
-9. Crear, modificar, Ver y Eliminar Estados de Contratación
-10. Configuración CI/CD:
-   - Integración con herramientas de CI/CD para automatización de compilación y pruebas (en este caso con GitHub Actions).
-11. Pruebas Automatizadas:
-   - Implementación de pruebas unitarias e integración con JUnit.
-12. Soporte para base de datos en memoria (H2):
-   - Permite pruebas rápidas y configuración sencilla para entornos de desarrollo.
-13. Documentación de APIs con Swagger:
-   - Auto-generación de endpoints y estructura API con OpenAPI.
-14. Registro de Usuarios:
-   - Registro al Sistema por parte de los Jardineros (incluye activación de la cuenta desde el email)
-   - Registro al Sistema por parte de los Clientes (incluye activación de la cuenta desde el email)
+- Iniciar Sesión con usuario y contraseña
+- Implementado JWT para asegurar los endpoints. 
+- Crear, modificar, Ver y Eliminar Servicios 
+- Crear, modificar, Ver y Eliminar Tipos de Servicios 
+- Crear, modificar, Ver y Eliminar Estados 
+- Crear, modificar, Ver y Eliminar Roles 
+- Crear, modificar, Ver y Eliminar Clientes 
+- Crear, modificar, Ver y Eliminar Jardineros 
+- Crear, modificar, Ver y Eliminar Trabajos Realizados 
+- Crear, modificar, Ver y Eliminar Estados de Contratación
+- Integración con herramientas de CI/CD para automatización de compilación y pruebas (en este caso con GitHub Actions).
+- Implementación de pruebas unitarias e integración con JUnit.
+- Soporte para base de datos en memoria (H2):
+- Documentación de APIs con Swagger:
+- Registro al Sistema por parte de los Jardineros (incluye activación de la cuenta desde el email)
+- Registro al Sistema por parte de los Clientes (incluye activación de la cuenta desde el email)
 
 ## Funcionalidades a realizar
+- Configuración Docker para ambiente de producción
+
 Funcionalidades por parte del Jardinero:
-1. Dar de alta trabajos, modificar, ver y eliminar los trabajos realizados
+- Dar de alta trabajos, modificar, ver y eliminar los trabajos realizados
 
 Funcionalidades por parte del Cliente:
-1. Observar listado de jardineros
-2. Filtrar jardineros por tipo de servicios
-3. Contratar jardinero
-
-## Funcionalidades Futuras
-1. Configuración Docker para ambiente de producción
-
+- Observar listado de jardineros
+- Filtrar jardineros por tipo de servicios 
+- Contratar jardinero
 
 
 ## Diagrama Entidad Relación de la base de datos
