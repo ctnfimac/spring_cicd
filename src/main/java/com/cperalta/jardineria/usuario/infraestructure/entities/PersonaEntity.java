@@ -28,7 +28,7 @@ public class PersonaEntity {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "rol_id", referencedColumnName = "id")
-    private RolEntity rol;
+    private RoleEntity role;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "estado_id", referencedColumnName = "id")

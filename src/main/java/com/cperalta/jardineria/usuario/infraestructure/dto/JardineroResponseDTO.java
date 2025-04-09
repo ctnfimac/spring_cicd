@@ -13,6 +13,6 @@ public class JardineroResponseDTO {
     private String nombre;
     private String apellido;
     private String contrasenia;
-    private String rol;
+    private String role;
     private String estado;
 }

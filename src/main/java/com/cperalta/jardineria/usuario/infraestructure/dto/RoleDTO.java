@@ -8,11 +8,11 @@ import org.hibernate.validator.constraints.Length;
 
 @Setter
 @Getter
-public class RolDTO {
+public class RoleDTO {
 
     private Long id;
 
     @NotBlank(message = "La descripción es obligatoria")
     @Length(min = 4, message = "La cantidad mínima de caracteres es 4")
-    private String descripcion;
+    private String description;
 }

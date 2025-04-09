@@ -15,6 +15,6 @@ public class ClienteResponseDTO {
     private String direccion;
     private String latitud;
     private String longitud;
-    private String rol;
+    private String role;
     private String estado;
 }

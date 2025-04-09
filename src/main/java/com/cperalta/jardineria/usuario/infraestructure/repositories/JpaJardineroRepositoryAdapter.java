@@ -6,7 +6,7 @@ import com.cperalta.jardineria.usuario.infraestructure.entities.*;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.DuplicateResourceException;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.EstadoNotFoundException;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.JardineroNotFoundException;
-import com.cperalta.jardineria.usuario.infraestructure.exceptions.RolNotFoundException;
+import com.cperalta.jardineria.usuario.infraestructure.exceptions.RoleNotFoundException;
 import com.cperalta.jardineria.usuario.infraestructure.mapper.JardineroMapper;
 import com.cperalta.jardineria.usuario.domain.ports.output.JardineroRepositoryPort;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class JpaJardineroRepositoryAdapter implements JardineroRepositoryPort {
 
     private final JpaJardineroRepository jpaJardineroRepository;
-    private final JpaRolRepository jpaRolRepository;
+    private final JpaRoleRepository jpaRoleRepository;
     private final JpaEstadoRepository jpaEstadoRepository;
 
     private final JardineroMapper jardineroMapper;
@@ -53,12 +53,12 @@ public class JpaJardineroRepositoryAdapter implements JardineroRepositoryPort {
 
     @Override
     public Jardinero create(Jardinero jardinero) {
-        Long rolId = jardinero.getPersona().getRol().getId();
+        Long rolId = jardinero.getPersona().getRole().getId();
         Long estadoId = jardinero.getPersona().getEstado().getId();
 
         // verifico si existe el rol y el estado
-        RolEntity rolEntity = jpaRolRepository.findById(rolId)
-                .orElseThrow(() -> new RolNotFoundException("El Rol ingresado es inexistente."));
+        RoleEntity roleEntity = jpaRoleRepository.findById(rolId)
+                .orElseThrow(() -> new RoleNotFoundException("El Rol ingresado es inexistente."));
 
         EstadoEntity estadoEntity = jpaEstadoRepository.findById(estadoId)
                 .orElseThrow(() -> new EstadoNotFoundException("El Estado ingresado es inexistente."));
@@ -68,7 +68,7 @@ public class JpaJardineroRepositoryAdapter implements JardineroRepositoryPort {
         jardinero.getPersona().setContrasenia(encryptedPassword);
 
         JardineroEntity jardineroEntity = jardineroMapper.jardineroToJardineroEntity(jardinero);
-        jardineroEntity.getPersona().setRol(rolEntity);
+        jardineroEntity.getPersona().setRole(roleEntity);
         jardineroEntity.getPersona().setEstado(estadoEntity);
 
         try {
@@ -100,7 +100,7 @@ public class JpaJardineroRepositoryAdapter implements JardineroRepositoryPort {
         );
 
         Long estadoId = jardinero.getPersona().getEstado().getId();
-        Long rolId = jardinero.getPersona().getRol().getId();
+        Long roleId = jardinero.getPersona().getRole().getId();
         String email = jardinero.getPersona().getEmail();
         String contrasenia = jardinero.getPersona().getContrasenia();
 
@@ -116,10 +116,10 @@ public class JpaJardineroRepositoryAdapter implements JardineroRepositoryPort {
             personaActual.setEstado(estadoEntity);
         }
 
-        if(rolId != null){
-            RolEntity rolEntity = jpaRolRepository.findById(rolId)
-                    .orElseThrow(() -> new RolNotFoundException("El Rol ingresado es inexistente."));
-            personaActual.setRol(rolEntity);
+        if(roleId != null){
+            RoleEntity roleEntity = jpaRoleRepository.findById(roleId)
+                    .orElseThrow(() -> new RoleNotFoundException("El Rol ingresado es inexistente."));
+            personaActual.setRole(roleEntity);
         }
 
         jardineroActual.setPersona(personaActual);

@@ -5,11 +5,11 @@ import com.cperalta.jardineria.usuario.domain.ports.output.ClienteRepositoryPort
 import com.cperalta.jardineria.usuario.infraestructure.entities.ClienteEntity;
 import com.cperalta.jardineria.usuario.infraestructure.entities.EstadoEntity;
 import com.cperalta.jardineria.usuario.infraestructure.entities.PersonaEntity;
-import com.cperalta.jardineria.usuario.infraestructure.entities.RolEntity;
+import com.cperalta.jardineria.usuario.infraestructure.entities.RoleEntity;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.ClienteNotFoundException;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.DuplicateResourceException;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.EstadoNotFoundException;
-import com.cperalta.jardineria.usuario.infraestructure.exceptions.RolNotFoundException;
+import com.cperalta.jardineria.usuario.infraestructure.exceptions.RoleNotFoundException;
 import com.cperalta.jardineria.usuario.infraestructure.mapper.ClienteMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -26,7 +26,7 @@ public class JpaClienteRespositoryAdapter implements ClienteRepositoryPort {
 
     private final JpaClienteRepository jpaClienteRepository;
     private final JpaEstadoRepository jpaEstadoRepository;
-    private final JpaRolRepository jpaRolRepository;
+    private final JpaRoleRepository jpaRoleRepository;
 
     private final ClienteMapper clienteMapper;
     private final BCryptPasswordEncoder passwordEncoder;
@@ -46,12 +46,12 @@ public class JpaClienteRespositoryAdapter implements ClienteRepositoryPort {
 
     @Override
     public Cliente create(Cliente cliente) {
-        Long rolId = cliente.getPersona().getRol().getId();
+        Long roleId = cliente.getPersona().getRole().getId();
         Long estadoId = cliente.getPersona().getEstado().getId();
 
         // verifico si existe el rol y el estado
-        RolEntity rolEntity = jpaRolRepository.findById(rolId)
-                .orElseThrow(() -> new RolNotFoundException("El Rol ingresado es inexistente."));
+        RoleEntity roleEntity = jpaRoleRepository.findById(roleId)
+                .orElseThrow(() -> new RoleNotFoundException("El Rol ingresado es inexistente."));
 
         EstadoEntity estadoEntity = jpaEstadoRepository.findById(estadoId)
                 .orElseThrow(() -> new EstadoNotFoundException("El Estado ingresado es inexistente."));
@@ -62,7 +62,7 @@ public class JpaClienteRespositoryAdapter implements ClienteRepositoryPort {
 
         PersonaEntity personaEntity = clienteEntity.getPersona();
         personaEntity.setEstado(estadoEntity);
-        personaEntity.setRol(rolEntity);
+        personaEntity.setRole(roleEntity);
 
         clienteEntity.setPersona(personaEntity);
 
@@ -94,7 +94,7 @@ public class JpaClienteRespositoryAdapter implements ClienteRepositoryPort {
         );
 
         Long estadoId = cliente.getPersona().getEstado().getId();
-        Long rolId = cliente.getPersona().getRol().getId();
+        Long rolId = cliente.getPersona().getRole().getId();
         String email = cliente.getPersona().getEmail();
         String contrasenia = cliente.getPersona().getContrasenia();
 
@@ -111,9 +111,9 @@ public class JpaClienteRespositoryAdapter implements ClienteRepositoryPort {
         }
 
         if(rolId != null){
-            RolEntity rolEntity = jpaRolRepository.findById(rolId)
-                    .orElseThrow(() -> new RolNotFoundException("El Rol ingresado es inexistente."));
-            personaActual.setRol(rolEntity);
+            RoleEntity roleEntity = jpaRoleRepository.findById(rolId)
+                    .orElseThrow(() -> new RoleNotFoundException("El Rol ingresado es inexistente."));
+            personaActual.setRole(roleEntity);
         }
 
         clienteActual.setPersona(personaActual);

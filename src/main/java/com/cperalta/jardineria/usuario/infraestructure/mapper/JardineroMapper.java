@@ -21,7 +21,7 @@ public interface JardineroMapper {
     @Mapping(source = "persona.nombre" , target = "persona.nombre")
     @Mapping(source = "persona.apellido" , target = "persona.apellido")
     @Mapping(source = "persona.contrasenia" , target = "persona.contrasenia")
-    @Mapping(source = "persona.rol" , target = "persona.rol")
+    @Mapping(source = "persona.role" , target = "persona.role")
     @Mapping(source = "persona.estado" , target = "persona.estado")
     JardineroEntity jardineroToJardineroEntity(Jardinero jardinero);
 
@@ -33,7 +33,7 @@ public interface JardineroMapper {
     @Mapping(source = "nombre" , target = "persona.nombre")
     @Mapping(source = "apellido" , target = "persona.apellido")
     @Mapping(source = "contrasenia" , target = "persona.contrasenia")
-    @Mapping(source = "rolId" , target = "persona.rol.id")
+    @Mapping(source = "roleId" , target = "persona.role.id")
     @Mapping(source = "estadoId" , target = "persona.estado.id")
     Jardinero jardineroRequestDTOtoJardinero(JardineroRequestDTO jardineroRequestDTO);
 
@@ -44,7 +44,7 @@ public interface JardineroMapper {
     @Mapping(source = "persona.nombre", target= "nombre")
     @Mapping(source = "persona.apellido", target= "apellido")
     @Mapping(source = "persona.contrasenia", target= "contrasenia")
-    @Mapping(source = "persona.rol.descripcion", target= "rol")
+    @Mapping(source = "persona.role.description", target= "role")
     @Mapping(source = "persona.estado.descripcion", target= "estado")
     JardineroResponseDTO jardineroToJardineroResponseDTO(Jardinero jardinero);
 
@@ -55,7 +55,7 @@ public interface JardineroMapper {
     @Mapping(source = "nombre", target= "persona.nombre")
     @Mapping(source = "apellido", target= "persona.apellido")
     @Mapping(source = "contrasenia", target= "persona.contrasenia")
-    @Mapping(source = "rolId", target = "persona.rol.id")
+    @Mapping(source = "roleId", target = "persona.role.id")
     @Mapping(source = "estadoId", target = "persona.estado.id")
     Jardinero jardineroRequestUpdateDTOtoJardinero(JardineroRequestUpdateDTO jardineroRequestUpdateDTO);
 

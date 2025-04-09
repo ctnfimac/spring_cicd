@@ -35,8 +35,8 @@ public class GlobalExceptionHandler {
         return respuestaTemplate(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(RolNotFoundException.class)
-    public ResponseEntity<Map<String, String>> handleRolNotFoundException(RolNotFoundException ex) {
+    @ExceptionHandler(RoleNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleRolNotFoundException(RoleNotFoundException ex) {
         return respuestaTemplate(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 

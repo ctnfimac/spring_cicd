@@ -9,10 +9,10 @@ import com.cperalta.jardineria.usuario.application.usecases.estado.RetrieveEstad
 import com.cperalta.jardineria.usuario.application.usecases.estado.UpdateEstadoUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.jardinero.*;
 import com.cperalta.jardineria.usuario.application.usecases.persona.PersonaRetrieveUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.rol.CreateRolUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.rol.DeleteRolUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.rol.RetrieveRolUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.rol.UpdateRolUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.rol.CreateRoleUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.rol.DeleteRoleUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.rol.RetrieveRoleUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.rol.UpdateRoleUseCaseImpl;
 import com.cperalta.jardineria.usuario.domain.ports.output.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,12 +30,12 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public RolService rolService(RolRepositoryPort rolRepositoryPort){
-        return new RolService(
-                new RetrieveRolUseCaseImpl(rolRepositoryPort),
-                new CreateRolUseCaseImpl(rolRepositoryPort),
-                new DeleteRolUseCaseImpl(rolRepositoryPort),
-                new UpdateRolUseCaseImpl(rolRepositoryPort)
+    public RoleService rolService(RoleRepositoryPort roleRepositoryPort){
+        return new RoleService(
+                new RetrieveRoleUseCaseImpl(roleRepositoryPort),
+                new CreateRoleUseCaseImpl(roleRepositoryPort),
+                new DeleteRoleUseCaseImpl(roleRepositoryPort),
+                new UpdateRoleUseCaseImpl(roleRepositoryPort)
         );
     }
 

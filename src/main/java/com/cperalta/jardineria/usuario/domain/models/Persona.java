@@ -14,6 +14,6 @@ public class Persona {
     private String apellido;
     private String contrasenia;
     private String tokenActivacion;
-    private Rol rol;
+    private Role role;
     private Estado estado;
 }

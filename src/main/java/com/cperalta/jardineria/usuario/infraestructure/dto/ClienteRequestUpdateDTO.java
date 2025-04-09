@@ -15,6 +15,6 @@ public class ClienteRequestUpdateDTO {
     private String direccion;
     private String latitud;
     private String longitud;
-    private Long rolId;
+    private Long roleId;
     private Long estadoId;
 }

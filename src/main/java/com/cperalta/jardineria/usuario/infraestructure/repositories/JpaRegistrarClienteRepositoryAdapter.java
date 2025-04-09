@@ -7,7 +7,7 @@ import com.cperalta.jardineria.usuario.domain.ports.output.RegistrarClienteRepos
 import com.cperalta.jardineria.usuario.domain.records.ClienteRecord;
 import com.cperalta.jardineria.usuario.infraestructure.entities.ClienteEntity;
 import com.cperalta.jardineria.usuario.infraestructure.entities.EstadoEntity;
-import com.cperalta.jardineria.usuario.infraestructure.entities.RolEntity;
+import com.cperalta.jardineria.usuario.infraestructure.entities.RoleEntity;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.DuplicateResourceException;
 import com.cperalta.jardineria.usuario.infraestructure.mapper.ClienteMapper;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class JpaRegistrarClienteRepositoryAdapter implements RegistrarClienteRepositoryPort {
 
     private final JpaClienteRepository jpaClienteRepository;
-    private final JpaRolRepository jpaRolRepository;
+    private final JpaRoleRepository jpaRoleRepository;
     private final JpaEstadoRepository jpaEstadoRepository;
 
     private final ClienteMapper clienteMapper;
@@ -29,11 +29,11 @@ public class JpaRegistrarClienteRepositoryAdapter implements RegistrarClienteRep
     public Cliente registrar(ClienteRecord clienteRecord) {
         ClienteEntity clienteEntity = clienteMapper.clienteRecordToJardineroEntity(clienteRecord);
 
-        RolEntity rol = jpaRolRepository.findRolEntityByDescripcion(RolEnum.CLIENTE.toString());
+        RoleEntity role = jpaRoleRepository.findRoleEntityByDescription(RolEnum.CLIENTE.toString());
         EstadoEntity estado = jpaEstadoRepository.findEstadoEntityByDescripcion(EstadoEnum.SIN_ACTIVAR.toString());
 
         clienteEntity.getPersona().setEstado(estado);
-        clienteEntity.getPersona().setRol(rol);
+        clienteEntity.getPersona().setRole(role);
 
         try{
             ClienteEntity clienteCreado = jpaClienteRepository.save(clienteEntity);

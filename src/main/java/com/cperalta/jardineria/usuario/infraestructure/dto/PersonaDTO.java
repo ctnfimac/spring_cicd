@@ -1,7 +1,5 @@
 package com.cperalta.jardineria.usuario.infraestructure.dto;
 
-import com.cperalta.jardineria.usuario.domain.models.Estado;
-import com.cperalta.jardineria.usuario.domain.models.Rol;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -31,7 +29,7 @@ public class PersonaDTO {
 
     @NotNull(message = "El rol es obligatorio")
     //private Rol rol;
-    private Long rolId;
+    private Long roleId;
 
     @NotNull(message = "El estado es obligatorio")
     //private Estado estado;

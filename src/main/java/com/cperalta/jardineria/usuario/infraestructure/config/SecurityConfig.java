@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(customizeRequests -> {
                     customizeRequests
                             .requestMatchers("/api/estado/**").hasRole("ADMIN")
-                            .requestMatchers("/api/rol/**").hasRole("ADMIN")
+                            .requestMatchers("/api/v1/role/**").hasRole("ADMIN")
                             .requestMatchers("/api/tipodeservicio/**").hasRole("ADMIN")
                             .requestMatchers("/api/servicio/**").hasRole("ADMIN")
                             .requestMatchers("/api/estadodecontratacion/**").hasRole("ADMIN")

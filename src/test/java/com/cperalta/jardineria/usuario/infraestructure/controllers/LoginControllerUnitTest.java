@@ -4,7 +4,7 @@ package com.cperalta.jardineria.usuario.infraestructure.controllers;
 import com.cperalta.jardineria.usuario.application.services.PersonaService;
 import com.cperalta.jardineria.usuario.domain.models.Estado;
 import com.cperalta.jardineria.usuario.domain.models.Persona;
-import com.cperalta.jardineria.usuario.domain.models.Rol;
+import com.cperalta.jardineria.usuario.domain.models.Role;
 import com.cperalta.jardineria.usuario.infraestructure.config.JwtUtil;
 import com.cperalta.jardineria.usuario.infraestructure.dto.LoginDTO;
 import org.junit.jupiter.api.Assertions;
@@ -58,7 +58,7 @@ public class LoginControllerUnitTest {
 
         // Creo una persona la cual se utilizará como respuesta para la busqueda por email
         Persona persona = new Persona(1, email, "Test", "User", password, "tokendeactivacionrandom",
-                new Rol(1L,"ADMIN"), new Estado(1L, "ACTIVO"));
+                new Role(1L,"ADMIN"), new Estado(1L, "ACTIVO"));
 
         UsernamePasswordAuthenticationToken loginToken = new UsernamePasswordAuthenticationToken(email, password);
 
@@ -114,7 +114,7 @@ public class LoginControllerUnitTest {
         loginDTO.setContrasenia(password);
 
         Persona persona = new Persona(1, email, "Pepe", "Becerra", "12345","tokendeactivacionrandom",
-                new Rol(1L,"USER"), new Estado(1L, "ACTIVE"));
+                new Role(1L,"USER"), new Estado(1L, "ACTIVE"));
 
         UsernamePasswordAuthenticationToken loginToken = new UsernamePasswordAuthenticationToken(email, password);
 

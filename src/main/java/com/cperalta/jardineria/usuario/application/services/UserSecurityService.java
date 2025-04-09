@@ -1,7 +1,7 @@
 package com.cperalta.jardineria.usuario.application.services;
 
 import com.cperalta.jardineria.usuario.domain.models.Persona;
-import com.cperalta.jardineria.usuario.domain.models.Rol;
+import com.cperalta.jardineria.usuario.domain.models.Role;
 import com.cperalta.jardineria.usuario.domain.ports.input.persona.PersonaRetrieveUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,15 +25,15 @@ public class UserSecurityService implements UserDetailsService{
         Persona persona = personaRetrieveUseCase.findByEmail(email)
                 .orElseThrow( () -> new UsernameNotFoundException("Usuario " + email + " not found"));
 
-        Rol rol = persona.getRol();
+        Role role = persona.getRole();
 
         ArrayList<String> roles = new ArrayList<String>();
-        roles.add(rol.getDescripcion());
+        roles.add(role.getDescription());
 
         return User.builder()
                 .username(persona.getEmail())
                 .password(persona.getContrasenia())
-                .roles(rol.getDescripcion())
+                .roles(role.getDescription())
                 .authorities(grantedAuthorities(roles.toArray(new String[0])))//this.grantedAuthorities(rol)
                 .accountLocked(false)//usuario.getLocked()
                 //.disabled(usuario.getDisabled())
