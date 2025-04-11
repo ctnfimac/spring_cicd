@@ -31,12 +31,12 @@ public class JpaJardineroRepositoryAdapter implements JardineroRepositoryPort {
 
     @Override
     public Optional<Jardinero> findByEmail(String email) {
-        return jpaJardineroRepository.findJardineroEntityByPersonaEmail(email).map(jardineroMapper::jardineroEntityToJardinero);
+        return jpaJardineroRepository.findJardineroEntityByBaseUserEmail(email).map(jardineroMapper::jardineroEntityToJardinero);
     }
 
     @Override
     public Optional<Jardinero> getByEmailAndContrasenia(String email, String contrasenia) {
-        return jpaJardineroRepository.findJardineroEntityByPersonaEmailAndPersonaContrasenia(email,contrasenia).map(jardineroMapper::jardineroEntityToJardinero);
+        return jpaJardineroRepository.findJardineroEntityByBaseUserEmailAndBaseUserPassword(email,contrasenia).map(jardineroMapper::jardineroEntityToJardinero);
     }
 
     @Override
@@ -53,8 +53,8 @@ public class JpaJardineroRepositoryAdapter implements JardineroRepositoryPort {
 
     @Override
     public Jardinero create(Jardinero jardinero) {
-        Long rolId = jardinero.getPersona().getRole().getId();
-        Long estadoId = jardinero.getPersona().getStatus().getId();
+        Long rolId = jardinero.getBaseUser().getRole().getId();
+        Long estadoId = jardinero.getBaseUser().getStatus().getId();
 
         // verifico si existe el rol y el estado
         RoleEntity roleEntity = jpaRoleRepository.findById(rolId)
@@ -64,12 +64,12 @@ public class JpaJardineroRepositoryAdapter implements JardineroRepositoryPort {
                 .orElseThrow(() -> new EstadoNotFoundException("El Estado ingresado es inexistente."));
 
         // encripto la contraseña
-        String encryptedPassword = jwtUtil.encryptPassword(jardinero.getPersona().getContrasenia());
-        jardinero.getPersona().setContrasenia(encryptedPassword);
+        String encryptedPassword = jwtUtil.encryptPassword(jardinero.getBaseUser().getPassword());
+        jardinero.getBaseUser().setPassword(encryptedPassword);
 
         JardineroEntity jardineroEntity = jardineroMapper.jardineroToJardineroEntity(jardinero);
-        jardineroEntity.getPersona().setRole(roleEntity);
-        jardineroEntity.getPersona().setStatus(estadoEntity);
+        jardineroEntity.getBaseUser().setRole(roleEntity);
+        jardineroEntity.getBaseUser().setStatus(estadoEntity);
 
         try {
             JardineroEntity jardineroEntityCreado = jpaJardineroRepository.save(jardineroEntity);
@@ -87,42 +87,42 @@ public class JpaJardineroRepositoryAdapter implements JardineroRepositoryPort {
         jardineroActual.setTelefono(jardinero.getTelefono() != null ? jardinero.getTelefono() : jardineroActual.getTelefono());
         jardineroActual.setPresentacion(jardinero.getPresentacion() != null ? jardinero.getPresentacion() : jardineroActual.getPresentacion());
 
-        PersonaEntity personaActual = jardineroActual.getPersona();
+        BaseUserEntity baseUserCurrent = jardineroActual.getBaseUser();
 
-        personaActual.setApellido(jardinero.getPersona().getApellido() != null ?
-                jardinero.getPersona().getApellido() :
-                personaActual.getApellido()
+        baseUserCurrent.setLastName(jardinero.getBaseUser().getLastName() != null ?
+                jardinero.getBaseUser().getLastName() :
+                baseUserCurrent.getLastName()
         );
 
-        personaActual.setNombre(jardinero.getPersona().getNombre() != null ?
-                jardinero.getPersona().getNombre() :
-                personaActual.getNombre()
+        baseUserCurrent.setName(jardinero.getBaseUser().getName() != null ?
+                jardinero.getBaseUser().getName() :
+                baseUserCurrent.getName()
         );
 
-        Long estadoId = jardinero.getPersona().getStatus().getId();
-        Long roleId = jardinero.getPersona().getRole().getId();
-        String email = jardinero.getPersona().getEmail();
-        String contrasenia = jardinero.getPersona().getContrasenia();
+        Long estadoId = jardinero.getBaseUser().getStatus().getId();
+        Long roleId = jardinero.getBaseUser().getRole().getId();
+        String email = jardinero.getBaseUser().getEmail();
+        String contrasenia = jardinero.getBaseUser().getPassword();
 
-        personaActual.setEmail(email != null ? email : personaActual.getEmail());
+        baseUserCurrent.setEmail(email != null ? email : baseUserCurrent.getEmail());
         if(contrasenia != null){
             String contraseniaEncriptada = jwtUtil.encryptPassword(contrasenia);
-            personaActual.setContrasenia(contraseniaEncriptada);
+            baseUserCurrent.setPassword(contraseniaEncriptada);
         }
 
         if(estadoId != null){
             StatusEntity estadoEntity = jpaStatusRepository.findById(estadoId)
                     .orElseThrow(() -> new EstadoNotFoundException("El Estado ingresado es inexistente."));
-            personaActual.setStatus(estadoEntity);
+            baseUserCurrent.setStatus(estadoEntity);
         }
 
         if(roleId != null){
             RoleEntity roleEntity = jpaRoleRepository.findById(roleId)
                     .orElseThrow(() -> new RoleNotFoundException("El Rol ingresado es inexistente."));
-            personaActual.setRole(roleEntity);
+            baseUserCurrent.setRole(roleEntity);
         }
 
-        jardineroActual.setPersona(personaActual);
+        jardineroActual.setBaseUser(baseUserCurrent);
 
         try{
             JardineroEntity jardineroActualizado = jpaJardineroRepository.save(jardineroActual);

@@ -12,5 +12,5 @@ public class Jardinero {
     private Long id;
     private String telefono;
     private String presentacion;
-    private Persona persona;
+    private BaseUser baseUser;
 }

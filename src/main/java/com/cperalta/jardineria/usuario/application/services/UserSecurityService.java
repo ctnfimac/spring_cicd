@@ -1,8 +1,8 @@
 package com.cperalta.jardineria.usuario.application.services;
 
-import com.cperalta.jardineria.usuario.domain.models.Persona;
+import com.cperalta.jardineria.usuario.domain.models.BaseUser;
 import com.cperalta.jardineria.usuario.domain.models.Role;
-import com.cperalta.jardineria.usuario.domain.ports.input.persona.PersonaRetrieveUseCase;
+import com.cperalta.jardineria.usuario.domain.ports.input.baseuser.BaseUserRetrieveUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,11 +18,11 @@ import java.util.ArrayList;
 @AllArgsConstructor
 public class UserSecurityService implements UserDetailsService{
 
-    private final PersonaRetrieveUseCase personaRetrieveUseCase;
+    private final BaseUserRetrieveUseCase personaRetrieveUseCase;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Persona persona = personaRetrieveUseCase.findByEmail(email)
+        BaseUser persona = personaRetrieveUseCase.findByEmail(email)
                 .orElseThrow( () -> new UsernameNotFoundException("Usuario " + email + " not found"));
 
         Role role = persona.getRole();
@@ -32,7 +32,7 @@ public class UserSecurityService implements UserDetailsService{
 
         return User.builder()
                 .username(persona.getEmail())
-                .password(persona.getContrasenia())
+                .password(persona.getPassword())
                 .roles(role.getDescription())
                 .authorities(grantedAuthorities(roles.toArray(new String[0])))//this.grantedAuthorities(rol)
                 .accountLocked(false)//usuario.getLocked()

@@ -8,7 +8,7 @@ import com.cperalta.jardineria.usuario.application.usecases.status.DeleteStatusU
 import com.cperalta.jardineria.usuario.application.usecases.status.RetrieveStatusUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.status.UpdateStatusUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.jardinero.*;
-import com.cperalta.jardineria.usuario.application.usecases.persona.PersonaRetrieveUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.baseuser.BaseUserRetrieveUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.rol.CreateRoleUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.rol.DeleteRoleUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.rol.RetrieveRoleUseCaseImpl;
@@ -67,16 +67,16 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public UserSecurityService userSecurityService(PersonaRepositoryPort personaRepositoryPort){
+    public UserSecurityService userSecurityService(BaseUserRepositoryPort baseUserRepositoryPort){
         return new UserSecurityService(
-                new PersonaRetrieveUseCaseImpl(personaRepositoryPort)
+                new BaseUserRetrieveUseCaseImpl(baseUserRepositoryPort)
         );
     }
 
     @Bean
-    public PersonaService personaService(PersonaRepositoryPort personaRepositoryPort){
-        return new PersonaService(
-                new PersonaRetrieveUseCaseImpl(personaRepositoryPort)
+    public BaseUserService baseUserService(BaseUserRepositoryPort baseUserRepositoryPort){
+        return new BaseUserService(
+                new BaseUserRetrieveUseCaseImpl(baseUserRepositoryPort)
         );
     }
 

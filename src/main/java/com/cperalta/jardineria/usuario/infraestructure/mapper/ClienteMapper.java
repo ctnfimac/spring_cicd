@@ -20,20 +20,20 @@ import org.mapstruct.MappingConstants;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ClienteMapper {
 
-    @Mapping(source = "persona", target = "persona")
+    @Mapping(source = "baseUser", target = "baseUser")
     ClienteEntity clienteToClienteEntity(Cliente cliente);
     Cliente clienteEntityToCliente(ClienteEntity clienteEntity);
 
-    @Mapping(source = "roleId", target = "persona.role.id")
-    @Mapping(source = "statusId", target = "persona.status.id")
+    @Mapping(source = "roleId", target = "baseUser.role.id")
+    @Mapping(source = "statusId", target = "baseUser.status.id")
     @Mapping(source = "telefono", target = "telefono")
     @Mapping(source = "direccion", target = "direccion")
     @Mapping(source = "latitud", target = "latitud")
     @Mapping(source = "longitud", target = "longitud")
-    @Mapping(source = "nombre", target= "persona.nombre")
-    @Mapping(source = "apellido", target= "persona.apellido")
-    @Mapping(source = "email", target= "persona.email")
-    @Mapping(source = "contrasenia", target= "persona.contrasenia")
+    @Mapping(source = "name", target= "baseUser.name")
+    @Mapping(source = "lastName", target= "baseUser.lastName")
+    @Mapping(source = "email", target= "baseUser.email")
+    @Mapping(source = "password", target= "baseUser.password")
     Cliente clienteRequestDTOtoCliente(ClienteRequestDTO clienteRequestDTO);
 
     @Mapping(source = "id", target= "id")
@@ -41,25 +41,25 @@ public interface ClienteMapper {
     @Mapping(source = "direccion", target= "direccion")
     @Mapping(source = "latitud", target= "latitud")
     @Mapping(source = "longitud", target= "longitud")
-    @Mapping(source = "persona.email", target= "email")
-    @Mapping(source = "persona.nombre", target= "nombre")
-    @Mapping(source = "persona.apellido", target= "apellido")
-    @Mapping(source = "persona.contrasenia", target= "contrasenia")
-    @Mapping(source = "persona.role.description", target= "role")
-    @Mapping(source = "persona.status.description", target= "status")
+    @Mapping(source = "baseUser.email", target= "email")
+    @Mapping(source = "baseUser.name", target= "nombre")
+    @Mapping(source = "baseUser.lastName", target= "apellido")
+    @Mapping(source = "baseUser.password", target= "contrasenia")
+    @Mapping(source = "baseUser.role.description", target= "role")
+    @Mapping(source = "baseUser.status.description", target= "status")
     ClienteResponseDTO clienteToClienteResponseDTO(Cliente cliente);
 
     @Mapping(source = "id", target = "id")
-    @Mapping(source = "roleId", target = "persona.role.id")
-    @Mapping(source = "statusId", target = "persona.status.id")
+    @Mapping(source = "roleId", target = "baseUser.role.id")
+    @Mapping(source = "statusId", target = "baseUser.status.id")
     @Mapping(source = "telefono", target = "telefono")
     @Mapping(source = "direccion", target = "direccion")
     @Mapping(source = "latitud", target = "latitud")
     @Mapping(source = "longitud", target = "longitud")
-    @Mapping(source = "nombre", target= "persona.nombre")
-    @Mapping(source = "apellido", target= "persona.apellido")
-    @Mapping(source = "email", target= "persona.email")
-    @Mapping(source = "contrasenia", target= "persona.contrasenia")
+    @Mapping(source = "nombre", target= "baseUser.name")
+    @Mapping(source = "apellido", target= "baseUser.lastName")
+    @Mapping(source = "email", target= "baseUser.email")
+    @Mapping(source = "contrasenia", target= "baseUser.password")
     Cliente clienteRequestUpdateDTOtoCliente(ClienteRequestUpdateDTO clienteRequestUpdateDTO);
 
 
@@ -69,22 +69,26 @@ public interface ClienteMapper {
     @Mapping(source = "apellido", target= "apellido")
     @Mapping(source = "email", target= "email")
     @Mapping(source = "contrasenia", target= "contrasenia")
+    @Mapping(target = "tokenActivacion", ignore = true)
     ClienteRecord registroClienteRequestDTOtoClienteRecord(RegistroClienteRequestDTO registroClienteRequestDTO);
 
     @Mapping(source = "telefono", target = "telefono")
     @Mapping(source = "direccion", target = "direccion")
-    @Mapping(source = "nombre", target= "persona.nombre")
-    @Mapping(source = "apellido", target= "persona.apellido")
-    @Mapping(source = "email", target= "persona.email")
-    @Mapping(source = "contrasenia", target= "persona.contrasenia")
-    @Mapping(source = "tokenActivacion", target= "persona.tokenActivacion")
+    @Mapping(source = "nombre", target= "baseUser.name")
+    @Mapping(source = "apellido", target= "baseUser.lastName")
+    @Mapping(source = "email", target= "baseUser.email")
+    @Mapping(source = "contrasenia", target= "baseUser.password")
+    @Mapping(source = "tokenActivacion", target= "baseUser.tokenActivation")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "latitud", ignore = true)
+    @Mapping(target = "longitud", ignore = true)
     ClienteEntity clienteRecordToJardineroEntity(ClienteRecord clienteRecord);
 
     @Mapping(source = "telefono", target = "telefono")
     @Mapping(source = "direccion", target= "direccion")
-    @Mapping(source = "persona.nombre", target = "nombre")
-    @Mapping(source = "persona.apellido", target= "apellido")
-    @Mapping(source = "persona.email", target= "email")
+    @Mapping(source = "baseUser.name", target = "nombre")
+    @Mapping(source = "baseUser.lastName", target= "apellido")
+    @Mapping(source = "baseUser.email", target= "email")
     RegistroClienteResponseDTO clienteToRegistroClienteResponseDTO(Cliente cliente);
 
 }

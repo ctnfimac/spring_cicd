@@ -15,9 +15,9 @@ public interface ContrataMapper {
     Contrata contrataEntityToContrata(ContrataEntity contrataEntity);
     ContrataEntity contrataToContrataEntity(Contrata contrata);
 
-    //@Mapping(target = "jardinero", expression = "java(mapJardineroFromId(contrataRequestDTO.getJardineroId()))")
-    //@Mapping(target = "cliente", expression = "java(mapClienteFromId(contrataRequestDTO.getClienteId()))")
-    //@Mapping(target = "estadoContratacion", expression = "java(mapEstadoContratacionFromId(contrataRequestDTO.getEstadoContratacionId()))")
+    @Mapping(target = "jardinero", ignore = true)
+    @Mapping(target = "cliente", ignore = true)
+    @Mapping(target = "estadoContratacion", ignore = true)
     Contrata contrataRequestDTOtoContrata(ContrataRequestDTO contrataRequestDTO);
 
     /*default Jardinero mapJardineroFromId(Long jardineroId) {

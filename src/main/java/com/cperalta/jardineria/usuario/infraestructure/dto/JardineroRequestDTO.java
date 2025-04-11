@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
-public class JardineroRequestDTO extends PersonaDTO{
+public class JardineroRequestDTO extends BaseUserDTO{
     private Long id;
 
     @NotBlank(message = "EL teléfono es obligatorio")

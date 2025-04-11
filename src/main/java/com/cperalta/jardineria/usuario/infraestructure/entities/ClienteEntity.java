@@ -24,5 +24,5 @@ public class ClienteEntity {
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
-    private PersonaEntity persona;
+    private BaseUserEntity baseUser;
 }

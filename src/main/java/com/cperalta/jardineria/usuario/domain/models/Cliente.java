@@ -11,7 +11,7 @@ public class Cliente {
     private Long id;
     private String telefono;
     private String direccion;
-    private Persona persona;
+    private BaseUser baseUser;
     private String latitud;
     private String longitud;
 }

@@ -1,8 +1,8 @@
 package com.cperalta.jardineria.usuario.infraestructure.controllers;
 
 
-import com.cperalta.jardineria.usuario.application.services.PersonaService;
-import com.cperalta.jardineria.usuario.domain.models.Persona;
+import com.cperalta.jardineria.usuario.application.services.BaseUserService;
+import com.cperalta.jardineria.usuario.domain.models.BaseUser;
 import com.cperalta.jardineria.usuario.infraestructure.config.JwtUtil;
 import com.cperalta.jardineria.usuario.infraestructure.dto.LoginDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,7 +31,7 @@ import java.util.HashMap;
 public class LoginController {
     @Autowired
     private final AuthenticationManager authenticationManager;
-    private final PersonaService personaService;
+    private final BaseUserService baseUserService;
 
     private final JwtUtil jwtUtil;
 
@@ -41,9 +41,9 @@ public class LoginController {
             description = "Este endpoint es para Iniciar Sesión por parte del usuario. No requiere token"
     )
     public ResponseEntity<Map<String, Object>> login(@Validated @RequestBody LoginDTO loginDTO){
-        Optional<Persona> personaBuscada = personaService.findByEmail(loginDTO.getEmail());
+        Optional<BaseUser> baseUserFinded = baseUserService.findByEmail(loginDTO.getEmail());
 
-        if (personaBuscada.isEmpty()) {
+        if (baseUserFinded.isEmpty()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error","Credenciales Incorrectas"));
         }
 
@@ -54,14 +54,14 @@ public class LoginController {
         );
 
         try{
-            Persona persona = personaBuscada.get();
+            BaseUser persona = baseUserFinded.get();
             Authentication authentication = authenticationManager.authenticate(loginToken);
             String jwt = jwtUtil.generateToken(loginDTO.getEmail());
 
             // Construyo la respuesta JSON
             Map<String, Object> response = new HashMap<>();
             response.put("token", jwt);
-            response.put("nombre", persona.getNombre());
+            response.put("nombre", persona.getName());
             response.put("email", persona.getEmail());
 
             return new ResponseEntity<>(response, HttpStatus.OK);

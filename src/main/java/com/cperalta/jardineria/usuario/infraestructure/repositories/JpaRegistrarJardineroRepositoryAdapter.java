@@ -33,8 +33,8 @@ public class JpaRegistrarJardineroRepositoryAdapter implements RegistrarJardiner
         RoleEntity role = jpaRoleRepository.findRoleEntityByDescription(RoleEnum.JARDINERO.toString());
         StatusEntity status = jpaStatusRepository.findStatusEntityByDescription(StatusEnum.SIN_ACTIVAR.toString());
 
-        jardineroEntity.getPersona().setStatus(status);
-        jardineroEntity.getPersona().setRole(role);
+        jardineroEntity.getBaseUser().setStatus(status);
+        jardineroEntity.getBaseUser().setRole(role);
 
         try{
             JardineroEntity jardineroCreado = jpaJardineroRepository.save(jardineroEntity);
@@ -46,11 +46,11 @@ public class JpaRegistrarJardineroRepositoryAdapter implements RegistrarJardiner
 
     @Override
     public Boolean activar(String email, String token) {
-        JardineroEntity jardinero = jpaJardineroRepository.findJardineroEntityByPersonaEmailAndPersonaTokenActivacion(email, token);
+        JardineroEntity jardinero = jpaJardineroRepository.findJardineroEntityByBaseUserEmailAndBaseUserTokenActivation(email, token);
         if(jardinero != null){
             StatusEntity status = jpaStatusRepository.findStatusEntityByDescription(StatusEnum.ACTIVO.toString());
-            jardinero.getPersona().setStatus(status);
-            jardinero.getPersona().setTokenActivacion(null);
+            jardinero.getBaseUser().setStatus(status);
+            jardinero.getBaseUser().setTokenActivation(null);
             jpaJardineroRepository.save(jardinero);
             return true;
         }

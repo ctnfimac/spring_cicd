@@ -1,13 +1,12 @@
 package com.cperalta.jardineria.usuario.infraestructure.mapper;
 
 import com.cperalta.jardineria.usuario.domain.models.BaseUser;
-import com.cperalta.jardineria.usuario.infraestructure.dto.LoginDTO;
+import com.cperalta.jardineria.usuario.infraestructure.entities.BaseUserEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface LoginMapper {
-    @Mapping(target = "contrasenia", ignore = true)
-    LoginDTO baseUserToLoginDTO(BaseUser baseUser);
+public interface BaseUserMapper {
+    BaseUser baseUserEntityToBaseUser(BaseUserEntity baseUserEntity);
+    BaseUserEntity baseUserToBaseUserEntity(BaseUser baseUser);
 }

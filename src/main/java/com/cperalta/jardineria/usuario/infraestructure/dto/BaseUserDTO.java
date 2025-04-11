@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Setter
 @Getter
-public class PersonaDTO {
+public class BaseUserDTO {
     private Long id;
 
     @NotBlank(message = "El email es obligatorio")
@@ -17,15 +17,15 @@ public class PersonaDTO {
 
     @NotBlank(message = "El nombre es obligatorio")
     @Length(max = 20, message = "La cantidad máxima de caracteres es 20")
-    private String nombre;
+    private String name;
 
     @NotBlank(message = "El apellido es obligatorio")
     @Length(max = 20, message = "La cantidad máxima de caracteres es 20")
-    private String apellido;
+    private String lastName;
 
     @NotBlank(message = "La contraseña es obligatoria")
     @Length(max = 72, message = "La cantidad máxima de caracteres es 72")
-    private String contrasenia;
+    private String password;
 
     @NotNull(message = "El rol es obligatorio")
     //private Rol rol;

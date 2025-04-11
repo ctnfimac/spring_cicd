@@ -32,8 +32,8 @@ public class JpaRegistrarClienteRepositoryAdapter implements RegistrarClienteRep
         RoleEntity role = jpaRoleRepository.findRoleEntityByDescription(RoleEnum.CLIENTE.toString());
         StatusEntity status = jpaStatusRepository.findStatusEntityByDescription(StatusEnum.SIN_ACTIVAR.toString());
 
-        clienteEntity.getPersona().setStatus(status);
-        clienteEntity.getPersona().setRole(role);
+        clienteEntity.getBaseUser().setStatus(status);
+        clienteEntity.getBaseUser().setRole(role);
 
         try{
             ClienteEntity clienteCreado = jpaClienteRepository.save(clienteEntity);
@@ -45,11 +45,11 @@ public class JpaRegistrarClienteRepositoryAdapter implements RegistrarClienteRep
 
     @Override
     public Boolean activar(String email, String token) {
-        ClienteEntity cliente = jpaClienteRepository.findClienteEntityByPersonaEmailAndPersonaTokenActivacion(email, token);
+        ClienteEntity cliente = jpaClienteRepository.findClienteEntityByBaseUserEmailAndBaseUserTokenActivation(email, token);
         if(cliente != null){
             StatusEntity status = jpaStatusRepository.findStatusEntityByDescription(StatusEnum.ACTIVO.toString());
-            cliente.getPersona().setStatus(status);
-            cliente.getPersona().setTokenActivacion(null);
+            cliente.getBaseUser().setStatus(status);
+            cliente.getBaseUser().setTokenActivation(null);
             jpaClienteRepository.save(cliente);
             return true;
         }

@@ -10,21 +10,25 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonaEntity {
+public class BaseUserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String nombre;
-    private String apellido;
+    @Column( name = "nombre")
+    private String name;
+
+    @Column( name = "apellido")
+    private String lastName;
 
     @Column(unique = true)
     private String email;
 
-    private String contrasenia;
+    @Column( name = "contrasenia")
+    private String password;
 
     @Column(name = "token_activacion")
-    private String tokenActivacion;
+    private String tokenActivation;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "rol_id", referencedColumnName = "id")

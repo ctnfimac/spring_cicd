@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface JpaClienteRepository extends JpaRepository<ClienteEntity, Long> {
-    ClienteEntity findClienteEntityByPersonaEmailAndPersonaTokenActivacion(String email, String token);
+    ClienteEntity findClienteEntityByBaseUserEmailAndBaseUserTokenActivation(String email, String token);
 }

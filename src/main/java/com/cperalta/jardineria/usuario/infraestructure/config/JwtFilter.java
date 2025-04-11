@@ -1,6 +1,5 @@
 package com.cperalta.jardineria.usuario.infraestructure.config;
 
-import com.cperalta.jardineria.usuario.application.services.PersonaService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,7 +22,6 @@ public class JwtFilter extends OncePerRequestFilter {
     /*Esta clase es utilizada para verificar si la peticion necesita las validaciones o no*/
 
     private final JwtUtil jwtUtil;
-    private final PersonaService personaService;
     private final UserDetailsService userDetailsService;
 
     @Override
