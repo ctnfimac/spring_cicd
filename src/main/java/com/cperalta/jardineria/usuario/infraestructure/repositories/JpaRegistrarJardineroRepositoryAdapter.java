@@ -1,11 +1,11 @@
 package com.cperalta.jardineria.usuario.infraestructure.repositories;
 
-import com.cperalta.jardineria.usuario.domain.constants.EstadoEnum;
-import com.cperalta.jardineria.usuario.domain.constants.RolEnum;
+import com.cperalta.jardineria.usuario.domain.constants.StatusEnum;
+import com.cperalta.jardineria.usuario.domain.constants.RoleEnum;
 import com.cperalta.jardineria.usuario.domain.models.Jardinero;
 import com.cperalta.jardineria.usuario.domain.ports.output.RegistrarJardineroRepositoryPort;
 import com.cperalta.jardineria.usuario.domain.records.JardineroRecord;
-import com.cperalta.jardineria.usuario.infraestructure.entities.EstadoEntity;
+import com.cperalta.jardineria.usuario.infraestructure.entities.StatusEntity;
 import com.cperalta.jardineria.usuario.infraestructure.entities.JardineroEntity;
 import com.cperalta.jardineria.usuario.infraestructure.entities.RoleEntity;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.DuplicateResourceException;
@@ -20,7 +20,7 @@ public class JpaRegistrarJardineroRepositoryAdapter implements RegistrarJardiner
 
     private final JpaJardineroRepository jpaJardineroRepository;
     private final JpaRoleRepository jpaRoleRepository;
-    private final JpaEstadoRepository jpaEstadoRepository;
+    private final JpaStatusRepository jpaStatusRepository;
 
     private final JardineroMapper jardineroMapper;
 
@@ -30,10 +30,10 @@ public class JpaRegistrarJardineroRepositoryAdapter implements RegistrarJardiner
         JardineroEntity jardineroEntity = jardineroMapper.jardineroRecordToJardineroEntity(jardineroRecord);
 
         // Asignar el ROL y ESTADO correspondiente
-        RoleEntity role = jpaRoleRepository.findRoleEntityByDescription(RolEnum.JARDINERO.toString());
-        EstadoEntity estado = jpaEstadoRepository.findEstadoEntityByDescripcion(EstadoEnum.SIN_ACTIVAR.toString());
+        RoleEntity role = jpaRoleRepository.findRoleEntityByDescription(RoleEnum.JARDINERO.toString());
+        StatusEntity status = jpaStatusRepository.findStatusEntityByDescription(StatusEnum.SIN_ACTIVAR.toString());
 
-        jardineroEntity.getPersona().setEstado(estado);
+        jardineroEntity.getPersona().setStatus(status);
         jardineroEntity.getPersona().setRole(role);
 
         try{
@@ -48,8 +48,8 @@ public class JpaRegistrarJardineroRepositoryAdapter implements RegistrarJardiner
     public Boolean activar(String email, String token) {
         JardineroEntity jardinero = jpaJardineroRepository.findJardineroEntityByPersonaEmailAndPersonaTokenActivacion(email, token);
         if(jardinero != null){
-            EstadoEntity estado = jpaEstadoRepository.findEstadoEntityByDescripcion(EstadoEnum.ACTIVO.toString());
-            jardinero.getPersona().setEstado(estado);
+            StatusEntity status = jpaStatusRepository.findStatusEntityByDescription(StatusEnum.ACTIVO.toString());
+            jardinero.getPersona().setStatus(status);
             jardinero.getPersona().setTokenActivacion(null);
             jpaJardineroRepository.save(jardinero);
             return true;

@@ -16,5 +16,5 @@ public class ClienteResponseDTO {
     private String latitud;
     private String longitud;
     private String role;
-    private String estado;
+    private String status;
 }

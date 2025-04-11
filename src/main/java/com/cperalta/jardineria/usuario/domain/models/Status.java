@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Estado {
+public class Status {
     private Long id;
-    private String descripcion;
+    private String description;
 }

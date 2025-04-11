@@ -1,8 +1,8 @@
-package com.cperalta.jardineria.usuario.application.usecases.estado;
+package com.cperalta.jardineria.usuario.application.usecases.status;
 
 
-import com.cperalta.jardineria.usuario.domain.models.Estado;
-import com.cperalta.jardineria.usuario.domain.ports.output.EstadoRepositoryPort;
+import com.cperalta.jardineria.usuario.domain.models.Status;
+import com.cperalta.jardineria.usuario.domain.ports.output.StatusRepositoryPort;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,18 +20,18 @@ import static org.mockito.Mockito.when;
 @ActiveProfiles("test")
 public class UpdateEstadoUseCaseImplUnitTest {
     @Mock
-    private EstadoRepositoryPort estadoRepositoryPort;
+    private StatusRepositoryPort estadoRepositoryPort;
 
     @InjectMocks
-    private UpdateEstadoUseCaseImpl updateEstadoUseCase;
+    private UpdateStatusUseCaseImpl updateStatusUseCase;
 
     @Test
     @DisplayName("Prueba para Actualizar correctamente un estado")
     public void testUpdateEstadoFound(){
-        Estado estado = new Estado(1L, "ACTIVO");
+        Status estado = new Status(1L, "ACTIVO");
         when(estadoRepositoryPort.update(1L, estado )).thenReturn(Optional.of(estado));
 
-        Optional<Estado> estadoActualizado = updateEstadoUseCase.updateEstado(1L, estado);
+        Optional<Status> estadoActualizado = updateStatusUseCase.update(1L, estado);
         assertEquals(estadoActualizado.get(), estado);
         verify(estadoRepositoryPort).update(1L, estado);
     }
@@ -39,10 +39,10 @@ public class UpdateEstadoUseCaseImplUnitTest {
     @Test
     @DisplayName("Prueba para Actualizar un estado de forma incorrecta")
     public void testUpdateEstadoNotFound(){
-        Estado estado = new Estado(1L, "ACTIVO");
+        Status estado = new Status(1L, "ACTIVO");
         when(estadoRepositoryPort.update(10L, estado )).thenReturn(Optional.empty());
 
-        Optional<Estado> estadoActualizado = updateEstadoUseCase.updateEstado(10L, estado);
+        Optional<Status> estadoActualizado = updateStatusUseCase.update(10L, estado);
         assertEquals(estadoActualizado, Optional.empty());
         verify(estadoRepositoryPort).update(10L, estado);
     }

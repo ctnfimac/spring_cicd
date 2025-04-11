@@ -1,12 +1,12 @@
 package com.cperalta.jardineria.usuario.infraestructure.repositories;
 
-import com.cperalta.jardineria.usuario.domain.constants.EstadoEnum;
-import com.cperalta.jardineria.usuario.domain.constants.RolEnum;
+import com.cperalta.jardineria.usuario.domain.constants.StatusEnum;
+import com.cperalta.jardineria.usuario.domain.constants.RoleEnum;
 import com.cperalta.jardineria.usuario.domain.models.Cliente;
 import com.cperalta.jardineria.usuario.domain.ports.output.RegistrarClienteRepositoryPort;
 import com.cperalta.jardineria.usuario.domain.records.ClienteRecord;
 import com.cperalta.jardineria.usuario.infraestructure.entities.ClienteEntity;
-import com.cperalta.jardineria.usuario.infraestructure.entities.EstadoEntity;
+import com.cperalta.jardineria.usuario.infraestructure.entities.StatusEntity;
 import com.cperalta.jardineria.usuario.infraestructure.entities.RoleEntity;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.DuplicateResourceException;
 import com.cperalta.jardineria.usuario.infraestructure.mapper.ClienteMapper;
@@ -20,7 +20,7 @@ public class JpaRegistrarClienteRepositoryAdapter implements RegistrarClienteRep
 
     private final JpaClienteRepository jpaClienteRepository;
     private final JpaRoleRepository jpaRoleRepository;
-    private final JpaEstadoRepository jpaEstadoRepository;
+    private final JpaStatusRepository jpaStatusRepository;
 
     private final ClienteMapper clienteMapper;
 
@@ -29,10 +29,10 @@ public class JpaRegistrarClienteRepositoryAdapter implements RegistrarClienteRep
     public Cliente registrar(ClienteRecord clienteRecord) {
         ClienteEntity clienteEntity = clienteMapper.clienteRecordToJardineroEntity(clienteRecord);
 
-        RoleEntity role = jpaRoleRepository.findRoleEntityByDescription(RolEnum.CLIENTE.toString());
-        EstadoEntity estado = jpaEstadoRepository.findEstadoEntityByDescripcion(EstadoEnum.SIN_ACTIVAR.toString());
+        RoleEntity role = jpaRoleRepository.findRoleEntityByDescription(RoleEnum.CLIENTE.toString());
+        StatusEntity status = jpaStatusRepository.findStatusEntityByDescription(StatusEnum.SIN_ACTIVAR.toString());
 
-        clienteEntity.getPersona().setEstado(estado);
+        clienteEntity.getPersona().setStatus(status);
         clienteEntity.getPersona().setRole(role);
 
         try{
@@ -47,8 +47,8 @@ public class JpaRegistrarClienteRepositoryAdapter implements RegistrarClienteRep
     public Boolean activar(String email, String token) {
         ClienteEntity cliente = jpaClienteRepository.findClienteEntityByPersonaEmailAndPersonaTokenActivacion(email, token);
         if(cliente != null){
-            EstadoEntity estado = jpaEstadoRepository.findEstadoEntityByDescripcion(EstadoEnum.ACTIVO.toString());
-            cliente.getPersona().setEstado(estado);
+            StatusEntity status = jpaStatusRepository.findStatusEntityByDescription(StatusEnum.ACTIVO.toString());
+            cliente.getPersona().setStatus(status);
             cliente.getPersona().setTokenActivacion(null);
             jpaClienteRepository.save(cliente);
             return true;

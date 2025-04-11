@@ -1,6 +1,6 @@
-package com.cperalta.jardineria.usuario.application.usecases.estado;
+package com.cperalta.jardineria.usuario.application.usecases.status;
 
-import com.cperalta.jardineria.usuario.domain.ports.output.EstadoRepositoryPort;
+import com.cperalta.jardineria.usuario.domain.ports.output.StatusRepositoryPort;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -18,10 +18,10 @@ import static org.mockito.Mockito.when;
 public class DeleteEstadoUseCaseImplUnitTest {
 
     @Mock
-    private EstadoRepositoryPort estadoRepositoryPort;
+    private StatusRepositoryPort estadoRepositoryPort;
 
     @InjectMocks
-    private DeleteEstadoUseCaseImpl deleteEstadoUseCase;
+    private DeleteStatusUseCaseImpl deleteStatusUseCase;
 
 
     @Test
@@ -29,7 +29,7 @@ public class DeleteEstadoUseCaseImplUnitTest {
     public void testDeleteEstadoFound(){
         when(estadoRepositoryPort.delete(1L)).thenReturn(true);
 
-        Boolean respuesta = deleteEstadoUseCase.deleteEstado(1L);
+        Boolean respuesta = deleteStatusUseCase.delete(1L);
         assertTrue(respuesta);
         verify(estadoRepositoryPort).delete(1L);
     }
@@ -40,7 +40,7 @@ public class DeleteEstadoUseCaseImplUnitTest {
     public void testDeleteEstadoNotFound(){
         when(estadoRepositoryPort.delete(1L)).thenReturn(false);
 
-        Boolean respuesta = deleteEstadoUseCase.deleteEstado(2L);
+        Boolean respuesta = deleteStatusUseCase.delete(2L);
         assertFalse(respuesta);
         verify(estadoRepositoryPort).delete(2L);
     }

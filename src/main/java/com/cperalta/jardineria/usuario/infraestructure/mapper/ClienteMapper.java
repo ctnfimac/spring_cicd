@@ -25,7 +25,7 @@ public interface ClienteMapper {
     Cliente clienteEntityToCliente(ClienteEntity clienteEntity);
 
     @Mapping(source = "roleId", target = "persona.role.id")
-    @Mapping(source = "estadoId", target = "persona.estado.id")
+    @Mapping(source = "statusId", target = "persona.status.id")
     @Mapping(source = "telefono", target = "telefono")
     @Mapping(source = "direccion", target = "direccion")
     @Mapping(source = "latitud", target = "latitud")
@@ -46,12 +46,12 @@ public interface ClienteMapper {
     @Mapping(source = "persona.apellido", target= "apellido")
     @Mapping(source = "persona.contrasenia", target= "contrasenia")
     @Mapping(source = "persona.role.description", target= "role")
-    @Mapping(source = "persona.estado.descripcion", target= "estado")
+    @Mapping(source = "persona.status.description", target= "status")
     ClienteResponseDTO clienteToClienteResponseDTO(Cliente cliente);
 
     @Mapping(source = "id", target = "id")
     @Mapping(source = "roleId", target = "persona.role.id")
-    @Mapping(source = "estadoId", target = "persona.estado.id")
+    @Mapping(source = "statusId", target = "persona.status.id")
     @Mapping(source = "telefono", target = "telefono")
     @Mapping(source = "direccion", target = "direccion")
     @Mapping(source = "latitud", target = "latitud")

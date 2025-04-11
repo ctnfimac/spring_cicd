@@ -1,10 +1,10 @@
 package com.cperalta.jardineria.usuario.application.services;
 
-import com.cperalta.jardineria.usuario.domain.models.Estado;
-import com.cperalta.jardineria.usuario.domain.ports.input.estado.CreateEstadoUseCase;
-import com.cperalta.jardineria.usuario.domain.ports.input.estado.DeleteEstadoUseCase;
-import com.cperalta.jardineria.usuario.domain.ports.input.estado.RetrieveEstadoUseCase;
-import com.cperalta.jardineria.usuario.domain.ports.input.estado.UpdateEstadoUseCase;
+import com.cperalta.jardineria.usuario.domain.models.Status;
+import com.cperalta.jardineria.usuario.domain.ports.input.status.CreateStatusUseCase;
+import com.cperalta.jardineria.usuario.domain.ports.input.status.DeleteStatusUseCase;
+import com.cperalta.jardineria.usuario.domain.ports.input.status.RetrieveStatusUseCase;
+import com.cperalta.jardineria.usuario.domain.ports.input.status.UpdateStatusUseCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -24,122 +24,122 @@ import static org.mockito.Mockito.when;
 @ActiveProfiles("test")
 public class EstadoServiceUnitTest {
     @Mock
-    private RetrieveEstadoUseCase retrieveEstadoUseCase;
+    private RetrieveStatusUseCase retrieveStatusUseCase;
     @Mock
-    private CreateEstadoUseCase createEstadoUseCase;
+    private CreateStatusUseCase createStatusUseCase;
     @Mock
-    private DeleteEstadoUseCase deleteEstadoUseCase;
+    private DeleteStatusUseCase deleteStatusUseCase;
     @Mock
-    private UpdateEstadoUseCase updateEstadoUseCase;
+    private UpdateStatusUseCase updateStatusUseCase;
 
     @InjectMocks
-    private EstadoService estadoService;
+    private StatusService statusService;
 
     @Test
     @DisplayName("Prueba de obtencion de todos los estados desde el Service")
     void testGetAllEstadosFound() {
-        List<Estado> estados = Arrays.asList(
-                new Estado(1L, "BLOQUEADO"),
-                new Estado(2L, "ACTIVO")
+        List<Status> estados = Arrays.asList(
+                new Status(1L, "BLOQUEADO"),
+                new Status(2L, "ACTIVO")
         );
-        when(retrieveEstadoUseCase.getAllEstados()).thenReturn(estados);
+        when(retrieveStatusUseCase.getAll()).thenReturn(estados);
 
-        List<Estado> result = estadoService.getAllEstados();
+        List<Status> result = statusService.getAll();
 
         // verifico el tamaño de la lista retornada y los valores
         assertEquals(2, result.size());
-        assertEquals("BLOQUEADO", result.get(0).getDescripcion());
-        assertEquals("ACTIVO", result.get(1).getDescripcion());
-        // verifico que el metodo getAllEstados() se haya invocado
-        verify(retrieveEstadoUseCase).getAllEstados();
+        assertEquals("BLOQUEADO", result.get(0).getDescription());
+        assertEquals("ACTIVO", result.get(1).getDescription());
+        // verifico que el metodo getAll() se haya invocado
+        verify(retrieveStatusUseCase).getAll();
     }
 
     @Test
-    @DisplayName("Prueba de obtención de un Estado por Id desde el Service de forma correcta")
+    @DisplayName("Prueba de obtención de un Status por Id desde el Service de forma correcta")
     void testGetEstadoByIdFound() {
-        Estado estado = new Estado(1L, "ACTIVO");
-        when(retrieveEstadoUseCase.getEstadoById(1L)).thenReturn(Optional.of(estado));
+        Status estado = new Status(1L, "ACTIVO");
+        when(retrieveStatusUseCase.getById(1L)).thenReturn(Optional.of(estado));
 
-        Optional<Estado> result = estadoService.getEstadoById(1L);
+        Optional<Status> result = statusService.getById(1L);
 
         assertEquals(estado, result.get());
-        // verifico que el metodo getAllEstados() se haya invocado
-        verify(retrieveEstadoUseCase).getEstadoById(1L);
+        // verifico que el metodo getAll() se haya invocado
+        verify(retrieveStatusUseCase).getById(1L);
     }
 
     @Test
-    @DisplayName("Prueba de obtencion de un Estado por Id desde el Service de forma incorrecta")
+    @DisplayName("Prueba de obtencion de un Status por Id desde el Service de forma incorrecta")
     void testGetEstadoByIdNotFound() {
-        Estado estado = new Estado(1L, "ACTIVO");
-        when(retrieveEstadoUseCase.getEstadoById(2L)).thenReturn(Optional.empty());
+        Status estado = new Status(1L, "ACTIVO");
+        when(retrieveStatusUseCase.getById(2L)).thenReturn(Optional.empty());
 
-        Optional<Estado> result = estadoService.getEstadoById(2L);
+        Optional<Status> result = statusService.getById(2L);
 
         assertEquals(Optional.empty(), result);
-        // verifico que el metodo getAllEstados() se haya invocado
-        verify(retrieveEstadoUseCase).getEstadoById(2L);
+        // verifico que el metodo getAll() se haya invocado
+        verify(retrieveStatusUseCase).getById(2L);
     }
 
     @Test
-    @DisplayName("Prueba creación de Estado desde el Service de forma correcta")
+    @DisplayName("Prueba creación de Status desde el Service de forma correcta")
     void testCreateEstadoFound() {
-        Estado estado = new Estado(1L, "ACTIVO");
-        when(createEstadoUseCase.createEstado(estado)).thenReturn(estado);
+        Status estado = new Status(1L, "ACTIVO");
+        when(createStatusUseCase.create(estado)).thenReturn(estado);
 
-        Estado result = estadoService.createEstado(estado);
+        Status result = statusService.create(estado);
 
         // verifico el tamaño de la lista retornada y los valores
         assertEquals(estado, result);
-        verify(createEstadoUseCase).createEstado(estado);
+        verify(createStatusUseCase).create(estado);
     }
 
     @Test
-    @DisplayName("Prueba eliminación de un Estado desde el Service de forma correcta")
+    @DisplayName("Prueba eliminación de un Status desde el Service de forma correcta")
     void testDeleteEstadoFound() {
-        when(deleteEstadoUseCase.deleteEstado(1L)).thenReturn(true);
+        when(deleteStatusUseCase.delete(1L)).thenReturn(true);
 
-        Boolean result = estadoService.deleteEstado(1L);
+        Boolean result = statusService.delete(1L);
 
         // verifico el tamaño de la lista retornada y los valores
         assertTrue(result);
-        verify(deleteEstadoUseCase).deleteEstado(1L);
+        verify(deleteStatusUseCase).delete(1L);
     }
 
     @Test
-    @DisplayName("Prueba eliminación de un Estado desde el Service de forma incorrecta")
+    @DisplayName("Prueba eliminación de un Status desde el Service de forma incorrecta")
     void testDeleteEstadoNotFound() {
-        when(deleteEstadoUseCase.deleteEstado(2L)).thenReturn(false);
+        when(deleteStatusUseCase.delete(2L)).thenReturn(false);
 
-        Boolean result = estadoService.deleteEstado(2L);
+        Boolean result = statusService.delete(2L);
 
         // verifico el tamaño de la lista retornada y los valores
         assertFalse(result);
-        verify(deleteEstadoUseCase).deleteEstado(2L);
+        verify(deleteStatusUseCase).delete(2L);
     }
 
     @Test
-    @DisplayName("Prueba Modificación de un Estado desde el Service de forma correcta")
+    @DisplayName("Prueba Modificación de un Status desde el Service de forma correcta")
     void testUpdateEstadoFound() {
-        Estado estado = new Estado(1L, "NUEVO");
-        when(updateEstadoUseCase.updateEstado(1L, estado)).thenReturn(Optional.of(estado));
+        Status estado = new Status(1L, "NUEVO");
+        when(updateStatusUseCase.update(1L, estado)).thenReturn(Optional.of(estado));
 
-        Optional<Estado> result = estadoService.updateEstado(1L, estado);
+        Optional<Status> result = statusService.update(1L, estado);
 
         // verifico el tamaño de la lista retornada y los valores
         assertEquals(result.get(), estado);
-        verify(updateEstadoUseCase).updateEstado(1L, estado);
+        verify(updateStatusUseCase).update(1L, estado);
     }
 
     @Test
-    @DisplayName("Prueba Modificación de un Estado desde el Service de forma incorrecta")
+    @DisplayName("Prueba Modificación de un Status desde el Service de forma incorrecta")
     void testUpdateEstadoNotFound() {
-        Estado estado = new Estado(100L, "NUEVO");
-        when(updateEstadoUseCase.updateEstado(1L, estado)).thenReturn(Optional.empty());
+        Status estado = new Status(100L, "NUEVO");
+        when(updateStatusUseCase.update(1L, estado)).thenReturn(Optional.empty());
 
-        Optional<Estado> result = estadoService.updateEstado(100L, estado);
+        Optional<Status> result = statusService.update(100L, estado);
 
         // verifico el tamaño de la lista retornada y los valores
         assertEquals(result, Optional.empty());
-        verify(updateEstadoUseCase).updateEstado(100L, estado);
+        verify(updateStatusUseCase).update(100L, estado);
     }
 }

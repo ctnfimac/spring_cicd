@@ -22,7 +22,7 @@ public interface JardineroMapper {
     @Mapping(source = "persona.apellido" , target = "persona.apellido")
     @Mapping(source = "persona.contrasenia" , target = "persona.contrasenia")
     @Mapping(source = "persona.role" , target = "persona.role")
-    @Mapping(source = "persona.estado" , target = "persona.estado")
+    @Mapping(source = "persona.status" , target = "persona.status")
     JardineroEntity jardineroToJardineroEntity(Jardinero jardinero);
 
     Jardinero jardineroEntityToJardinero(JardineroEntity jardineroEntity);
@@ -34,7 +34,7 @@ public interface JardineroMapper {
     @Mapping(source = "apellido" , target = "persona.apellido")
     @Mapping(source = "contrasenia" , target = "persona.contrasenia")
     @Mapping(source = "roleId" , target = "persona.role.id")
-    @Mapping(source = "estadoId" , target = "persona.estado.id")
+    @Mapping(source = "statusId" , target = "persona.status.id")
     Jardinero jardineroRequestDTOtoJardinero(JardineroRequestDTO jardineroRequestDTO);
 
     @Mapping(source = "id", target= "id")
@@ -45,7 +45,7 @@ public interface JardineroMapper {
     @Mapping(source = "persona.apellido", target= "apellido")
     @Mapping(source = "persona.contrasenia", target= "contrasenia")
     @Mapping(source = "persona.role.description", target= "role")
-    @Mapping(source = "persona.estado.descripcion", target= "estado")
+    @Mapping(source = "persona.status.description", target= "status")
     JardineroResponseDTO jardineroToJardineroResponseDTO(Jardinero jardinero);
 
     @Mapping(source = "id", target = "id")
@@ -56,7 +56,7 @@ public interface JardineroMapper {
     @Mapping(source = "apellido", target= "persona.apellido")
     @Mapping(source = "contrasenia", target= "persona.contrasenia")
     @Mapping(source = "roleId", target = "persona.role.id")
-    @Mapping(source = "estadoId", target = "persona.estado.id")
+    @Mapping(source = "statusId", target = "persona.status.id")
     Jardinero jardineroRequestUpdateDTOtoJardinero(JardineroRequestUpdateDTO jardineroRequestUpdateDTO);
 
     @Mapping(source = "telefono", target = "telefono")

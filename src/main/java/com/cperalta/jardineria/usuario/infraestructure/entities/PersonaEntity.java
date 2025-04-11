@@ -32,5 +32,5 @@ public class PersonaEntity {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "estado_id", referencedColumnName = "id")
-    private EstadoEntity estado;
+    private StatusEntity status;
 }

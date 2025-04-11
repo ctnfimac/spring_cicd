@@ -3,7 +3,7 @@ package com.cperalta.jardineria.usuario.infraestructure.repositories;
 import com.cperalta.jardineria.usuario.domain.models.Cliente;
 import com.cperalta.jardineria.usuario.domain.ports.output.ClienteRepositoryPort;
 import com.cperalta.jardineria.usuario.infraestructure.entities.ClienteEntity;
-import com.cperalta.jardineria.usuario.infraestructure.entities.EstadoEntity;
+import com.cperalta.jardineria.usuario.infraestructure.entities.StatusEntity;
 import com.cperalta.jardineria.usuario.infraestructure.entities.PersonaEntity;
 import com.cperalta.jardineria.usuario.infraestructure.entities.RoleEntity;
 import com.cperalta.jardineria.usuario.infraestructure.exceptions.ClienteNotFoundException;
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class JpaClienteRespositoryAdapter implements ClienteRepositoryPort {
 
     private final JpaClienteRepository jpaClienteRepository;
-    private final JpaEstadoRepository jpaEstadoRepository;
+    private final JpaStatusRepository jpaStatusRepository;
     private final JpaRoleRepository jpaRoleRepository;
 
     private final ClienteMapper clienteMapper;
@@ -47,13 +47,13 @@ public class JpaClienteRespositoryAdapter implements ClienteRepositoryPort {
     @Override
     public Cliente create(Cliente cliente) {
         Long roleId = cliente.getPersona().getRole().getId();
-        Long estadoId = cliente.getPersona().getEstado().getId();
+        Long estadoId = cliente.getPersona().getStatus().getId();
 
         // verifico si existe el rol y el estado
         RoleEntity roleEntity = jpaRoleRepository.findById(roleId)
                 .orElseThrow(() -> new RoleNotFoundException("El Rol ingresado es inexistente."));
 
-        EstadoEntity estadoEntity = jpaEstadoRepository.findById(estadoId)
+        StatusEntity estadoEntity = jpaStatusRepository.findById(estadoId)
                 .orElseThrow(() -> new EstadoNotFoundException("El Estado ingresado es inexistente."));
 
         ClienteEntity clienteEntity = clienteMapper.clienteToClienteEntity(cliente);
@@ -61,7 +61,7 @@ public class JpaClienteRespositoryAdapter implements ClienteRepositoryPort {
         clienteEntity.getPersona().setContrasenia(encryptedPassword);
 
         PersonaEntity personaEntity = clienteEntity.getPersona();
-        personaEntity.setEstado(estadoEntity);
+        personaEntity.setStatus(estadoEntity);
         personaEntity.setRole(roleEntity);
 
         clienteEntity.setPersona(personaEntity);
@@ -93,7 +93,7 @@ public class JpaClienteRespositoryAdapter implements ClienteRepositoryPort {
                 personaActual.getApellido()
         );
 
-        Long estadoId = cliente.getPersona().getEstado().getId();
+        Long estadoId = cliente.getPersona().getStatus().getId();
         Long rolId = cliente.getPersona().getRole().getId();
         String email = cliente.getPersona().getEmail();
         String contrasenia = cliente.getPersona().getContrasenia();
@@ -105,9 +105,9 @@ public class JpaClienteRespositoryAdapter implements ClienteRepositoryPort {
         }
 
         if(estadoId != null){
-            EstadoEntity estadoEntity = jpaEstadoRepository.findById(estadoId)
+            StatusEntity estadoEntity = jpaStatusRepository.findById(estadoId)
                     .orElseThrow(() -> new EstadoNotFoundException("El Estado ingresado es inexistente."));
-            personaActual.setEstado(estadoEntity);
+            personaActual.setStatus(estadoEntity);
         }
 
         if(rolId != null){

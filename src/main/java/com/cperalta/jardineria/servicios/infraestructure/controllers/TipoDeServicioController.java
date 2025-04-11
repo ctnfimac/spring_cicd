@@ -1,12 +1,10 @@
 package com.cperalta.jardineria.servicios.infraestructure.controllers;
 
 import com.cperalta.jardineria.servicios.application.services.TipoDeServicioService;
-import com.cperalta.jardineria.servicios.domain.models.Servicio;
 import com.cperalta.jardineria.servicios.domain.models.TipoDeServicio;
 import com.cperalta.jardineria.servicios.infraestructure.dto.TipoDeServicioDTO;
 import com.cperalta.jardineria.servicios.infraestructure.dto.TipoDeServicioUpdateRequestDTO;
 import com.cperalta.jardineria.servicios.infraestructure.mapper.TipoDeServicioMapper;
-import com.cperalta.jardineria.usuario.domain.models.Estado;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -16,7 +14,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 

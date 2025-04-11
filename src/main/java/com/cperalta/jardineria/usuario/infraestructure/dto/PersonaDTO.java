@@ -33,5 +33,5 @@ public class PersonaDTO {
 
     @NotNull(message = "El estado es obligatorio")
     //private Estado estado;
-    private Long estadoId;
+    private Long statusId;
 }

@@ -1,6 +1,6 @@
 package com.cperalta.jardineria.usuario.domain.constants;
 
-public enum RolEnum {
+public enum RoleEnum {
     ADMIN,
     CLIENTE,
     JARDINERO

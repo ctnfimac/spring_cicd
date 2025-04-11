@@ -3,10 +3,10 @@ package com.cperalta.jardineria.usuario.infraestructure.config;
 import com.cperalta.jardineria.usuario.application.services.*;
 import com.cperalta.jardineria.usuario.application.usecases.auth.AuthenticationUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.cliente.*;
-import com.cperalta.jardineria.usuario.application.usecases.estado.CreateEstadoUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.estado.DeleteEstadoUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.estado.RetrieveEstadoUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.estado.UpdateEstadoUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.status.CreateStatusUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.status.DeleteStatusUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.status.RetrieveStatusUseCaseImpl;
+import com.cperalta.jardineria.usuario.application.usecases.status.UpdateStatusUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.jardinero.*;
 import com.cperalta.jardineria.usuario.application.usecases.persona.PersonaRetrieveUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.rol.CreateRoleUseCaseImpl;
@@ -20,12 +20,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ApplicationConfig {
     @Bean
-    public EstadoService estadoService(EstadoRepositoryPort estadoRepositoryPort){
-        return new EstadoService(
-                new RetrieveEstadoUseCaseImpl(estadoRepositoryPort),
-                new CreateEstadoUseCaseImpl(estadoRepositoryPort),
-                new DeleteEstadoUseCaseImpl(estadoRepositoryPort),
-                new UpdateEstadoUseCaseImpl(estadoRepositoryPort)
+    public StatusService estatusService(StatusRepositoryPort statusRepositoryPort){
+        return new StatusService(
+                new RetrieveStatusUseCaseImpl(statusRepositoryPort),
+                new CreateStatusUseCaseImpl(statusRepositoryPort),
+                new DeleteStatusUseCaseImpl(statusRepositoryPort),
+                new UpdateStatusUseCaseImpl(statusRepositoryPort)
         );
     }
 

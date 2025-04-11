@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())) // para los CORS
                 .authorizeHttpRequests(customizeRequests -> {
                     customizeRequests
-                            .requestMatchers("/api/estado/**").hasRole("ADMIN")
+                            .requestMatchers("/api/v1/status/**").hasRole("ADMIN")
                             .requestMatchers("/api/v1/role/**").hasRole("ADMIN")
                             .requestMatchers("/api/tipodeservicio/**").hasRole("ADMIN")
                             .requestMatchers("/api/servicio/**").hasRole("ADMIN")

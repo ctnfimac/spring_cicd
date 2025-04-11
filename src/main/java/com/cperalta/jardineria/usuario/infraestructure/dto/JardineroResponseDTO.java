@@ -14,5 +14,5 @@ public class JardineroResponseDTO {
     private String apellido;
     private String contrasenia;
     private String role;
-    private String estado;
+    private String status;
 }

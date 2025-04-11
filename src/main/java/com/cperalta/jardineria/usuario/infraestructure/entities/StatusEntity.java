@@ -1,6 +1,5 @@
 package com.cperalta.jardineria.usuario.infraestructure.entities;
 
-import com.cperalta.jardineria.usuario.domain.models.Estado;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,12 +10,12 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EstadoEntity {
+public class StatusEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
-    private String descripcion;
+    @Column(name = "descripcion", unique = true)
+    private String description;
 
 }

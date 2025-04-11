@@ -14,6 +14,6 @@ public class JardineroRequestUpdateDTO {
     private String apellido;
     private String contrasenia;
     private Long roleId;
-    private Long estadoId;
+    private Long statusId;
 }
 
