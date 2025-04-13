@@ -8,6 +8,6 @@ import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface LoginMapper {
-    @Mapping(target = "contrasenia", ignore = true)
+    @Mapping(target = "password", ignore = true)
     LoginDTO baseUserToLoginDTO(BaseUser baseUser);
 }

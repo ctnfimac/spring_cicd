@@ -1,8 +1,5 @@
 package com.cperalta.jardineria.contratacion.infraestructure.dto;
 
-import com.cperalta.jardineria.usuario.domain.models.Cliente;
-import com.cperalta.jardineria.contratacion.domain.models.EstadoContratacion;
-import com.cperalta.jardineria.usuario.domain.models.Jardinero;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

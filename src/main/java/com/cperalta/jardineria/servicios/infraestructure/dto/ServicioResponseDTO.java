@@ -1,7 +1,7 @@
 package com.cperalta.jardineria.servicios.infraestructure.dto;
 
 import com.cperalta.jardineria.servicios.domain.models.TipoDeServicio;
-import com.cperalta.jardineria.usuario.domain.models.Jardinero;
+import com.cperalta.jardineria.usuario.domain.models.Gardener;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,5 +14,5 @@ public class ServicioResponseDTO {
     private String descripcion;
     private Long precio;
     private TipoDeServicio tipoDeServicio;
-    private Jardinero jardinero;
+    private Gardener gardener;
 }

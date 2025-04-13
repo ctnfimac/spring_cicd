@@ -5,10 +5,8 @@ import com.cperalta.jardineria.servicios.domain.ports.output.ServicioRepositoryP
 import com.cperalta.jardineria.servicios.infraestructure.entities.ServicioEntity;
 import com.cperalta.jardineria.servicios.infraestructure.entities.TipoDeServicioEntity;
 import com.cperalta.jardineria.servicios.infraestructure.mapper.ServicioMapper;
-import com.cperalta.jardineria.servicios.infraestructure.mapper.TipoDeServicioMapper;
-import com.cperalta.jardineria.usuario.infraestructure.entities.JardineroEntity;
-import com.cperalta.jardineria.usuario.infraestructure.mapper.JardineroMapper;
-import com.cperalta.jardineria.usuario.infraestructure.repositories.JpaJardineroRepository;
+import com.cperalta.jardineria.usuario.infraestructure.entities.GardenerEntity;
+import com.cperalta.jardineria.usuario.infraestructure.repositories.JpaGardenerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -23,11 +21,9 @@ public class JpaServicioRepositoryAdapter implements ServicioRepositoryPort {
 
     private final JpaServicioRepository jpaServicioRepository;
     private final JpaTipoDeServicioRepository jpaTipoDeServicioRepository;
-    private final JpaJardineroRepository jpaJardineroRepository;
+    private final JpaGardenerRepository jpaJardineroRepository;
 
     private final ServicioMapper servicioMapper;
-    private final TipoDeServicioMapper tipoDeServicioMapper;
-    private final JardineroMapper jardineroMapper;
 
     @Override
     public Optional<Servicio> getById(UUID id) {
@@ -66,9 +62,9 @@ public class JpaServicioRepositoryAdapter implements ServicioRepositoryPort {
                 servicioEntityActual.setTipoDeServicio(tipoDeServicioEntity);
             }
 
-            if(servicio.getJardinero() != null ) {
-                JardineroEntity jardineroEntity = jpaJardineroRepository.getById(servicio.getJardinero().getId());
-                servicioEntityActual.setJardinero(jardineroEntity);
+            if(servicio.getGardener() != null ) {
+                GardenerEntity jardineroEntity = jpaJardineroRepository.getById(servicio.getTipoDeServicio().getId());
+                servicioEntityActual.setGardener(jardineroEntity);
             }
 
             ServicioEntity servicioEntityActualizado = jpaServicioRepository.save(servicioEntityActual);

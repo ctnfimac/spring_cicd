@@ -3,7 +3,6 @@ package com.cperalta.jardineria.contratacion.infraestructure.repositories;
 import com.cperalta.jardineria.contratacion.domain.models.Contrata;
 import com.cperalta.jardineria.contratacion.domain.ports.output.ContrataRepositoryPort;
 import com.cperalta.jardineria.contratacion.infraestructure.mapper.ContrataMapper;
-import com.cperalta.jardineria.usuario.infraestructure.repositories.JpaJardineroRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
 public class JpaContrataRepositoryAdapter implements ContrataRepositoryPort {
 
     private final JpaContrataRepository jpaContrataRepository;
-    //private final JpaJardineroRepository jpaJardineroRepository;
     private final ContrataMapper contrataMapper;
 
     @Override

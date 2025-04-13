@@ -1,11 +1,11 @@
 package com.cperalta.jardineria.usuario.infraestructure.controllers;
 
-import com.cperalta.jardineria.usuario.application.services.ClienteService;
-import com.cperalta.jardineria.usuario.domain.models.Cliente;
-import com.cperalta.jardineria.usuario.infraestructure.dto.ClienteRequestDTO;
-import com.cperalta.jardineria.usuario.infraestructure.dto.ClienteRequestUpdateDTO;
-import com.cperalta.jardineria.usuario.infraestructure.dto.ClienteResponseDTO;
-import com.cperalta.jardineria.usuario.infraestructure.mapper.ClienteMapper;
+import com.cperalta.jardineria.usuario.application.services.ClientService;
+import com.cperalta.jardineria.usuario.domain.models.Client;
+import com.cperalta.jardineria.usuario.infraestructure.dto.ClientRequestDTO;
+import com.cperalta.jardineria.usuario.infraestructure.dto.ClientRequestUpdateDTO;
+import com.cperalta.jardineria.usuario.infraestructure.dto.ClientResponseDTO;
+import com.cperalta.jardineria.usuario.infraestructure.mapper.ClientMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -17,20 +17,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/cliente")
+@RequestMapping("/api/v1/client")
 @Tag(name = "API de Clientes", description = "CRUD de los Clientes del Sistema")
 @AllArgsConstructor
 public class ClienteController {
-    private final ClienteService clienteService;
-    private final ClienteMapper clienteMapper;
+    private final ClientService clientService;
+    private final ClientMapper clienteMapper;
 
     @GetMapping("/{id}")
     @Operation(
-            summary = "Obtener Cliente por ID",
-            description = "Este endpoint retorna un Cliente específico dado su ID. Requiere token con permiso de Admin"
+            summary = "Obtener Client por ID",
+            description = "Este endpoint retorna un Client específico dado su ID. Requiere token con permiso de Admin"
     )
-    public ResponseEntity<Cliente> getById(@PathVariable("id") Long id){
-        return clienteService.getById(id)
+    public ResponseEntity<Client> getById(@PathVariable("id") Long id){
+        return clientService.getById(id)
                 .map( cliente -> ResponseEntity.ok(cliente))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
@@ -41,31 +41,31 @@ public class ClienteController {
             summary = "Obtener todos los Clientes",
             description = "Este endpoint retorna todos los Clientes existentes. Requiere token con permiso de Admin"
     )
-    public ResponseEntity<List<Cliente>> getAll(){
-        return new ResponseEntity<>(clienteService.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<Client>> getAll(){
+        return new ResponseEntity<>(clientService.getAll(), HttpStatus.OK);
     }
 
 
     @PostMapping
     @Operation(
-            summary = "Crear un Cliente",
-            description = "Este endpoint es para crear un nuevo Cliente. Requiere token con permiso de Admin"
+            summary = "Crear un Client",
+            description = "Este endpoint es para crear un nuevo Client. Requiere token con permiso de Admin"
     )
-    public ResponseEntity<ClienteResponseDTO> create(@Validated @RequestBody ClienteRequestDTO clienteRequestDTO){
-        Cliente cliente = clienteMapper.clienteRequestDTOtoCliente(clienteRequestDTO);
-        Cliente clienteCreado = clienteService.create(cliente);
-        ClienteResponseDTO clienteResponseDTO = clienteMapper.clienteToClienteResponseDTO(clienteCreado);
+    public ResponseEntity<ClientResponseDTO> create(@Validated @RequestBody ClientRequestDTO clientRequestDTO){
+        Client cliente = clienteMapper.clientRequestDTOtoClient(clientRequestDTO);
+        Client clienteCreated = clientService.create(cliente);
+        ClientResponseDTO clienteResponseDTO = clienteMapper.clientToClientResponseDTO(clienteCreated);
         return new ResponseEntity<>(clienteResponseDTO, HttpStatus.CREATED);
     }
 
 
     @DeleteMapping("/{id}")
     @Operation(
-            summary = "Eliminar un Cliente",
-            description = "Este endpoint es para eliminar un Cliente existente. Requiere token con permiso de Admin"
+            summary = "Eliminar un Client",
+            description = "Este endpoint es para eliminar un Client existente. Requiere token con permiso de Admin"
     )
     public ResponseEntity<Void> delete(@PathVariable("id") Long id){
-        return clienteService.delete(id) ?
+        return clientService.delete(id) ?
                 new ResponseEntity<>(HttpStatus.NO_CONTENT) :
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -73,14 +73,14 @@ public class ClienteController {
 
     @PutMapping("/{id}")
     @Operation(
-            summary = "Actualizar un Cliente existente",
-            description = "Este endpoint es para Actualizar un Cliente existente. Requiere token con permiso de Admin"
+            summary = "Actualizar un Client existente",
+            description = "Este endpoint es para Actualizar un Client existente. Requiere token con permiso de Admin"
     )
-    public ResponseEntity<ClienteResponseDTO> update(@PathVariable("id") Long id,
-                                                     @RequestBody ClienteRequestUpdateDTO clienteRequestUpdateDTO){
-        Cliente cliente = clienteMapper.clienteRequestUpdateDTOtoCliente(clienteRequestUpdateDTO);
-        Cliente clienteActualizado = clienteService.update(id,cliente);
-        ClienteResponseDTO clienteResponseDTO= clienteMapper.clienteToClienteResponseDTO(clienteActualizado);
+    public ResponseEntity<ClientResponseDTO> update(@PathVariable("id") Long id,
+                                                     @RequestBody ClientRequestUpdateDTO clienteRequestUpdateDTO){
+        Client cliente = clienteMapper.clientRequestUpdateDTOtoClient(clienteRequestUpdateDTO);
+        Client clienteActualizado = clientService.update(id,cliente);
+        ClientResponseDTO clienteResponseDTO= clienteMapper.clientToClientResponseDTO(clienteActualizado);
         return new ResponseEntity<>(clienteResponseDTO, HttpStatus.OK);
     }
 }

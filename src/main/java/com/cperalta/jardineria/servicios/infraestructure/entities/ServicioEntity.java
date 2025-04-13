@@ -1,6 +1,6 @@
 package com.cperalta.jardineria.servicios.infraestructure.entities;
 
-import com.cperalta.jardineria.usuario.infraestructure.entities.JardineroEntity;
+import com.cperalta.jardineria.usuario.infraestructure.entities.GardenerEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.UUID;
@@ -38,5 +38,5 @@ public class ServicioEntity {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "jardinero_id", referencedColumnName = "id")
-    private JardineroEntity jardinero;
+    private GardenerEntity gardener;
 }

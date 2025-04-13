@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/v1/auth")
 @Tag(name = "API de gestión de autenticación y usuarios", description = "Administración de la sesión por parte de los Usuarios, los que pueden tener uno de los 3 Roles")
 @AllArgsConstructor
 public class LoginController {
@@ -50,7 +50,7 @@ public class LoginController {
         // Genero un token de autenticación
         UsernamePasswordAuthenticationToken loginToken = new UsernamePasswordAuthenticationToken(
                 loginDTO.getEmail(),
-                loginDTO.getContrasenia()
+                loginDTO.getPassword()
         );
 
         try{

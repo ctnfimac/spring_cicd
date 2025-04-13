@@ -54,7 +54,7 @@ public class LoginControllerUnitTest {
         String password = "password123";
         LoginDTO loginDTO = new LoginDTO();
         loginDTO.setEmail(email);
-        loginDTO.setContrasenia(password);
+        loginDTO.setPassword(password);
 
         // Creo una persona la cual se utilizará como respuesta para la busqueda por email
         BaseUser persona = new BaseUser(1, email, "Test", "User", password, "tokendeactivacionrandom",
@@ -89,7 +89,7 @@ public class LoginControllerUnitTest {
         String password = "pass123";
         LoginDTO loginDTO = new LoginDTO();
         loginDTO.setEmail(email);
-        loginDTO.setContrasenia(password);
+        loginDTO.setPassword(password);
 
         Mockito.when(personaService.findByEmail(email)).thenReturn(Optional.empty());
 
@@ -111,7 +111,7 @@ public class LoginControllerUnitTest {
         String password = "contraseniaincorrecta";
         LoginDTO loginDTO = new LoginDTO();
         loginDTO.setEmail(email);
-        loginDTO.setContrasenia(password);
+        loginDTO.setPassword(password);
 
         BaseUser persona = new BaseUser(1, email, "Pepe", "Becerra", "12345","tokendeactivacionrandom",
                 new Role(1L,"USER"), new Status(1L, "ACTIVE"));

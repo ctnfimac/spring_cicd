@@ -4,10 +4,8 @@ import com.cperalta.jardineria.contratacion.domain.models.TrabajoRealizado;
 import com.cperalta.jardineria.contratacion.domain.ports.output.TrabajoRealizadoRepositoryPort;
 import com.cperalta.jardineria.contratacion.infraestructure.entities.TrabajoRealizadoEntity;
 import com.cperalta.jardineria.contratacion.infraestructure.mapper.TrabajoRealizadoMapper;
-import com.cperalta.jardineria.usuario.domain.models.Jardinero;
-import com.cperalta.jardineria.usuario.infraestructure.entities.JardineroEntity;
-import com.cperalta.jardineria.usuario.infraestructure.mapper.JardineroMapper;
-import com.cperalta.jardineria.usuario.infraestructure.repositories.JpaJardineroRepository;
+import com.cperalta.jardineria.usuario.infraestructure.entities.GardenerEntity;
+import com.cperalta.jardineria.usuario.infraestructure.repositories.JpaGardenerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -20,10 +18,9 @@ import java.util.stream.Collectors;
 public class JpaTrabajoRealizadoRepositoryAdapter implements TrabajoRealizadoRepositoryPort {
 
     private final JpaTrabajoRealizadoRepository jpaTrabajoRealizadoRepository;
-    private final JpaJardineroRepository jpaJardineroRepository;
+    private final JpaGardenerRepository jpaGardenerRepository;
 
     private final TrabajoRealizadoMapper trabajoRealizadoMapper;
-    private final JardineroMapper jardineroMapper;
 
     @Override
     public List<TrabajoRealizado> getAll() {
@@ -39,10 +36,10 @@ public class JpaTrabajoRealizadoRepositoryAdapter implements TrabajoRealizadoRep
 
     @Override
     public TrabajoRealizado create(TrabajoRealizado trabajoRealizado) {
-        if(jpaJardineroRepository.existsById(trabajoRealizado.getJardinero().getId())){
-            JardineroEntity jardineroEntity = jpaJardineroRepository.findById(trabajoRealizado.getJardinero().getId()).get();
+        if(jpaGardenerRepository.existsById(trabajoRealizado.getGardener().getId())){
+            GardenerEntity jardineroEntity = jpaGardenerRepository.findById(trabajoRealizado.getGardener().getId()).get();
             TrabajoRealizadoEntity trabajoRealizadoEntity = trabajoRealizadoMapper.trabajoRealizadoToTrabajoRealizadoEntity(trabajoRealizado);
-            trabajoRealizadoEntity.setJardinero(jardineroEntity);
+            trabajoRealizadoEntity.setGardener(jardineroEntity);
             TrabajoRealizadoEntity trabajoRealizadoCreado = jpaTrabajoRealizadoRepository.save(trabajoRealizadoEntity);
             return trabajoRealizadoMapper.trabajoRealizadoEntityToTrabajoRealizado(trabajoRealizadoCreado);
         }
@@ -62,9 +59,9 @@ public class JpaTrabajoRealizadoRepositoryAdapter implements TrabajoRealizadoRep
                     trabajoRealizado.getFoto() : trabajoRealizadoActual.getFoto()
             );
 
-            if(trabajoRealizado.getJardinero() != null){
-                JardineroEntity jardineroEntity = jpaJardineroRepository.findById(trabajoRealizado.getJardinero().getId()).get();
-                trabajoRealizadoActual.setJardinero(jardineroEntity);
+            if(trabajoRealizado.getGardener() != null){
+                GardenerEntity jardineroEntity = jpaGardenerRepository.findById(trabajoRealizado.getGardener().getId()).get();
+                trabajoRealizadoActual.setGardener(jardineroEntity);
             }
             TrabajoRealizadoEntity trabajoRealizadoActualizado = jpaTrabajoRealizadoRepository.save(trabajoRealizadoActual);
             return Optional.ofNullable(trabajoRealizadoMapper.trabajoRealizadoEntityToTrabajoRealizado(trabajoRealizadoActualizado));

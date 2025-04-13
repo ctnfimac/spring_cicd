@@ -1,7 +1,7 @@
 package com.cperalta.jardineria.contratacion.domain.models;
 
-import com.cperalta.jardineria.usuario.domain.models.Cliente;
-import com.cperalta.jardineria.usuario.domain.models.Jardinero;
+import com.cperalta.jardineria.usuario.domain.models.Client;
+import com.cperalta.jardineria.usuario.domain.models.Gardener;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +15,7 @@ public class Contrata {
     private Long id;
     private Float precio_total;
     private Date fecha;
-    private Cliente cliente;
-    private Jardinero jardinero;
+    private Client client;
+    private Gardener gardener;
     private EstadoContratacion estadoContratacion;
 }

@@ -1,6 +1,6 @@
 package com.cperalta.jardineria.servicios.infraestructure.dto;
 
-import com.cperalta.jardineria.usuario.domain.models.Jardinero;
+import com.cperalta.jardineria.usuario.domain.models.Gardener;
 import com.cperalta.jardineria.servicios.domain.models.TipoDeServicio;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -28,5 +28,5 @@ public class ServicioRequestDTO {
 
     @NotBlank(message = "EL Jardinero es obligatorio")
     @NotNull(message = "Tiene que seleccionar algún Jardinero")
-    private Jardinero jardinero;
+    private Gardener gardener;
 }

@@ -2,12 +2,12 @@ package com.cperalta.jardineria.usuario.infraestructure.config;
 
 import com.cperalta.jardineria.usuario.application.services.*;
 import com.cperalta.jardineria.usuario.application.usecases.auth.AuthenticationUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.cliente.*;
+import com.cperalta.jardineria.usuario.application.usecases.client.*;
 import com.cperalta.jardineria.usuario.application.usecases.status.CreateStatusUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.status.DeleteStatusUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.status.RetrieveStatusUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.status.UpdateStatusUseCaseImpl;
-import com.cperalta.jardineria.usuario.application.usecases.jardinero.*;
+import com.cperalta.jardineria.usuario.application.usecases.gardener.*;
 import com.cperalta.jardineria.usuario.application.usecases.baseuser.BaseUserRetrieveUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.rol.CreateRoleUseCaseImpl;
 import com.cperalta.jardineria.usuario.application.usecases.rol.DeleteRoleUseCaseImpl;
@@ -40,22 +40,22 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public JardineroService jardineroService(JardineroRepositoryPort jardineroRepositoryPort){
-        return new JardineroService(
-                new RetrieveJardineroUseCaseImpl(jardineroRepositoryPort),
-                new CreateJardineroUseCaseImpl(jardineroRepositoryPort),
-                new UpdateJardineroUseCaseImpl(jardineroRepositoryPort),
-                new DeleteJardineroUseCaseImpl(jardineroRepositoryPort)
+    public GardenerService jardineroService(GardenerRepositoryPort gardenerRepositoryPort){
+        return new GardenerService(
+                new RetrieveGardenerUseCaseImpl(gardenerRepositoryPort),
+                new CreateGardenerUseCaseImpl(gardenerRepositoryPort),
+                new UpdateGardenerUseCaseImpl(gardenerRepositoryPort),
+                new DeleteGardenerUseCaseImpl(gardenerRepositoryPort)
         );
     }
 
     @Bean
-    public ClienteService clienteService(ClienteRepositoryPort clienteRepositoryPort){
-        return new ClienteService(
-                new RetrieveClienteUseCaseImpl(clienteRepositoryPort),
-                new CreateClienteUseCaseImpl(clienteRepositoryPort),
-                new UpdateClienteUseCaseImpl(clienteRepositoryPort),
-                new DeleteClienteUseCaseImpl(clienteRepositoryPort)
+    public ClientService clienteService(ClientRepositoryPort clientRepositoryPort){
+        return new ClientService(
+                new RetrieveClientUseCaseImpl(clientRepositoryPort),
+                new CreateClientUseCaseImpl(clientRepositoryPort),
+                new UpdateClientUseCaseImpl(clientRepositoryPort),
+                new DeleteClientUseCaseImpl(clientRepositoryPort)
         );
     }
 
@@ -81,20 +81,20 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public RegistrarJardineroService registrarJardineroService(RegistrarJardineroRepositoryPort registrarJardineroRepositoryPort,
-                                                               PasswordEncoderPort passwordEncoderPort, EmailSenderPort emailSenderPort,
-                                                               TokenGeneratorPort tokenGeneratorPort, EncryptionPort encryptionPort){
-        return new RegistrarJardineroService(
-                new RegistrarJardineroUseCaseImpl(registrarJardineroRepositoryPort,passwordEncoderPort, emailSenderPort, tokenGeneratorPort, encryptionPort)
+    public RegisterGardenerService registrarJardineroService(RegisterGardenerRepositoryPort registerGardenerRepositoryPort,
+                                                             PasswordEncoderPort passwordEncoderPort, EmailSenderPort emailSenderPort,
+                                                             TokenGeneratorPort tokenGeneratorPort, EncryptionPort encryptionPort){
+        return new RegisterGardenerService(
+                new RegisterGardenerUseCaseImpl(registerGardenerRepositoryPort,passwordEncoderPort, emailSenderPort, tokenGeneratorPort, encryptionPort)
         );
     }
 
     @Bean
-    public RegistrarClienteService registrarClienteService(RegistrarClienteRepositoryPort registrarClienteRepositoryPort,
-                                                               PasswordEncoderPort passwordEncoderPort, EmailSenderPort emailSenderPort,
-                                                               TokenGeneratorPort tokenGeneratorPort, EncryptionPort encryptionPort){
-        return new RegistrarClienteService(
-                new RegistrarClienteUseCaseImpl(registrarClienteRepositoryPort,passwordEncoderPort, emailSenderPort, tokenGeneratorPort, encryptionPort)
+    public RegisterClientService registrarClienteService(RegisterClientRepositoryPort registerClientRepositoryPort,
+                                                         PasswordEncoderPort passwordEncoderPort, EmailSenderPort emailSenderPort,
+                                                         TokenGeneratorPort tokenGeneratorPort, EncryptionPort encryptionPort){
+        return new RegisterClientService(
+                new RegisterClientUseCaseImpl(registerClientRepositoryPort,passwordEncoderPort, emailSenderPort, tokenGeneratorPort, encryptionPort)
         );
     }
 }
