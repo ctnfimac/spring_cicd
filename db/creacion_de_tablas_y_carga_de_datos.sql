@@ -61,58 +61,6 @@ CREATE TABLE jardinero(
 );
 
 
-CREATE TABLE trabajo_realizado(
-	 id SERIAL PRIMARY KEY,
-	 foto varchar(50) NOT NULL,
-	 descripcion TEXT,
-	 jardinero_id integer NOT NULL,
-	 CONSTRAINT fk_trabajorealizado_jardinero FOREIGN KEY(jardinero_id) REFERENCES jardinero(id)
-);
-
-
-CREATE TABLE tipo_de_servicio(
-	id SERIAL PRIMARY KEY,
-	foto varchar(50) NOT NULL UNIQUE,
-	nombre varchar(30)
-);
-
-CREATE TABLE servicio(
-	id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-	--id SERIAL PRIMARY KEY,
-	descripcion varchar(100),
-	precio decimal(10,2) NOT NULL,
-	jardinero_id integer NOT NULL,
-	tipodeservicio_id integer NOT NULL,
-	CONSTRAINT fk_servicio_jardinero FOREIGN KEY(jardinero_id)
-			REFERENCES jardinero(id),
-	CONSTRAINT fk_servicio_tipodeservicio FOREIGN KEY(tipodeservicio_id)
-			REFERENCES tipo_de_servicio(id),
-	CONSTRAINT unique_cliente_jardinero UNIQUE (jardinero_id, tipodeservicio_id)
-);
-
-
-CREATE TABLE estado_contratacion(
-	id SERIAL PRIMARY KEY,
-	descripcion varchar(15) UNIQUE
-);
-
-
-CREATE TABLE contrata(
-	id BIGSERIAL PRIMARY KEY,
-	precio_total decimal(12,2),
-	fecha date NOT NULL,
-	cliente_id integer NOT NULL,
-	jardinero_id integer NOT NULL,
-	estadocontratacion_id integer NOT NULL,
-	CONSTRAINT fk_contrata_cliente FOREIGN KEY(cliente_id)
-			REFERENCES cliente(id),
-	CONSTRAINT fk_contrata_jardinero FOREIGN KEY(jardinero_id)
-			REFERENCES jardinero(id),
-	CONSTRAINT fk_contrata_estadocontratacion FOREIGN KEY(estadocontratacion_id)
-			REFERENCES estado_contratacion(id)
-);
-
-
 -- CARGA DE DATOS PARA LAS PRUEBAS
 INSERT INTO rol(descripcion)
 VALUES('ADMIN'),
@@ -142,38 +90,3 @@ VALUES(2, '1578410121', 'Mi nombre es cubillas etc etc'),
 (3, '1160302040', 'Soy miyagui el karateca de la jardineria etc etc');
 
 
-INSERT INTO trabajo_realizado(foto, descripcion, jardinero_id)
-VALUES('/fotos/trabajo1.jpg', 'trabajo de corte de pasto realizado en x lugar', 1),
-('/fotos/1/trabajo2.jpg', 'trabajo de Poda realizado para la señora Victoria', 1),
-('/fotos/2/trabajo1.jpg', 'trabajo dificil de poda de pino realizado en ramos mejia', 2);
-
-
-INSERT INTO tipo_de_servicio(foto, nombre)
-VALUES('/fotos/corte_de_pasto.jpg', 'Corte de Pasto'),
-('/fotos/poda_de_arboles.jpg','Poda de Arboles'),
-('/fotos/fertilizar.jpg','Fertilizar'),
-('/fotos/proteccion_de_plantas.jpg','Protección de plantas');
-
-
-INSERT INTO servicio(descripcion, precio, jardinero_id, tipodeservicio_id)
-VALUES('Descripcion puesta por el jardinero dando valor a su servicio', 5000.0, 1, 1),
-('Descripcion puesta por el jardinero dando valor a su servicio', 6000.0, 2, 1),
-('Descripcion puesta por el jardinero dando valor a su servicio', 7000.0, 1, 2),
-('Descripcion puesta por el jardinero dando valor a su servicio', 8000.0, 2, 3),
-('Descripcion puesta por el jardinero dando valor a su servicio', 9000.0, 2, 2),
-('Descripcion puesta por el jardinero dando valor a su servicio', 10000.0, 1, 4),
-('Descripcion puesta por el jardinero dando valor a su servicio', 11000.0, 1, 3),
-('Descripcion puesta por el jardinero dando valor a su servicio', 12000.0, 2, 4);
-
-INSERT INTO estado_contratacion(descripcion)
-VALUES('RESERVADO'),
-('PROCESO'),
-('FINALIZADO');
-
-
-INSERT INTO contrata(precio_total, fecha, cliente_id, jardinero_id, estadocontratacion_id)
-VALUES(5000.0, '2025-02-01', 1, 1, 1),
-(10000.0, '2025-03-02', 2, 1, 2),
-(7000.0, '2025-05-03', 2, 2, 1),
-(12000.0, '2025-07-04', 2, 1, 1),
-(11000.0, '2025-08-05', 1, 2, 3);
