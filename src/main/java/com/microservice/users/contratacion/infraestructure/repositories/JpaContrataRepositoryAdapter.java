@@ -1,0 +1,46 @@
+package com.microservice.users.contratacion.infraestructure.repositories;
+
+import com.microservice.users.contratacion.domain.models.Contrata;
+import com.microservice.users.contratacion.domain.ports.output.ContrataRepositoryPort;
+import com.microservice.users.contratacion.infraestructure.mapper.ContrataMapper;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Component
+@AllArgsConstructor
+public class JpaContrataRepositoryAdapter implements ContrataRepositoryPort {
+
+    private final JpaContrataRepository jpaContrataRepository;
+    private final ContrataMapper contrataMapper;
+
+    @Override
+    public Optional<Contrata> getById(Long id) {
+        return jpaContrataRepository.findById(id).map(contrataMapper::contrataEntityToContrata);
+    }
+
+    @Override
+    public List<Contrata> getAll() {
+        return jpaContrataRepository.findAll().stream()
+                .map(contrataMapper::contrataEntityToContrata)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Contrata create(Contrata contrata) {
+        return null;
+    }
+
+    @Override
+    public Optional<Contrata> update(Long id, Contrata contrata) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        return false;
+    }
+}

@@ -1,0 +1,32 @@
+package com.microservice.users.servicios.infraestructure.dto;
+
+import com.microservice.users.domain.models.Gardener;
+import com.microservice.users.servicios.domain.models.TipoDeServicio;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
+
+import java.util.UUID;
+
+@Setter
+@Getter
+public class ServicioRequestDTO {
+    private UUID id;
+
+    @Length(max=100, message = "La cantidad máxima de caracteres es 100")
+    private String descripcion;
+
+    @NotBlank(message = "EL precio es obligatorio")
+    @NotNull(message = "EL precio tiene que tener algun valor")
+    private Long precio;
+
+    @NotBlank(message = "EL Tipo de Servicio es obligatorio")
+    @NotNull(message = "Tiene que seleccionar algún Tipo de servicio")
+    private TipoDeServicio tipoDeServicio;
+
+    @NotBlank(message = "EL Jardinero es obligatorio")
+    @NotNull(message = "Tiene que seleccionar algún Jardinero")
+    private Gardener gardener;
+}
